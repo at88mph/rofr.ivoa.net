@@ -1,0 +1,22 @@
+<?xml version="1.0" standalone="yes" ?>
+
+<setnames>
+   <set>
+      <spec>ivoa_publishers</spec>
+      <name>IVOA Publishing Registries</name>
+      <description>
+         This set returns all known IVOA-compliant Publishing
+         Registries (including this one).  Harvesters that wish to
+         collect all known resource records should harvest from each
+         of the registries in this set with set=ivo_managed.
+      </description>
+   </set>
+   <set>
+      <spec>Organisation</spec>
+      <description>
+         This set returns all resources managed by this registry
+         having a VOResource class of vr:Organisation.
+      </description>
+      <includedIn>ivo_managed</includedIn>
+   </set>
+</setnames>

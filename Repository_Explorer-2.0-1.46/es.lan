@@ -1,0 +1,403 @@
+Spanish
+#
+# Language translation file for Repository Explorer
+# Language: default (english-->Spanish)
+#
+#
+Open Archives Initiative Repository Explorer
+El Explorador de Repositorios para la Iniciativa de Archivos Abiertos
+#
+Archive details
+Los detalles del archivo
+#
+Verbs
+Los verbos
+#
+Options
+Las opciones
+#
+Identify
+Identifique
+#
+List Metadata Formats
+Haga una lista de Formatos de Metadata
+#
+List Sets
+Haga una lista de conjuntos
+#
+List Identifiers
+Haga un lista de identificadores
+#
+List Records
+Haga una lista de registros
+#
+Get Record
+Obtenga un Registro
+#
+Parsed
+Analizado
+#
+Raw XML
+XML crudo
+#
+from (YYYY-MM-DD)
+desde (YYYY-MM-DD)
+#
+until (YYYY-MM-DD)
+hasta (YYYY-MM-DD)
+#
+metadataPrefix
+metadataPrefix
+#
+identifier
+la identificador
+#
+set
+el conjunto
+#
+resumptionToken
+resumptionToken
+#
+Please enter the URL to the OAI interface (everything before the ?)
+Anote por favor el URL a la interfaz de OAI (todo antes de ?)
+#
+Start Browsing
+Empiece a hojear
+#
+Language
+El lenguaje
+#
+Some predefined archives
+Algunos archivos predefinidos
+#
+Test and Add an archive to this list
+Pruebe y Agregue un archivo a esta lista
+#
+This site presents an interface to interactively test archives for compliance with the
+Este sitio presenta una interfaz para probar un archivo interactivamente por la conformidad con el
+#
+Open Archives Initiative Protocol version 1.0</a>.
+El protocolo de la Iniciativa de Archivos Abiertos versión 1.0</a>. 
+#
+It works by interrogating the Open Archive using the service requests defined by the protocol.
+Funciona por interrogar el Archivo Abierto usando la petición de servicio definida por el protocol. 
+#
+The results in XML are then parsed and interpreted to present the user with a navigable interface.
+Luego, los resultados en XML se analizan y interpretan para presentar el usuario con una interfaz navegable.
+#
+<p>JavaScript is required and Netscape Navigator is recommended
+<p>Se requiere el JavaScript y es recomendado el Netscape Navegador
+#
+<p>Note: To avoid HTTP errors, please wait for each page to finish loading before clicking on any link.
+<p>Apunte: Para evitar los errores de HTTP, esperen por favor por cada página a cargar antes de hacer clic en cualquier enlace. 
+#
+HTTP Status Code
+El código del status de HTTP
+#
+HTTP Error Message
+El mensaje del error de HTTP
+#
+XSD Schema/Instance Validation Error !
+¡XSD esquema/Un error de la validación del caso! 
+#
+requestURL missing !
+¡Se falta requestURL! 
+#
+responseDate missing !
+¡Se falta responseDate! 
+#
+Request URL
+Solicite URL
+#
+Response Date
+La fecha de la respuesta
+#
+home
+el hogar
+#
+Send all comments to
+Mande todos los comentarios a
+#
+Digital Libraries Research Laboratory
+El Laboratorio de Investigaciones en Bibliotecas Digitales 
+#
+JavaScript is required and Netscape Navigator is recommended
+Se requiere el JavaScript y es recomendado el Netscape Navegador
+#
+Note: To avoid HTTP errors, please wait for each page to finish loading before clicking on any link.
+Apunte: Para evitar los errores de HTTP, esperen por favor por cada página a cargar antes de hacer clic en cualquier enlace. 
+#
+Parameters
+Los parámetros
+#
+Display
+Exponga
+#
+Schema Validation
+La validación de esquema
+#
+None
+Ninguno
+#
+Local schemata
+Schemata local
+#
+Online schemata
+Schemata en línea
+#
+Both
+Ambos
+#
+Local mirror of schemata
+El espejo local de schemata
+#
+Actual online schemata
+Schemata verdadero en línea
+#
+Error
+Un error
+#
+Illegal tag
+Una etiqueta ilegal
+#
+Missing field
+Un campo perdido
+#
+Text found where tag expected
+El texto fue encontrado donde fue esperada una etiqueta
+#
+Tag expected but not found
+Fue esperada una etiqueta pero no fue encontrada
+#
+Only one instance allowed
+Se permite sólo un caso 
+#
+Text expected for field but not found
+El texto fue esperado para el campo pero fue encontrado
+#
+Archive Self-Description
+La descripción del ser del archivo
+#
+Resume from
+Reanude de
+#
+List of Sets
+La lista de conjuntos
+#
+Click on the link to list the contents
+Haga clic en el enlace para hacer una lista del contenido
+#
+Prefix
+El prefijo
+#
+NameSpace
+NameSpace
+#
+Schema
+Esquema
+#
+Not a standard OAI metadata name
+No es un nombre estándar de metadata de OAI
+#
+display record
+exponga el registro
+#
+List of Metadata Formats
+La lista de Formatos de Metadata
+#
+Click on the link to view schema
+Haga clic en el enlace para ver el esquema
+#
+display record in Dublin Core
+exponga el registro en el Dublín Core
+#
+display metadata formats
+exponga formatos de metadata
+#
+List of Record Identifiers
+La lista de Identificadores de Registros
+#
+Select a link to view more information
+Escoja un enlace para ver más información
+#
+Identifier
+La identificador
+#
+Datestamp
+Datestamp
+#
+List of Fields
+La lista de campos
+#
+List of Records
+La lista de registros
+#
+Please enter the URL to the OAI interface (everything before the ?) or choose a predefined archive from the table
+Anote por favor el URL a la interfaz de OAI (todo antes del ?) o escoja un archivo predefinido de la tabla
+#
+missing !
+¡se falta! 
+#
+Repository Name
+El Nombre del depósito
+#
+Base URL
+URL de base
+#
+Protocol Version
+La versión del protocolo
+#
+Admin Email
+Correo de Admin
+#
+Other Information
+Otra información
+#
+April 2001
+El abril 2001
+#
+explorer version
+la versión del explorador
+#
+protocol version
+la versión del protocolo
+#
+Parsed Output
+La salida analizada
+#
+Raw XML Output
+La salida cruda de XML
+#
+View Archive Website
+Vea el sitio de Web de archivo
+#
+Sorry, you can only view the website for a selected predefined archive
+Lo siento, Ud. sólo puede ver el sitio de Web para un archivo predefinido y
+escogido
+#
+HTTP Status
+El status de HTTP
+#
+Unexpected HTTP Error
+Un error inesperado de HTTP
+#
+HTTP Status code should be 400
+El código del status de HTTP debe ser 400
+#
+XML parsing errors
+Unos errores de analizar el XML
+#
+Testing
+Probar
+#
+Test Result
+El resultado de las pruebas
+#
+OK
+OK
+#
+FAIL!
+¡FRACASO! 
+#
+Open Archives Initiative Metadata Harvesting Protocol
+El protocolo para recolectar metadatos de la Initiciativa de Archivos Abiertos
+#
+Protocol Tester
+El Probador del protocolo
+#
+ERROR
+Un ERROR
+#
+Repository Name missing !
+¡Se falta el nombre de depósito! 
+#
+Protocol Version missing !
+¡Se falta la versión del protocolo! 
+#
+Base URL missing !
+¡Se falta el URL de base! 
+#
+Admin Email missing !
+¡Se falta el correo de Admin! 
+#
+Sample Metadata Format
+Muestra formato de metadatos
+#
+Metadata format missing !
+¡Se falta el formato de metadatos! 
+#
+Sample Set Spec
+Muestra spec de conjunto
+#
+Set Resumption Token
+Fija la resumption token
+#
+Sample Identifier
+Muestra identificador
+#
+Identifier missing !
+¡Se falta la identificador! 
+#
+Identifier Resumption Token
+Resumption token de identificador
+#
+Record Resumption Token
+Resumption token de registro
+#
+Total Errors
+El total de los errores
+#
+Test and Add an archive
+Pruebe y agregue un archivo
+#
+Please note that these tests are neither definitive nor exhaustive
+Apunte por favor que estas pruebas son ni definitivas ni exhaustivas
+#
+They serve not as a proof of correctness of implementation, but rather indicate possible errors if they exist
+Ellos sirven no como una prueba de la exactitud de la implementación, sino indican los errores posibles si ellos existen
+#
+If you have any questions please contact the author at the address below
+Si Ud. tiene cualquiera pregunta contacte por favor con al autor en el correo 
+abajo
+#
+Enter the base URL of the archive
+Anote el URL de base del archivo
+#
+Test the archive
+Pruebe el archivo
+#
+Congratulations !
+¡Felicitaciones! 
+#
+Your archive satisfied all the tests we performed
+Su archivo satisfizo todas las pruebas que realizamos
+#
+You may now add it to the list of archives on the front page if you wish by filling in the following additional details
+Ud. ahora lo puede agregar a la lista de archivos en la página delantera si Ud. desea por llenar los siguientes detalles adicionales 
+#
+Base URL of Archive
+URL de base de archivo
+#
+Name of Archive
+El nombre de archivo
+#
+Archive website
+El sitio de Web de archivo
+#
+Submit Archive to List
+Presente archivo a la Lista
+#
+Thank You ! Your archive has been added
+¡Gracias! Se ha agregado su archivo
+#
+Metadata Harvesting Protocol
+Protocolo de Recoleccion de Metadatos
+#
+This site presents an interface to interactively test archives for compliance with the OAI Protocol for Metadata Harvesting
+Este sitio presenta una interfaz para probar interactivamente un archivo para la conformidad con el OAI Protocolo para Recolectar de Metadatos
+#
+Click here for details
+Haga clic aquí para detalles
+#
+Repository Explorer
+El Explorador del depósito

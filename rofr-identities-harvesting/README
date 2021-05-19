@@ -1,0 +1,30 @@
+This is a standalone console Java application that "harvests"
+registry records and saves them as files in the local file
+system (optionally pretty-printing them along the way). The
+verb "harvests" is in quotes as the application is not, actually
+using the OAI-PMH procedure technically known as "harvesting".
+I.e. it is not using the 'verb=listRecords' endpoint. Instead, for
+each registry, it uses the 'verb=Identify' endpoint so this is not
+really harvesting in the OAI-PMH sense of the word. It simply
+fetches (for each registry) the vg:Registry resource that describes
+it. It is these records that we then use to populate the RofR.
+
+To generate the uber-jar for the Java console application
+simply type 'ant' at the top level. This is the recommended
+way and prints a nice informative message letting you know where
+the uber-jar is located.
+
+Alternatively, 'cd' into the 'main/' directory and type:
+
+    $ ant package-uberjar
+
+'ant clean' at the top level cleans everything.
+
+To see the integrated help, invoke the uber-jar with the '-h'
+option:
+
+java -jar target/rofr-identities-harvesting-uber.jar -h
+
+... or with no option at all.
+
+

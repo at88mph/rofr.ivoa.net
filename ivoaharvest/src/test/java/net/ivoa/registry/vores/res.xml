@@ -1,0 +1,187 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ri:Resource xmlns:ri="http://www.ivoa.net/xml/RegistryInterface/v1.0"
+             xmlns:vs="http://www.ivoa.net/xml/VODataService/v1.1"
+             xmlns:stc="http://www.ivoa.net/xml/STC/stc-v1.30.xsd"
+             xmlns:xlink="http://www.w3.org/1999/xlink"
+             xmlns:cs="http://www.ivoa.net/xml/ConeSearch/v1.0"
+             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+             status="active"
+             created="2008-03-26T21:27:15Z"
+             updated="2012-12-17T18:56:52Z"
+             xsi:type="vs:CatalogService">
+          <validationLevel validatedBy="ivo://archive.stsci.edu">1</validationLevel>
+          <title>VLACOSMOS: VLA-COSMOS Large Project 1.4-GHz Source Catalog (LEDAS)</title>
+          <shortName>VLACOSMOS</shortName>
+          <identifier>ivo://uk.ac.le.star.tmpledas/ledas/ledas/vlacosmos</identifier>
+          <curation>
+            <publisher>LEDAS, University of Leicester</publisher>
+            <creator>
+              <name>LEDAS</name>
+            </creator>
+            <contact>
+              <name>Duncan Law-Green</name>
+              <email>dlg@star.le.ac.uk</email>
+            </contact>
+          </curation>
+          <content>
+            <subject>LEDAS</subject>
+            <subject>vlacosmos</subject>
+            <description>Cone Search service for VLACOSMOS: VLA-COSMOS Large Project 1.4-GHz Source Catalog (LEDAS). 
+  						
+  						Part of Catalogues hosted at Leicester Database and Archive Service</description>
+            <referenceURL>http://www.ledas.ac.uk</referenceURL>
+            <type>Catalog</type>
+            <contentLevel>Research</contentLevel>
+            <relationship>
+              <relationshipType>service-for</relationshipType>
+              <relatedResource ivo-id="ivo://uk.ac.le.star.tmpledas/ledas/ledas">LEDAS</relatedResource>
+            </relationship>
+          </content>
+          <capability standardID="ivo://ivoa.net/std/ConeSearch" xsi:type="cs:ConeSearch">
+            <validationLevel validatedBy="ivo://archive.stsci.edu">2</validationLevel>
+            <description>ledas, vlacosmos: cone search</description>
+            <interface role="std" version="1.0" xsi:type="vs:ParamHTTP">
+              <accessURL use="base">http://camelot.star.le.ac.uk:8080/dsa-catalog/SubmitCone?DSACAT=ledas&amp;DSATAB=vlacosmos&amp;</accessURL>
+            </interface>
+            <interface version="1.0" xsi:type="vr:WebBrowser">
+              <accessURL use="full">http://camelot.star.le.ac.uk:8080/dsa-catalog/SubmitCone.jsp?DSACAT=ledas&amp;DSATAB=vlacosmos&amp;</accessURL>
+            </interface>
+            
+            <maxRecords>50000</maxRecords>
+            <verbosity>false</verbosity>
+            <testQuery>
+              <ra>96.0</ra>
+              <dec>5.0</dec>
+              <sr>0.001</sr>
+            </testQuery>
+          </capability>
+          <capability standardID="ivo://ivoa.net/std/VOSI#availability">
+            <validationLevel validatedBy="ivo://archive.stsci.edu">1</validationLevel>
+            <interface xsi:type="vs:ParamHTTP">
+              <accessURL use="full">http://camelot.star.le.ac.uk:8080/dsa-catalog/ledas/vosi/availability</accessURL>
+              <queryType>GET</queryType>
+              <resultType>application/xml</resultType>
+            </interface>
+          </capability>
+          
+          <tableset>
+            <schema>
+              <name>c</name>
+              <description>
+                The query response table.  Queries to this service will return
+                a VOTable with the structure described here.
+              </description>
+              <table>
+                <name>vlacosmos</name>
+                <description>VLACOSMOS: VLA-COSMOS Large Project 1.4-GHz Source Catalog (LEDAS)</description>
+                <column>
+                  <name>name</name>
+                  <description>Source Designation</description>
+                  <ucd>ID_MAIN</ucd>
+               <dataType xsi:type="vs:VOTableType" arraysize="*">char</dataType>
+                </column>
+                <column>
+                  <name>ra</name>
+                  <description>Right Ascension</description>
+                  <unit>deg</unit>
+                  <ucd>POS_EQ_RA_MAIN</ucd>
+               <dataType xsi:type="vs:VOTableType">float</dataType>
+                </column>
+                <column>
+                  <name>decl</name>
+                  <description>Declination</description>
+                  <unit>deg</unit>
+                  <ucd>POS_EQ_DEC_MAIN</ucd>
+               <dataType xsi:type="vs:VOTableType">float</dataType>
+                </column>
+                <column>
+                  <name>lii</name>
+                  <description>Galactic Longitude</description>
+                  <unit>deg</unit>
+               <dataType xsi:type="vs:VOTableType">float</dataType>
+                </column>
+                <column>
+                  <name>bii</name>
+                  <description>Galactic Latitude</description>
+                  <unit>deg</unit>
+               <dataType xsi:type="vs:VOTableType">float</dataType>
+                </column>
+                <column>
+                  <name>ra_error</name>
+                  <description>RMS Uncertainty in the Right Ascension (arcsec)</description>
+                  <unit>arcsec</unit>
+               <dataType xsi:type="vs:VOTableType">float</dataType>
+                </column>
+                <column>
+                  <name>dec_error</name>
+                  <description>RMS Uncertainty in the Declination (arcsec)</description>
+                  <unit>arcsec</unit>
+               <dataType xsi:type="vs:VOTableType">float</dataType>
+                </column>
+                <column>
+                  <name>flux_20_cm</name>
+                  <description>Source 1.4-GHz Peak Surface Brightness (mJy/beam)</description>
+                  <unit>mJy/beam</unit>
+               <dataType xsi:type="vs:VOTableType">float</dataType>
+                </column>
+                <column>
+                  <name>flux_20_cm_error</name>
+                  <description>RMS Uncertainty in the Source 1.4-GHz Peak Surface Brightness (mJy/beam)</description>
+                  <unit>mJy/beam</unit>
+               <dataType xsi:type="vs:VOTableType">float</dataType>
+                </column>
+                <column>
+                  <name>int_flux_20_cm</name>
+                  <description>Integrated 1.4-GHz Source Flux Density (mJy)</description>
+                  <unit>mJy</unit>
+               <dataType xsi:type="vs:VOTableType">float</dataType>
+                </column>
+                <column>
+                  <name>int_flux_20_cm_error</name>
+                  <description>RMS Uncertainty in the Integrated 1.4-GHz Source Flux Density (mJy)</description>
+                  <unit>mJy</unit>
+               <dataType xsi:type="vs:VOTableType">float</dataType>
+                </column>
+                <column>
+                  <name>rms_20_cm</name>
+                  <description>Measured RMS at the Radio Source Position (mJy/beam)</description>
+                  <unit>mJy/beam</unit>
+               <dataType xsi:type="vs:VOTableType">float</dataType>
+                </column>
+                <column>
+                  <name>major_axis</name>
+                  <description>Deconvolved Major Axis of Source (arcsec)</description>
+                  <unit>arcsec</unit>
+               <dataType xsi:type="vs:VOTableType">float</dataType>
+                </column>
+                <column>
+                  <name>minor_axis</name>
+                  <description>Deconvolved Minor Axis of Source (arcsec)</description>
+                  <unit>arcsec</unit>
+               <dataType xsi:type="vs:VOTableType">float</dataType>
+                </column>
+                <column>
+                  <name>position_angle</name>
+                  <description>Position Angle  Counterclockwise from North (deg)</description>
+                  <unit>deg</unit>
+               <dataType xsi:type="vs:VOTableType">float</dataType>
+                </column>
+                <column>
+                  <name>resolved_flag</name>
+                  <description>Flag [YN] Indicates Resolved Source</description>
+               <dataType xsi:type="vs:VOTableType" arraysize="*">char</dataType>
+                </column>
+                <column>
+                  <name>sidelobe_flag</name>
+                  <description>Flag [YN] Indicates Sidelobe</description>
+               <dataType xsi:type="vs:VOTableType" arraysize="*">char</dataType>
+                </column>
+                <column>
+                  <name>multi_component_flag</name>
+                  <description>Flag [YN] Indicates Multi-Component Source</description>
+               <dataType xsi:type="vs:VOTableType" arraysize="*">char</dataType>
+                </column>
+              </table>
+            </schema>
+          </tableset>
+        </ri:Resource>

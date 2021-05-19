@@ -1,0 +1,36 @@
+#!/bin/sh
+# ROFR_HOME=
+prog=`basename $0`
+
+if [ -z "$ROFR_HOME" ]; then
+    bindir=`dirname $0`
+    ROFR_HOME=`dirname $bindir`
+fi
+
+lib=${ROFR_HOME}/lib
+
+case "$1" in
+"-h")
+echo 
+echo "listregistries:  query an IVOA searchable registry for a list of"
+echo "                 all known registries"
+echo 
+echo "Usage:  listregistries baseurl"
+echo
+;;
+*)
+
+if [ -z $JAVA_HOME ]; then
+    bin=""
+else
+    bin="$JAVA_HOME/bin/"
+fi
+
+axispath=$lib/axis-saaj.jar:$lib/axis.jar:$lib/commons-discovery.jar:$lib/commons-logging.jar:$lib/axis-jaxrpc.jar:$lib/wsdl4j.jar:$lib/activation.jar:$lib/mail.jar
+adqljarpath=$lib/adql.jar
+
+classpath=$lib/ivoaregistry.jar:${adqljarpath}:${axispath}
+
+exec ${bin}java -cp $classpath net.ivoa.registry.search.test.ListRegistries $*
+;;
+esac

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<validate>
+  <VOResourceValidate ivo-id="ivo://archive.stsci.edu/kepler_fov" name="generic" nfail="11" nrec="0" nwarn="1" role="resource" status="active">
+    <test item="VRvalid" status="fail">Resource record must be compliant with the VOResource schemas.</test>
+    <test item="VR-cvc-pattern-valid" status="fail">10: cvc-pattern-valid: Value 'MAST' is not facet-valid with respect to pattern 'ivo://[\w\d][\w\d\-_\.!~\*'\(\)\+=]{2,}(/[\w\d\-_\.!~\*'\(\)\+=]+(/[\w\d\-_\.!~\*'\(\)\+=]+)*)?' for type 'IdentifierURI'.</test>
+    <test item="VR-cvc-attribute.3" status="fail">10: cvc-attribute.3: The value 'MAST' of attribute 'ivo-id' on element 'publisher' is not valid with respect to its type, 'IdentifierURI'.</test>
+    <test item="VR-cvc-pattern-valid" status="rec">12: cvc-pattern-valid: Value '' is not facet-valid with respect to pattern 'ivo://[\w\d][\w\d\-_\.!~\*'\(\)\+=]{2,}(/[\w\d\-_\.!~\*'\(\)\+=]+(/[\w\d\-_\.!~\*'\(\)\+=]+)*)?' for type 'IdentifierURI'.</test>
+    <test item="VR-cvc-attribute.3" status="fail">12: cvc-attribute.3: The value '' of attribute 'ivo-id' on element 'name' is not valid with respect to its type, 'IdentifierURI'.</test>
+    <test item="VR-cvc-pattern-valid" status="fail">16: cvc-pattern-valid: Value '' is not facet-valid with respect to pattern 'ivo://[\w\d][\w\d\-_\.!~\*'\(\)\+=]{2,}(/[\w\d\-_\.!~\*'\(\)\+=]+(/[\w\d\-_\.!~\*'\(\)\+=]+)*)?' for type 'IdentifierURI'.</test>
+    <test item="VR-cvc-attribute.3" status="warn">16: cvc-attribute.3: The value '' of attribute 'ivo-id' on element 'name' is not valid with respect to its type, 'IdentifierURI'.</test>
+    <test item="VR-cvc-complex-type.2.4.a" status="fail">22: cvc-complex-type.2.4.a: Invalid content was found starting with element 'address'. One of '{telephone}' is expected.</test>
+    <test item="VR-cvc-datatype-valid.1.2.1" status="warn">57: cvc-datatype-valid.1.2.1: '' is not a valid value for 'NMTOKEN'.</test>
+    <test item="VR-cvc-attribute.3" status="fail">57: cvc-attribute.3: The value '' of attribute 'use' on element 'accessURL' is not valid with respect to its type, 'null'.</test>
+    <test item="VR-cvc-complex-type.2.4.a" status="fail">64: cvc-complex-type.2.4.a: Invalid content was found starting with element 'footprint'. One of '{waveband}' is expected.</test>
+</VOResourceValidate>
+</validate>
+

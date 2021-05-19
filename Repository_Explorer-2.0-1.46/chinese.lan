@@ -1,0 +1,308 @@
+Chinese
+#
+# Language translation file for Repository Explorer
+# Language: default (english-->Chinese)
+#
+#
+HTTP Status
+HTTP 状态
+#
+Unexpected HTTP Error
+  非期望HTTP 错误
+#
+HTTP Status code should be 400
+HTTP 状态码应为 400
+#
+XML parsing errors
+XML 词法分析错误
+#
+Testing
+测试
+#
+Test Result
+测试结果
+#
+OK
+OK
+#
+FAIL!
+失败！
+#
+Metadata Harvesting Protocol
+"Harvesting 索引"  ?? 
+#
+Protocol Tester
+??测试器
+#
+April 2001
+2001年 四月 
+#
+Repository Name
+储藏所名称
+#
+ERROR
+错误
+#
+Repository Name missing !
+储藏所名称缺失 !
+#
+Protocol Version
+??版本
+#
+Protocol Version missing !
+??版本缺失 !
+#
+Base URL
+基本 URL
+#
+Base URL missing !
+基本 URL 缺失 !
+#
+Admin Email
+管理员 Email
+#
+Admin Email missing !
+管理员 Email 缺失 !
+#
+Sample Metadata Format
+索引形式样品
+#
+Metadata format missing !
+索引形式缺失 !
+#
+Sample Set Spec
+样品说明
+#
+Set Resumption Token
+设置Resumption 符号
+#
+Sample Identifier
+样本标识符 
+#
+Identifier missing !
+标识符缺失!
+#
+Identifier Resumption Token
+Identifier Resumption Token
+#
+Record Resumption Token
+Record Resumption Token
+#
+Total Errors
+完全错误
+#
+Error
+错误
+#
+Illegal tag
+非法符号
+#
+Missing field
+域名缺失
+#
+Text found where tag expected
+标识处发现正文
+#
+Tag expected but not found
+标识处未发现标识
+#
+Only one instance allowed
+只允许一个实例
+#
+Text expected for field but not found
+正文域未发现正文
+#
+Archive Self-Description
+档案自我描述
+#
+Other Information
+其他信息
+#
+Resume from
+继续从
+#
+List of Sets
+List of Sets
+#
+Click on the link to list the contents
+点击连接查看列表内容
+#
+Prefix
+前缀
+#
+NameSpace
+名称空间
+#
+Schema
+Schema
+#
+Not a standard OAI metadata name
+非标准OAI索引名
+#
+display record
+显示记录
+#
+List of Metadata Formats
+索引形式列表
+#
+Click on the link to view schema
+点击连接查看schema
+#
+display record in Dublin Core
+显示 Dublin Core 记录
+#
+display metadata formats
+显示索引形式
+#
+List of Record Identifiers
+记录标识符列表
+#
+Select a link to view more information
+选择一个连接去查看更多信息
+#
+List of Fields
+域名列表
+#
+List of Records
+记录列表
+#
+This site presents an interface to interactively test archives for compliance with the OAI Protocol for Metadata Harvesting
+本站点为一个交互式测试遵守Harvesting 索引OAI ??档案的界面
+#
+Click here for details
+需要更多信息请点击这里
+#
+JavaScript is required and Netscape Navigator is recommended
+需要支持JavaScript 建议试用Netscape 流览器
+#
+Note: To avoid HTTP errors, please wait for each page to finish loading before clicking on any link.
+注意: 为避免 HTTP 错误, 请等到每一页下载结束后再点击连接
+#
+Please enter the URL to the OAI interface (everything before the ?) or choose a predefined archive from the table
+请输入到OAI界面的URL(? 前所有内容) 或从列表中选择一个预先定义的档案
+#
+Sorry, you can only view the website for a selected predefined archive
+对不起, 您只能在网站上流览一个预先选定的档案
+#
+View Archive Website
+查看档案网站
+#
+Test and Add an archive to this list
+测试并加入一个档案到列表中
+#
+Repository Explorer
+储藏所流览器
+#
+explorer version
+流览器版本
+#
+protocol version
+?? 版本
+#
+Archive details
+档案细节
+#
+Verbs
+动词
+#
+Parameters
+参数
+#
+Display
+显示
+#
+Schema Validation
+Schema Validation
+#
+Parsed
+词法分析
+#
+Raw XML
+源 XML
+#
+Both
+全部
+#
+None
+无
+#
+Local mirror of schemata
+schemata 本地映象
+#
+Online schemata
+Online schemata
+#
+home
+home
+#
+Send all comments to
+请发送您的建议至
+#
+Digital Libraries Research Laboratory
+数字图书馆研究实验室
+#
+HTTP Status Code
+HTTP 状态码
+#
+HTTP Error Message
+HTTP 错误消息
+#
+Parsed Output
+句法分析输出
+#
+Raw XML Output
+源始XML 输出
+#
+XSD Schema/Instance Validation Error !
+XSD Schema/Instance Validation Error !
+#
+missing !
+缺失 !
+#
+Request URL
+请求 URL
+#
+Response Date
+回复 日期
+#
+Test and Add an archive
+测试及加入一个档案
+#
+Please note that these tests are neither definitive nor exhaustive
+请注意这些测试即非确定又非完全
+#
+They serve not as a proof of correctness of implementation, but rather indicate possible errors if they exist
+它不能证明实现的正确性, 只能暗示是否存在错误
+#
+If you have any questions please contact the author at the address below
+如果您有疑问请用以下地址联系作者
+#
+Enter the base URL of the archive
+请输入档案的源URL
+#
+Test the archive
+测试档案
+#
+Congratulations !
+祝贺你 !
+#
+Your archive satisfied all the tests we performed
+您的档案通过了我们所有的测试
+#
+You may now add it to the list of archives on the front page if you wish by filling in the following additional details
+如果需要，You may now add it to the list of archives on the front page if you wish by filling in the following additional details
+#
+Base URL of Archive
+档案源 URL 
+#
+Name of Archive
+档案名称
+#
+Archive website
+档案网站
+#
+Submit Archive to List
+提交档案到列表
+#
+Thank You ! Your archive has been added
+谢谢 ! 您的档案已被加入

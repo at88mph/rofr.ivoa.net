@@ -1,0 +1,34 @@
+#! /bin/sh
+
+# Unregister the publishing registry whose full ivo_id is given as sole
+# argument, e.g.
+# 
+#  unregister.sh ivo://cxc.harvard.edu/registry
+
+# On newdevel8 under /export/pnh/www_rofr/appl/VO/rofr we moved the file 
+#   data/Registry/Publishers/cxc.harvard.edu_registry.xml
+# to
+#   data/Registry/Publishers/cxc1.harvard.edu_registry.xml
+# and changed references within that file from cxc.harvard.edu to
+# cxc1.harvard.edu so that we could test the rofr on newdevel8:8004,
+# namely registering the publishing registry at 
+#    http://cdaftptest.cfa.harvard.edu/cgi-bin/riabox/oai.pl
+
+if [ $# -lt 1 ]
+then echo Usage: $0 ivo-id
+     echo "  e.g. $0 ivo://cxc.harvard.edu/registry"
+     exit 1
+fi
+
+registry=`echo $1 | sed '/^ivo:\/*/s///g' | sed '/\//s//_/g'`
+echo "Removing @rofr_home@/data/Registry/Publishers/$registry.xml"
+
+rm -rf "@rofr_home@/data/Registry/Publishers/$registry.xml"
+
+# echo "Removing cache directories:"
+# for i in "@rofr_home@/var/validater/voresources/$registry"
+# do fn=`echo $i | sed '/.voresources.*$/s///'`
+#    echo $fn
+#    rm -rf $fn
+# done
+

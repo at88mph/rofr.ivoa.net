@@ -1,0 +1,169 @@
+package org.nvo.service.validation.webapp;
+
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+import javax.servlet.ServletException;
+
+import java.util.Properties;
+import java.util.StringTokenizer;
+import java.util.Date;
+import java.text.DateFormat;
+import java.io.IOException;
+import java.io.UnsupportedEncodingException;
+import java.net.URLDecoder;
+
+/** 
+ * an HTTPServlet for validating a remote HTTP Get service through an 
+ * AJAX-based interaction model.  
+ * 
+ * This servlet implementation manages {@link ValidationSession 
+ * ValidationSession} objects, one for each user validation request.  The 
+ * session class provides all the logic for invoking a validater and 
+ * delivering information to the client.  The user client sends various
+ * requests through the same servlet endpoint.  Each request encodes in its
+ * arguments an operation name that should be invoked.  This implementation
+ * is responsible for parsing the arguments to the operation and passing 
+ * them to the session object.  
+ *
+ * This implementation uses the HttpSession to connect a user to a 
+ * ValidationSession object.  It assumes that the endpoint is provided via
+ * a query argument called "baseURL".  If it fails to find this parameter,
+ * it will also look for a parameter called "errorFormat" to be used as a
+ * hint in formatting an error response.  All other expected parameters are 
+ * the choice of the subclass and the ValidationSession class it employs. 
+ */
+public abstract class ValidaterWebApp extends HttpServlet {
+
+    /**
+     * create the servlet
+     */
+    public ValidaterWebApp() { super(); }
+
+    /**
+     * parse the URL Get arguments into key-value pairs.  This method will 
+     * look for a special argument called "OP" representing the requested 
+     * operation name; the value of this argument is returned.  
+     */
+    public String parseArgs(String querystring, Properties out) {
+        String name = null, value = null, old = null;
+        String op = null;
+        int eq;
+        StringTokenizer st = new StringTokenizer(querystring, "&");
+        while (st.hasMoreTokens()) {
+            String arg = st.nextToken();
+            eq = arg.indexOf("=");
+            if (eq > 0 && eq < arg.length()-1) {
+                name = decode(arg.substring(0,eq).trim());
+                value = decode(arg.substring(eq+1).trim());
+                if (name.equals("op")) {
+                    op = value;
+                    out.setProperty(name, value);
+                }
+                else {
+                    old = out.getProperty(name);
+                    if (old != null)
+                        out.setProperty(name, old + " " + value);
+                    else 
+                        out.setProperty(name, value);
+                }
+            }
+        }
+
+        return op;
+    }
+
+    private String decode(String in) {
+        try {
+            return URLDecoder.decode(in, "UTF-8");
+        }
+        catch (UnsupportedEncodingException ex) { return in; }
+    }
+
+    public void reportError(ValidationSession sess, String name, String message,
+                            String format, HttpServletResponse resp) 
+         throws InternalServerException, IOException
+    {
+        Properties errors = new Properties();
+        errors.setProperty(name, message);
+        sess.reportErrors(errors, format, resp);
+    }
+
+    /**
+     * a factory method for creating a new ValidationSession object.
+     */
+    protected abstract ValidationSession newValidationSession()
+        throws ValidationException;
+
+    protected void doGet(HttpServletRequest req, HttpServletResponse resp) 
+         throws ServletException, IOException
+    {
+        Properties args = new Properties();
+        String qs = req.getQueryString();
+        try {
+            if (qs == null) 
+                throw new ServletException("Missing arguments");
+            String op = parseArgs(qs, args);
+
+            HttpSession session = req.getSession();
+            ValidationSession validation = null;
+            synchronized (session) {
+                validation = 
+                    (ValidationSession) session.getAttribute("validation");
+                if (validation == null) {
+                    validation = newValidationSession();
+                    session.setAttribute("validation", validation);
+                    String endpoint = args.getProperty("endpoint");
+                    if (endpoint == null) {
+                        reportError(validation, "endpoint", 
+                                    "Please provide the URL for the service " +
+                                    "to be validated", 
+                                    args.getProperty("errorFormat"), resp);
+                        return;
+                    }
+                    validation.initialize(endpoint, args);
+                }
+            }
+
+            if (op == null || op.length() == 0) {
+                validation.invokeDefaultOp(args, resp);
+            }
+            else {
+                validation.invokeOp(op, args, resp);
+            }
+        }
+        catch (UnavailableSessionException ex) {
+            logProblem(ex, qs);
+            resp.sendError(resp.SC_CONFLICT, ex.getMessage());
+        }
+        catch (BadRequestException ex) {
+            logProblem(ex, qs);
+            resp.sendError(resp.SC_BAD_REQUEST, ex.getMessage());
+        }
+        catch (ValidationException ex) {
+            logProblem(ex, qs);
+            resp.sendError(resp.SC_INTERNAL_SERVER_ERROR, ex.getMessage());
+        }
+    }
+
+    /**
+     * write error messages to standard error (so that they get logged).
+     * @param ex           the exception that describes the problem
+     * @param queryString  servlet arguments
+     */
+    protected void logProblem(ValidationException ex, String queryString) {
+        String date = DateFormat.getDateInstance().format(new Date());
+        System.err.println(date + ": " + ex.getMessage());
+        System.err.println("  args: " + queryString);
+        Exception orig = ex.getWrapped();
+        while (orig != null && ex != orig && 
+               orig instanceof ValidationException) 
+        {
+            ex = (ValidationException) orig;
+            orig = ex.getWrapped();
+        }
+        if (orig == null) orig = ex;
+        orig.printStackTrace();
+    }
+}

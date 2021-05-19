@@ -1,0 +1,169 @@
+#!/usr/bin/perl
+
+use strict;
+use CGI qw(:standard);
+use File::Copy;
+
+# my $cgi = new CGI({"runid" => "blah", "ashtml" => "yes"});
+my $cgi = new CGI();
+my $runid = $cgi->param("runid");
+my $ashtml = $cgi->param("ashtml");
+
+my $rofr = "@rofr_home@";
+my $rofrid = "ivo://ivoa.net/rofr";
+my $cache = "$rofr/var/validater";
+my $publishers = "$rofr/data/Registry/Publishers";
+my $oaipmh = "@rofr_base_url@/cgi-bin/oai.pl?verb=GetRecord&amp;metadataPrefix=ivo_vor&amp;identifier=";
+
+my $regfile = "$cache/$runid/Registry.xml";
+
+my $id = '';
+my $ofile = '';
+if (-f "$regfile") {
+    $id = getIdentifier($regfile);
+    if ($id eq '') {
+        sendmsg($ashtml, $id, "The IVOA identifier could not be extracted");
+        exit(0);
+    }
+
+    $ofile = getFilename($id);
+
+    if ($id eq $rofrid || fileExists("$publishers", "$ofile")) {
+        sendmsg($ashtml, $id, "A registry with this ID has already been uploaded: please " .
+             'contact the administrator at @rofr_email@ to update.   (Sorry for the inconvenience.)');
+        exit(0);
+    }
+}
+else {
+    sendmsg($ashtml, $id, 
+            "Sorry, this registry has not yet been found to be minimally " .
+            "compliant.  Please run the validater again on this registry.");
+    exit(0);
+}
+
+# add the file to the registry
+if (! copy("$regfile", "$publishers/$ofile")) {
+    print STDERR "register.pl: Failed to rename file to $publishers/$ofile: $!\n";
+    sendmsg($ashtml, $id, 
+            "Internal Server Failure; try again or contact the administrator " . 
+            '(@rofr_email@) for assistance');
+    exit(0);
+}
+
+print STDERR "register: rename($regfile, $publishers/$ofile)\n";
+
+sendmsg($ashtml, $id, '');
+
+exit(0);
+
+sub getFilename {
+    my $id = shift;
+
+    $id =~ s!^ivo://!!;
+    $id =~ s!/!_!g;
+
+    return "$id.xml";
+}
+
+sub getIdentifier {
+    my $file = shift;
+    my $out = '';
+
+    open(REC, "$file") || die "Failed to open Registry.xml: $!";
+    while (<REC>) {
+        if (/\<identifier/) {
+            s/^.*<\s*identifier[^>]*>\s*//;
+            s!\s*</\s*identifier\s*>.*!!;
+            s/\s*$//;
+            $out = $_;
+            last;
+        }
+    }
+    close(REC);
+
+    return $out;
+}
+
+sub sendXML {
+    my $id = shift;
+    my $msg = shift;
+
+    my $out = '<?xml version="1.0" encoding="UTF-8" standalone="yes"?>'."\n";
+    $out .= '<?xml-stylesheet type="text/xsl" href="/register.xsl"?>';
+    $out .= "\n";
+
+    # status, message, oairecurl
+    $out .= '<register ivo-id="' . $id . '"' . "\n";
+    $out .= '          status="';
+    if ($msg eq '') {
+        $out .= "ok";
+    }
+    else {
+        $out .= "fail";
+        print STDERR "Error registering $id: ", $msg, "\n";
+    }
+    $out .= '"'."\n";
+    $out .= '          view="' . $oaipmh . $id . '">' . "\n";
+    $out .= $msg . "\n" if ($msg ne '');
+    $out .= "</register>\n";
+
+    print STDOUT "Content-type: application/xml\n\n";
+    print STDOUT $out;
+
+}
+
+sub sendHTML {
+    my $id = shift;
+    my $msg = shift;
+
+    my $out = "<div>\n";
+    if ($msg eq '') {
+        $out .= "<h3>Step 3: Relax</h3>\n";
+        $out .= "<p>\n";
+        $out .= "Your registry is now part of the VO Registry Framework.  " .
+            "You can view the record via the RofR's OAI interface at \n";
+        $out .= '<a href="' . $oaipmh . $id .'">';
+        $out .= $oaipmh . $id;
+        $out .= "</a>\n</p>\n";
+    }
+    else {
+        print STDERR "Error registering $id: ", $msg, "\n";
+
+        $out .= '<h3><font color="red">Registration Error</font></h3>'."\n";
+        $out .= "<p>\n";
+        $out .= $msg;
+        $out .= "</p>\n<p>\n";
+        $out .= 'Contact the administrator (@rofr_email@) if you think ' .
+            "received this message by mistake.\n";
+        $out .= "</p>\n";
+    }
+
+    $out .= "</div>\n";
+    
+    print STDOUT "Content-type: text/plain\n\n";
+    print STDOUT $out;
+}
+
+sub sendmsg {
+    my ($ashtml, $id, $msg) = @_;
+
+    if ($ashtml) {
+        sendHTML($id, $msg);
+    }
+    else {
+        sendXML($id, $msg);
+    }
+
+}
+
+sub fileExists {
+  my $dir = shift;
+  my $file = shift;
+
+  opendir DIR, $dir;
+  my ($exists) = grep /$file/i, readdir DIR;
+  closedir DIR;
+  return $exists;
+  
+}
+    

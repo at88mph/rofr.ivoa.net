@@ -1,0 +1,80 @@
+<?xml version="1.0"?>
+<project name="ivoaharvest" 
+	 default="package"
+	 basedir="."
+	 xmlns:ivy="antlib:org.apache.ivy.ant">
+
+  <import file="${basedir}/../common.xml"/>
+
+  <filter filtersfile="../deploy_env.properties"/>
+
+  <target name="test"
+	  description="Run unit tests"
+	  depends="test-compile">
+    <!-- Override as no-op for now -->
+  </target>
+
+  <target name="package"
+	  description="Package code for distribution"
+	  depends="package-jar,package-war">
+  </target>
+
+  <target name="package-jar"
+	  description="Package code for distribution"
+	  depends="test">
+ 
+    <copy file="${resources.dir}/net/ivoa/registry/validate/WebAppValidateHarvest.xml.in" 
+          tofile="${classes.dir}/net/ivoa/registry/validate/config.xml"
+	  filtering="true"
+	  overwrite="true">
+    </copy>
+
+    <copy file="${resources.dir}/net/ivoa/registry/validate/WebAppValidateVOResource.xml.in" 
+          tofile="${classes.dir}/net/ivoa/registry/validate/vorconfig.xml"
+	  filtering="true"
+	  overwrite="true">
+    </copy>
+
+    <copy file="${resources.dir}/net/ivoa/registry/validate/registrySchemaLocation.txt" 
+          tofile="${classes.dir}/net/ivoa/registry/validate/schemaLocation.txt"
+	  overwrite="true"/>
+    <jar destfile="${target.dir}/${ant.project.name}.jar">
+      <fileset dir="${classes.dir}"/>
+      <fileset dir="${resources.dir}" excludes="html,html/*"/>
+    </jar>
+  </target>
+
+  <target name="package-war"
+	  description="Package code for distribution"
+	  depends="package-jar">
+
+    <copy todir="${target.dir}/html" 
+	  filtering="true"
+	  overwrite="true">
+      <fileset dir="${resources.dir}/html" includes="**/*.in"/>
+      <globmapper from="*.in" to="*"/>
+    </copy>
+    <copy todir="${target.dir}/html">
+      <fileset dir="${resources.dir}/html" excludes="**/*.in"/>
+    </copy>
+
+    <war destfile="${target.dir}/regvalidate.war"
+	 webxml="${webapp.dir}/WEB-INF/web.xml">
+      <fileset dir="${webapp.dir}"/>
+      <fileset dir="${target.dir}/html"/>
+      <lib dir="${target.dir}" includes="${ant.project.name}.jar"/>
+      <lib dir="${lib.dir}/runtime" includes="*.jar" excludes="xercesImpl.jar"/>
+    </war>
+  </target>
+
+  <target name="install"
+	  description="Install into local dependency repository"
+	  depends="package">
+    <ivy:deliver deliverpattern="${target.dir}/[module]-[revision](-[classifier]).[ext]"/>
+    <ivy:publish resolver="local" 
+		 artifactspattern="${target.dir}/[artifact].[ext]"
+		 srcivypattern="${target.dir}/[module]-[revision](-[classifier]).[ext]"
+		 overwrite="${overwrite.deploy}"/>
+  </target>
+
+</project>

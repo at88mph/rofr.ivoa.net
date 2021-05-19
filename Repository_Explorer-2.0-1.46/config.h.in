@@ -1,0 +1,110 @@
+//  ----------------------------------------------------------------------
+// | Open Archives Initiative Repository Explorer - version 2.0-1.46b     |
+// | Hussein Suleman                                                      |
+// | November 2005                                                        |
+//  ----------------------------------------------------------------------
+// |  University of Cape Town                                             |
+// |  Department of Computer Science                                      |
+// |  Advanced Information Management Laboratory                          |
+//  ----------------------------------------------------------------------
+
+// ======================================================================
+//  Module     : config
+//  Purpose    : Configuration variables
+// ======================================================================
+
+#ifndef _CONFIG_
+#define _CONFIG_
+
+
+// repository explorer configuration
+#define reversion "1.46b"
+#define redate "November 2005"
+#define reprotocolversion "2.0"
+#define reallprotocolversions "1.0/1.1/" \
+                               reprotocolversion
+
+
+// variables that probably need to be configured
+#define physicalpath "@rofr_home@/bin/"
+#define urlpath "@rofr_base_url@/cgi-bin/Explorer/2.0-1.46/"
+#define pythonpath "@python_path@"
+
+#define httpproxy "@http_proxy@"
+#define httpsproxy "@https_proxy@"
+
+// local schema files
+#define local10schema "     http://re.cs.uct.ac.za/OAI/1.0/"
+#define local11schema "     http://re.cs.uct.ac.za/OAI/1.1/"
+#define local20schema "     http://re.cs.uct.ac.za/OAI/" \
+                      reprotocolversion \
+                      "/"
+
+
+// paths to main CGI programs
+#define testoai urlpath \
+                "testoai"
+#define addarchive urlpath \
+                   "addarchive"
+#define about urlpath \
+              "about"
+
+
+// directory with OAI logo
+#define oaiimageprefix "http://re.cs.uct.ac.za/images/"
+
+
+// path to the lynx program or substitute for loading URLs
+#define lynxpath physicalpath \
+                 "lynx.pl"
+
+// path to the comply program to check OAI compliance
+#define complypath physicalpath \
+                   "comply"
+
+// path to the XSV program to perform schema validation
+#define oldxsvpath pythonpath \
+                   " " \
+                   physicalpath \
+                   "oldxsv/applyschema.py"
+#define xsvpath pythonpath \
+                " " \
+                physicalpath \
+                "xsv/applyschema.py"
+
+
+// prefix before all OAI namespaces
+#define namespaceprefix_1_0 "http://www.openarchives.org/OAI/1.0/OAI_"
+#define namespaceprefix_1_1 "http://www.openarchives.org/OAI/1.1/OAI_"
+#define namespaceprefix_2_0 "http://www.openarchives.org/OAI/2.0/"
+
+// prefix before all remote OAI schemas
+#define remoteschemaprefix_1_0 "http://www.openarchives.org/OAI/1.0/OAI_"
+#define remoteschemaprefix_1_1 "http://www.openarchives.org/OAI/1.1/OAI_"
+#define remoteschemaprefix_2_0 "http://www.openarchives.org/OAI/2.0/"
+
+// prefix before all local OAI schemas
+#define localschemaprefix_1_0 local10schema \
+                              "OAI_"
+#define localschemaprefix_1_1 local11schema \
+                              "OAI_"
+#define localschemaprefix_2_0 local20schema 
+
+
+// default background color
+#define bgcolorpreset "aaffaa"
+
+// default color for headings
+#define headercolorpreset "00cc00"
+
+// default background color for options
+#define blockcolorpreset "ffcccc"
+
+
+// path to the Xerces program to perform schema validation
+#define xercespath physicalpath \
+                   "validate.sh"
+
+#define separatorchar 250
+
+#endif

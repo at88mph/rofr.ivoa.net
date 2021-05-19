@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="/rofr/register.xsl"?>
+<register ivo-id="_set_"
+          status="fail"
+          view="@rofr_base_url@/cgi-bin/rofr/oai.pl">
+A registry with this ID has already been uploaded: please contact the administrator @rofr_email@ to update.   (Sorry for the inconvenience.)
+</register>

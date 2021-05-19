@@ -1,0 +1,658 @@
+<html> <head>
+  <title>SIA Validater</title>
+  <script type="text/javascript" src="MochiKit.js" ></script>
+
+  <style type="text/css">
+<!--
+.tiny {FONT-SIZE: 7pt;}
+-->
+  </style>
+  <link href="usvo_template.css" rel="stylesheet" type="text/css"/>
+</head>
+<body>
+
+<table width="100%" border="0" cellpadding="0" cellspacing="0">
+  <tr>
+    <td width="112" height="32" align="center" valign="top">
+      <a href="http://www.us-vo.org" class="nvolink"><img 
+         src="http://www.us-vo.org/images/NVO_100pixels.jpg" alt="NVO HOME"
+         border="0"/></a>
+             <br>
+      <span class="nvolink"><a
+             href="http://www.us-vo.org/">National Virtual Observatory</a>
+      </span><br>
+    </td>
+
+    <td valign="top">
+      <table  width="100%" border="0" cellpadding="0" cellspacing="0">
+        <tr>
+          <td bgcolor="white" width="2"></td>
+          <td bgcolor="#CFE5FC" valign="middle" align="center" height="32"
+              class="nvoapptitle">
+
+       <!-- Name of Application -->
+       Simple Image Access Service Validater
+
+          </td>
+          <td bgcolor="white" width="2"></td>
+       </tr>
+       <tr>
+          <td bgcolor="white" width="2"></td>
+          <td height="10" valign="top"
+              background="http://www.us-vo.org/app_templates/stars.jpg" >
+          </td>
+          <td bgcolor="white" width="2"></td>
+       </tr>
+       <tr>
+         <td align="center" valign="top" colspan="3">
+         <table cellspacing="2" cellpadding="0" border="0" width="100%"
+                style="margin: 0pt;">
+           <tr>
+             <!-- the local links -->
+             <td class="navlink"><a href="http://www.ivoa.net/Documents/latest/SIA.html">SIA Standard</a></td>
+             <td class="navlink"><a href="http://nvo.ncsa.uiuc.edu/nvoregistration.html">Publish at the NCSA Registry</a></td>
+             <td class="helplink"><a href="http://www.us-vo.org/feedback/">Contact Us</a></td>
+           </tr>
+         </table>
+         </td>
+       </tr>
+    </table>
+    </td>
+    <td width="112" align="center" valign="top">
+
+      <!-- local logo and link -->
+      <a href="http://nvo.ncsa.uiuc.edu"><img height="54"
+         src="http://gladiator.ncsa.uiuc.edu/Images/logo/UofI-NCSA-black_logo_color.md.jpg"
+         alt="NVO @ NCSA" border="0"/></a>
+         
+      <br>
+      <span class="nvolink"><a
+            href="http://www.caltech.edu/">National Center for 
+      Supercomputing Applications</a> </span>
+    </td>
+   </tr>
+
+</table>
+
+<!-- =======================================================================
+  -  Page Content
+  -  ======================================================================= -->
+
+<h1>Simple Image Access (SIA) Service Validation</h1>
+
+<p>
+<dl>
+  <dt> <font size="-1"><strong>Note on version 1.1.2</strong></font> </dt>
+  <dd> <font size="-1">Now supports VOTable 1.3 (bug fix: recognizes prefixed elements correctly) </font> </dd>
+</dl>
+</p>
+
+<p>
+To test an SIA  Service, enter its base URL below along with a
+position and region size that you expect to return at least two records,
+then press "validate".  
+</p>
+
+<p>
+Unless the "Results Format" is set to "VOTable", this service will
+actually send three queries to the service.  In addition to the query
+specified below, a <em>metadata
+query</em> (where FORMAT=METADATA) and an erroneous query are also sent.
+When the "VOTable" format is selected, only the VOTable response to
+the query below is returned directly to the browser.  </p> 
+
+<form action="SIAValidater" 
+      method="GET" name="validateForm" onsubmit="return validate()">
+
+<p style="margin-top: 12pt;">
+BASEURL:  <span id="checkBASEURL"></span>
+<input name="endpoint" type="text" size="70" >
+</p>
+
+<p>
+<table border="0" cellpadding="0" cellspacing="0">
+<tr><th></th><th></th><th>Right Ascension</th><th></th><th>Declination</th></tr>
+<tr>
+<td nowrap>Search Region Center</td><td width="10"></td>
+<td><input name="RA" type="text" size="15" value="180.0" ></td>
+<td width="10"></td>
+<td><input name="DEC" type="text" size="15" value="60.0"> </td>
+<td><span id="checkRADEC"></span></td>
+</tr>
+<tr>
+<td nowrap>Search Region Size</td><td></td>
+<td><input name="RASIZE" type="text" size="15" value="1.0" ></td><td></td>
+<td><input name="DECSIZE" type="text" size="15" value="1.0"> </td>
+<td><span id="checkRADECSIZE"></span></td>
+</tr>
+</table>
+</p>
+
+<p>
+<table  border="0" cellpadding="0" cellspacing="0">
+<tr>
+<td valign="top">Image Format Types:<br />
+    <em><font color="green" size="-1">Select all types to search for or 
+        select "METADATA" for just the VOTable header.</font></em></td>
+<td valign="top"><select name="FORMAT" multiple="true">
+        <option selected>ALL</option>
+        <option>GRAPHIC</option>
+        <option>image/fits</option>
+        <option>image/png</option>
+        <option>image/jpeg</option>
+        <option>text/html</option>
+        <option>METADATA</option>
+    </select></td><td width="30"></td>
+
+<td valign="top">Additional Parameters: <br />
+    <font color="green" size="-1"><em>Add additional parameters, one per
+        line with format </em>name=value<em>, that will help ensure that the
+        service returns at least one matching image. </em></font></td>
+<td valign="top">
+    <textarea name="EXTRAPARAMS" cols="20" rows="7"></textarea></td>
+</tr>
+</table><p>
+
+Validation Results Format:  <select name="format">
+    <option selected value="html">HTML</option>
+    <option value="xml">XML</option>
+    <option value="text">Plain Text</option>
+    <option value="votable">VOTable (just return service response)</option>
+</select> <br />
+
+<table border="0" cellpadding="0" cellspacing="0">
+<tr><td>
+Include in the output:</td><td>
+<input type="checkbox" name="show" value="fail" checked>
+   Failures (Compliance Errors) &nbsp;&nbsp;</td><td>
+<input type="checkbox" name="show" value="warn" checked>
+   Warnings &nbsp;&nbsp;</td></tr><tr><td></td><td>
+<input type="checkbox" name="show" value="rec" checked>
+   Recommendations &nbsp;&nbsp;</td><td>
+<input type="checkbox" name="show" value="pass">
+   Passed Tests &nbsp;&nbsp; </td></tr>
+</table>
+<input type="submit" value="validate">
+
+
+</form>
+
+<div id="status">
+<h3 id="message" style="padding-bottom: 0px; margin-bottom: 0px; display: none;">Validation Request Submitted...</h3>
+
+<div id="progress" itemnode="li" style="display: none">
+Progress:
+<ul style="padding-top: 0px; margin-top: 0px;">
+   <li class="progressItem">holder</li>
+</ul>
+</div>
+</div>
+
+<script type="text/javascript">
+<!--
+
+var form = document.validateForm;
+var validaterServiceURL = form.action + "?";
+var statusCount = 300;
+var statusErrorCount = 5;
+var statusDiv = document.getElementById("status");
+var statusMsgDiv = null;
+var statusProgDiv = null;
+if (statusDiv != null) {
+    statusMsgDiv  = document.getElementById("message"); 
+    statusProgDiv = document.getElementById("progress");
+}
+
+function setProgressMessages(msgs, count) {
+    logDebug("setProgressMessages: " + msgs);
+
+    if (statusDiv == null) {
+        log("Missing status element in html form");
+        return;
+    }
+
+    if (statusProgDiv != null) {
+        var itemnode = statusProgDiv.getAttribute("itemnode");
+        if (itemnode == null) {
+            logError("itemnode attribute didn't take");
+            itemnode = "span";
+        }
+        var nodes = statusProgDiv.getElementsByTagName(itemnode);
+        var m = 0;
+        var itemparent = null;
+        var firstitem = null; 
+        if (nodes.length == 0) {
+            logError("no " + itemnode + " elements found.");
+        }
+        for (var i=0; i < nodes.length; i++) {
+            if (nodes[i].className == "progressItem") {
+                if (firstitem == null) firstitem = nodes[i];
+                if (m < msgs.length) {
+                    nodes[i].innerHTML = msgs[m++];
+                    nodes[i].style.display = "block";
+                }
+                else {
+                    nodes[i].style.display = "none";
+                }
+            }
+        }
+
+        var item = null;
+        while (m < msgs.length && firstitem != null) {
+            item = firstitem.cloneNode(true);
+            item.innerHTML = msgs[m++];
+            item.style.display = "block";
+            firstitem.parentNode.appendChild(item);
+        }
+
+        statusProgDiv.style.display = "block";
+    }
+    else {
+        logError("missing progress section");
+    }
+
+}
+
+function setStatusMessage(msg) {
+    logDebug("setting status message: " + msg);
+    if (statusMsgDiv != null) {
+        statusMsgDiv.innerHTML = msg;
+        statusMsgDiv.style.display = "block";
+    }
+    else {
+        logError("missing message section");
+    }
+}
+
+function updateStatus(resp) {
+    logDebug("updateStatus: status (" + statusCount + "): " + resp.responseText);
+    var status = evalJSONRequest(resp);
+    logDebug("updateStatus: status (" + statusCount + "): " + status.status);
+    try{
+
+        var msg = "";
+        if (status.ok != null && ! status) {
+            msg += "Problem with the " + status.lastQueryName + ": " + 
+                status.message;
+        }
+        else if (status.message != null && status.message != "") {
+            msg += status.message;
+        }
+        else if (status.status == "running") {
+            msg = "Validation in progress...";
+        }
+        else if (status.status == "done") {
+            msg = "Validation complete.";
+        }
+        else {
+            msg = status.status + "...";
+        }
+        if (msg != "") setStatusMessage(msg);
+
+        if (status.progress != null && status.progress.length > 0) {
+            setProgressMessages(status.progress);
+        }
+
+        if (statusCount > 0 && status.status != 'done') {
+            statusCount--;
+            try {
+                setTimeout(getStatus, 1000);
+                //         callLater(1, getStatus);
+            }
+            catch (e) {
+                logError("handleStatusError: " + e.name+ ": " + e.message);
+            }
+        }
+    }
+    catch (e) {
+        var lno = "unknown location";
+        try {
+            lno = e.fileName + ": " + e.lineNumber;
+        } catch(err) { }
+        logError("updateStatus: error: " + e.name + " (" + lno + 
+                 "): " + e.message);
+    }
+    return true;
+}
+
+function handleStatusError(resp) {
+    logError("Problem getting status: " + resp.message);
+    setStatusMessage("Problem getting status: " + resp.message);
+    
+    if (statusErrorCount > 0) {
+        statusErrorCount--;
+        try {
+            setTimeout(getStatus, 1000);
+//         callLater(1, getStatus);
+        }
+        catch (e) {
+            logError("handleStatusError: " + e.name+ ": " + e.message);
+        }
+    }
+    return true;
+}
+
+function handleValidateError(error) {
+    logError("Problem getting results: " + error.message);
+    setStatusMessage("Problem getting results: " + error.message);
+    return true;
+}
+
+function getStatus() {
+    log("getting status from " + validaterServiceURL);
+    try {
+//         var url = getGetURL() + "op=GetStatus&errorFormat=json";
+        var url = validaterServiceURL + "op=GetStatus&errorFormat=json";
+        var ajax = doXHR(url, {method: 'GET'});
+        ajax.addCallbacks(updateStatus, handleStatusError);
+    }
+    catch (e) {
+        logError("getStatus: " + e);
+    }
+
+    return true;
+}
+
+function logresp(resp) {
+    logDebug("status: " + resp.responseText);
+}
+
+function validate() {
+//     logger.debuggingBookmarklet();
+
+    clearOldResults();
+    validaterServiceURL = form.action + "?";
+    if (checkInputs()) {
+        var format = form.elements.format;
+        if (format.options[format.selectedIndex].value == "votable") {
+            location.href = getPassThruURL();
+        }
+        else {
+            if (statusMsgDiv != null) {
+//                 statusMsgDiv.style.display = "block";
+            }
+            else {
+                logError("no statusMsgDiv available");
+            }
+            var url = getGetURL() + "op=StartSession";
+            log("Starting validation with " + url);
+            var ajax = doXHR(url, {method: 'GET'});
+            ajax.addCallbacks(requestValidate, handleValidateError);
+        }
+    }
+    return false;
+}
+
+function requestValidate(resp) {
+    var session = evalJSONRequest(resp);
+    logDebug("requestValidate: using session base URL: " + 
+             session.sessionURL);
+
+    if (! session.sessionURL.match("^http://"))
+        throw new Error("bad sessionURL: " + session.sessionURL);
+
+    validaterServiceURL = session.sessionURL;
+//     var url = session.sessionURL + "op=Validate";
+//     var ajax = doXHR(url, {method: 'GET', mimeType: 'text/xml'});
+    var url = session.sessionURL + "cache=true&op=Validate";
+    logDebug("retrieving results from: " + url);
+    var ajax = doXHR(url, {method: 'GET'});
+    ajax.addCallbacks(loadResults, handleValidateError);
+    getStatus();
+}
+
+function clearOldResults() {
+//     clrdDiv = DIV({id: "results"});
+//     swapDOM(document.getElementById("results"), clrdDiv);
+}
+
+function trim(text) {
+    if (text == null || text.length == 0) return text;
+    return text.replace(/^\s+|\s+$/g, '');
+}
+
+function checkInputs() {
+    var ok = true;
+    if (trim(form.endpoint.value).length == 0) {
+        ok = false;
+        addInputTip("checkBASEURL", 
+                    "Please provide the legal URL for your service to check");
+    }
+
+    var emsg = "";
+    var val = trim(form.RA.value);
+    if (val.length == 0) {
+        val = null;
+    }
+    else if (! /^[+\-]?((\d+\.?\d*)|(\.\d+))([eE][+\-]?\d{1,3})*$/.exec(val)) {
+//         logDebug("checkInputs: not a num: " + val);
+        val = null;
+    }
+    else {
+        val = parseFloat(val);
+        if (isNaN(val)) val = null;
+        if (val < 0.0 || val > 360.0) val = null;
+    }
+    if (val == null) {
+        ok = false;
+        emsg += "Please provide a right ascension in decimal degrees " +
+                "(range: 0, 360).  "
+    }
+ 
+    val = trim(form.DEC.value);
+    if (val.length == 0) {
+        val = null;
+    }
+    else if (! /^[+\-]?((\d+\.?\d*)|(\.\d+))([eE][+\-]?\d{1,3})*$/.exec(val)) {
+        val = null;
+    }
+    else {
+        val = parseFloat(val);
+        if (isNaN(val)) val = null;
+        if (val < -90.0 || val > 90.0) val = null;
+    }
+    if (val == null) {
+        ok = false;
+        emsg += "Please provide a declination in decimal degrees " +
+                "(range: -90, 90)."
+    }
+    if (emsg.length > 0)
+        addInputTip("checkRADEC", emsg);
+
+    emsg = "";
+    val = trim(form.RASIZE.value);
+    if (val.length == 0) {
+        val = null;
+    }
+    else if (! /^[+\-]?((\d+\.?\d*)|(\.\d+))([eE][+\-]?\d{1,3})*$/.exec(val)) {
+        val = null;
+    }
+    else {
+        val = parseFloat(val);
+        if (isNaN(val)) val = null;
+        if (val < 0.0 || val > 360.0) val = null;
+    }
+    if (val == null) {
+        ok = false;
+        emsg += "Please provide a size in right ascension in decimal degrees " +
+                "(range: 0, 360).  "
+    }
+ 
+    val = trim(form.DECSIZE.value);
+    if (val.length > 0) {
+        if (! /^[+\-]?((\d+\.?\d*)|(\.\d+))([eE][+\-]?\d{1,3})*$/.exec(val)) {
+            val = null;
+        }
+        else {
+            val = parseFloat(val);
+            if (isNaN(val)) val = null;
+            if (val < 0.0 || val > 180.0) val = null;
+        }
+    }
+    if (val == null) {
+        ok = false;
+        emsg += "Please provide a declination size in decimal degrees " +
+                "(range: 0, 180)."
+    }
+    if (emsg.length > 0)
+        addInputTip("checkRADECSIZE", emsg);
+
+    var show = form.show;
+    val = false;
+    for(var i=0; i < show.length; i++) {
+        if (show[i].checked) {
+            val = true;
+            break;
+        }
+    }
+    if (! val) {
+        ok = false;
+        addInputTip("checkShow", 
+                 "Please check at least one test class to include in output");
+    }
+ 
+    return ok;
+}
+
+function testInputs() {
+    clearOldResults()
+    checkInputs();
+//     alert(getGetURL());
+    return false;
+}
+
+function addInputTip(id, msg) {
+    div = document.getElementById(id);
+
+    if (div != null) {
+        while (div.hasChildNodes()) {
+            div.removeChild(div.firstChild);
+        }
+        div.appendChild(createDOM("FONT", {color: "red", size: "-1"}, msg));
+    }
+}
+
+function getPassThruURL() {
+    var els = form.elements;
+    var inputs = { };
+    for(var i=0; i < els.length; i++) {
+        inputs[els[i].name] = els[i];
+    }
+
+    var out = inputs.endpoint.value + "POS=" + trim(inputs.RA.value) + "," + 
+        trim(inputs.DEC.value) + "&SIZE=" + trim(inputs.RASIZE.value);
+    var val = trim(inputs.DECSIZE.value);
+    if (val.length > 0) out += "," + val;
+
+    out += "&FORMAT=" + inputs.FORMAT.value;
+
+    val = trim(inputs.EXTRAPARAMS.value);
+    if (val.length > 0) {
+        val = val.replace(/\n/g,"&");
+        val = val.replace(/\s/g,"+");
+        out += "&" + val;
+    }
+
+    log("Direct access with: " + out);
+    return out;
+}
+
+function getGetURL() {
+    var out = validaterServiceURL;
+    var inputs = form.elements;
+    for(var i=0; i < inputs.length; i++) {
+        if (inputs[i].name != null && inputs[i].name != "") {
+            out += inputs[i].name + "=";
+            if (inputs[i].type == "Select") {
+                out += inputs[i].options[inputs[i].options.selectedIndex];
+            }
+            else if (inputs[i].type == "checkbox") {
+                if (inputs[i].checked) out += inputs[i].value;
+            }
+            else if (inputs[i].name == "endpoint") {
+                out += encodeURIComponent(trim(inputs[i].value));
+            }
+            else {
+                out += trim(inputs[i].value);
+            }
+            out += "&";
+        }
+    }
+
+    return out
+}
+
+function showResults(resp) {
+    try {
+        logDebug("root: " + resp.responseXML.firstChild.tagName);
+        if (resp.responseXML.firstChild.tagName == "html") {
+            results = resp.responseXML.getElementById("results");
+            if (results == null) 
+                throw new Error("results missing results section!");
+            oldresults = document.getElementById("results");
+            if (oldresults == null) 
+                throw new Error("page missing results section!");
+            swapDOM(oldresults, results);
+        }
+        else {
+            logDebug(resp.responseText);
+            setStatusMessage("Problem getting results: ");
+        }
+    }
+    catch (e) {
+        logError("showResults: " + e.name+ ": " + e.message);
+    }
+    return true;
+}
+
+function doload() {
+    if (loadurl != null) location.href = loadurl;
+}
+var loadurl = null;
+
+function loadResults(resp) {
+    logDebug("loadResults: " + resp.responseText);
+    try {
+        var status = evalJSONRequest(resp);
+        if (! status.resultURL.match("^http://"))
+            throw new Error("bad resultURL: " + session.resultURL);
+
+        location.href = status.resultURL;
+        // window.open(status.resultURL);
+        // loadurl = status.resultURL;
+        // setTimeout(doload, 5000)
+    }
+    catch (e) {
+        logError("loadResults: " + e.name+ ": " + e.message);
+    }
+    return true;
+}
+
+
+
+
+
+  -->
+</script>
+
+<!-- =======================================================================
+  -  End Page Content
+  -  ======================================================================= -->
+
+<hr noshade>
+<table width="100%"  border="0">
+  <tr>
+    <td><div align="center"><a href="http://www.nsf.gov"><img src="http://www.us-vo.org/images/nsflogo_64x.gif" width="64" height="64" border="0"></a></div></td>
+    <td><div align="center"><a href="http://www.nasa.gov"><img src="http://www.us-vo.org/images/nasa_logo_sm.gif" width="72" height="60" border="0"></a></div></td>
+    <td><p class="tiny" align="center">Developed with the support of the National Science Foundation under Cooperative Agreement AST0122449 with The Johns Hopkins University.</p>
+      <p class="tiny" align="center">The NVO is a member of the International Virtual Observatory Alliance.<br>
+      </p></td>
+    <td><div align="center"><a href="http://www.ivoa.net"><img src="http://www.us-vo.org/images/IVOAlogo.gif" width="80" height="44" border="0"></a></div></td>
+
+    <td><div align="center"><a href="#"><img src="http://www.us-vo.org/images/bee_hammer.gif" border=0><br>
+          <span class="tiny">meet the<br>
+    developers</span></a></div></td>
+  </tr>
+</table>
+
+</body> </html>

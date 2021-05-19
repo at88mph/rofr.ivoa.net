@@ -1,0 +1,323 @@
+French
+#
+# Language translation file for Repository Explorer
+# Language: default (english-->French)
+#
+#
+HTTP Status
+HTTP Statut
+#
+Unexpected HTTP Error
+L'Erreur de HTTP imprévue
+#
+HTTP Status code should be 400
+Le code de Statut de HTTP devrait être 400
+#
+XML parsing errors
+Les erreurs de parsing de XML
+#
+Testing
+Essai
+#
+Test Result
+Essayer le Résultat
+#
+OK
+D'ACCORD
+#
+FAIL!
+ECHOUER! 
+#
+Open Archives Initiative Metadata Harvesting Protocol
+Les Archives Initiative Metadata Moissonner le Protocole ouvert
+#
+Protocol Tester
+Tester de protocole
+#
+April 2001
+Le 2001 avril
+#
+Repository Name
+Nom de dépôt
+#
+ERROR
+ERREUR
+#
+Repository Name missing !
+Manquer de Nom de dépôt! 
+#
+Protocol Version
+Version de protocole
+#
+Protocol Version missing !
+Manquer de Version de protocole! 
+#
+Base URL
+Baser URL
+#
+Base URL missing !
+Baser manquer de URL! 
+#
+Admin Email
+Admin Email
+#
+Admin Email missing !
+Manquer de Email de Admin! 
+#
+Sample Metadata Format
+Le Format de Metadata d'Echantillon
+#
+Metadata format missing !
+Manquer de format de Metadata! 
+#
+Sample Set Spec
+Spec de Série d'Echantillon
+#
+Set Resumption Token
+Régler la Marque de Reprise
+#
+Sample Identifier
+Identificateur d'Echantillon
+#
+Identifier missing !
+Manquer d'identificateur! 
+#
+Identifier Resumption Token
+La Marque de Reprise d'identificateur
+#
+Record Resumption Token
+Enregistrer la Marque de Reprise
+#
+Total Errors
+Erreurs totales
+#
+Error
+Erreur
+#
+Illegal tag
+Étiquette illégale
+#
+Missing field
+Domaine qui manque
+#
+Text found where tag expected
+Le texte a trouvé où étiquette prévu
+#
+Tag expected but not found
+L'Etiquette a prévu mais pas trouvé
+#
+Only one instance allowed
+Seulement un exemple a permis
+#
+Text expected for field but not found
+Le texte a prévu pour le domaine mais pas trouvé
+#
+Archive Self-Description
+Soi-Self-Description d'archive
+#
+Other Information
+Autre Information
+#
+Resume from
+Reprendre de
+#
+List of Sets
+La liste de Séries
+#
+Click on the link to list the contents
+Cliqueter sur le lien à la liste les contenus
+#
+Prefix
+Préfixe
+#
+NameSpace
+NameSpace
+#
+Schema
+Schéma
+#
+Not a standard OAI metadata name
+Pas un nom de metadata de OAI standard
+#
+display record
+montrer le disque
+#
+List of Metadata Formats
+La liste de Metadata Met en format
+#
+Click on the link to view schema
+Cliqueter sur le lien au schéma de vue
+#
+display record in Dublin Core
+montrer le disque dans le Noyau de Dublin
+#
+display metadata formats
+montrer les formats de metadata
+#
+List of Record Identifiers
+La liste d'Identificateurs de Disque
+#
+Select a link to view more information
+Choisir un lien à plus d'information de vue
+#
+List of Fields
+La liste de Domaines
+#
+List of Records
+La liste de Disques
+#
+This site presents an interface to interactively test archives for compliance with the
+Ce site présente une interface à interactivement les archives d'examen pour la conformité avec le
+#
+Open Archives Initiative Protocol version 1.0</a>.
+La version de Protocole d'Initiative d'Archives ouverte 1.0</a>. 
+#
+JavaScript is required and Netscape Navigator is recommended
+JavaScript est exigé et le Navigateur de Netscape est recommandé
+#
+Note: To avoid HTTP errors, please wait for each page to finish loading before clicking on any link.
+La note: A éviter les erreurs de HTTP, s'il vous plaît attendre chaque page au chargement de fin avant de cliqueter sur n'importe quel lien. 
+#
+Please enter the URL to the OAI interface (everything before the ?) or choose a predefined archive from the table
+S'il vous plaît entrer le URL à l'interface de OAI (tout avant le
+#
+Sorry, you can only view the website for a selected predefined archive
+Désolé, vous pouvez regarder seulement le website pour une archive de predefined choisie
+#
+View Archive Website
+Regarder Website d'Archive
+#
+Test and Add an archive to this list
+Essayer et Ajouter une archive à cette liste
+#
+Open Archives Initiative Repository Explorer
+Le Dépôt d'Initiative d'Archives ouvert Explorateur
+#
+explorer version
+version exploratrice
+#
+protocol version
+version de protocole
+#
+Archive details
+L'archive détaille
+#
+Verbs
+Verbes
+#
+Parameters
+Paramètres
+#
+Language
+Langue
+#
+Display
+Exposition
+#
+Schema Validation
+Validation de schéma
+#
+Parsed
+Parsed
+#
+Raw XML
+XML cru
+#
+Both
+Les deux
+#
+None
+Aucun
+#
+Local mirror of schemata
+Le miroir local de schémas
+#
+Online schemata
+Schémas en ligne
+#
+home
+maison
+#
+Send all comments to
+Envoyer tous commentaires à
+#
+Digital Libraries Research Laboratory
+Les Bibliothèques numériques Font des recherches sur le Laboratoire
+#
+HTTP Status Code
+Le Code de Statut de HTTP
+#
+HTTP Error Message
+HTTP Message d'erreur
+#
+Parsed Output
+Parsed Production
+#
+Raw XML Output
+Le Production de XML cru
+#
+XSD Schema/Instance Validation Error !
+L'Erreur de Validation de Schéma/Schema/Instance de XSD! 
+#
+missing !
+Manquer! 
+#
+Request URL
+Demander URL
+#
+Response Date
+Date de réponse
+#
+Test and Add an archive
+Essayer et Ajouter une archive
+#
+Please note that these tests are neither definitive nor exhaustive
+S'il vous plaît la note que ces examens sont ni définitif ni approfondi
+#
+They serve not as a proof of correctness of implementation, but rather indicate possible errors if they exist
+Ils ne servent pas comme une preuve d'exactitude d'implémentation, mais plutôt indiquer des erreurs possibles s'ils existent
+#
+If you have any questions please contact the author at the address below
+Si vous avez n'importe quelles questions contactent s'il vous plaît l'auteur à l'adresse au dessous
+#
+Enter the base URL of the archive
+Entrer le URL de base de l'archive
+#
+Test the archive
+Essayer l'archive
+#
+Congratulations !
+Félicitations! 
+#
+Your archive satisfied all the tests we performed
+Votre archive a satisfait tous les examens que nous avons exécutés
+#
+You may now add it to the list of archives on the front page if you wish by filling in the following additional details
+Vous pouvez l'ajouter maintenant à la liste d'archives sur la page de devant si vous souhaitez en remplissant le suivre les détails supplémentaires
+#
+Base URL of Archive
+Baser URL d'Archive
+#
+Name of Archive
+Le nom d'Archive
+#
+Archive website
+Website d'archive
+#
+Submit Archive to List
+Soumettre l'Archive à la Liste
+#
+Thank You ! Your archive has been added
+Vous remercier! Votre archive a été ajoutée
+#
+Metadata Harvesting Protocol
+Metadata Moissonner le Protocole
+#
+This site presents an interface to interactively test archives for compliance with the OAI Protocol for Metadata Harvesting
+Ce site présente une interface à interactivement les archives d'examen pour la conformité avec le Protocole de OAI pour Moissonner de Metadata
+#
+Click here for details
+Cliqueter ici pour les détails
+#
+Repository Explorer
+Le dépôt Explorateur

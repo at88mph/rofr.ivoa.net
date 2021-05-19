@@ -1,0 +1,74 @@
+<!DOCTYPE VOTABLE SYSTEM "http://us-vo.org/xml/VOTable.dtd">
+<VOTABLE version="v1.0">
+    <DESCRIPTION>ADIL Cone Search Response</DESCRIPTION>
+    <DEFINITIONS>
+        <COOSYS ID="J2000" system="eq_FK5" equinox="2000.0" epoch="2000.0"/>
+        <PARAM name="PositionalError" value="1" datatype="float">
+            <DESCRIPTION>Note that the positional error is image dependent</DESCRIPTION>
+        </PARAM>
+    </DEFINITIONS>
+    <RESOURCE>
+        <TABLE>
+            <DESCRIPTION>ADIL Images overlapping with cone</DESCRIPTION>
+            <FIELD ucd="ID_MAIN" datatype="char" name="Codename">
+                <DESCRIPTION>ADIL Image Identifier</DESCRIPTION>
+            </FIELD>
+            <FIELD datatype="char" name="Image Name" arraysize="*">
+                <DESCRIPTION>Image Filename, as provide by author</DESCRIPTION>
+            </FIELD>
+            <FIELD datatype="char" name="Source Name" arraysize="*">
+                <DESCRIPTION>Target Source of Image</DESCRIPTION>
+            </FIELD>
+            <FIELD ucd="POS_EQ_RA_MAIN" datatype="float" name="RA (Center)" unit="degrees">
+                <DESCRIPTION>RA of Image Center (J2000)</DESCRIPTION>
+            </FIELD>
+            <FIELD ucd="POS_EQ_DEC_MAIN" datatype="float" name="Dec (Center)" unit="degrees">
+                <DESCRIPTION>Dec of Image Center (J2000)</DESCRIPTION>
+            </FIELD>
+            <FIELD datatype="float" name="Central Frequency" unit="Hz">
+                <DESCRIPTION>Frequency at center of the image wavehand</DESCRIPTION>
+            </FIELD>
+            <FIELD datatype="char" arraysize="*" name="Source Types">
+                <DESCRIPTION>a list of Source Types associated with this image</DESCRIPTION>
+            </FIELD>
+            <FIELD datatype="char" arraysize="*" name="URL">
+                <DESCRIPTION>The URL for downloading image</DESCRIPTION>
+            </FIELD>
+            <DATA>
+                <TABLEDATA>
+<TR><TD>95.FY.02.01</TD><TD>orion.vla</TD><TD>M42</TD><TD>83.787426</TD><TD>-5.422884</TD><TD>1446150016</TD><TD>INTERSTELLAR MEDIUM: HII REGION</TD><TD>http://adil.ncsa.uiuc.edu/download/95.FY.02.01</TD></TR>
+<TR><TD>95.MW.01.01</TD><TD>OrionKL.SiO.v0</TD><TD>ORION-KL</TD><TD>83.8104555</TD><TD>-5.375146</TD><TD>86838497280</TD><TD>INTERSTELLAR MEDIUM: MOLECULAR CLOUD</TD><TD>http://adil.ncsa.uiuc.edu/download/95.MW.01.01</TD></TR>
+<TR><TD>95.MW.02.01</TD><TD>h2co.cmn</TD><TD>ORION-KL</TD><TD>83.810623</TD><TD>-5.374605</TD><TD>72405889024</TD><TD>INTERSTELLAR MEDIUM: CLOUD</TD><TD>http://adil.ncsa.uiuc.edu/download/95.MW.02.01</TD></TR>
+<TR><TD>95.MW.02.02</TD><TD>dcn.cmn</TD><TD>ORION-KL</TD><TD>83.810623</TD><TD>-5.374605</TD><TD>72406896640</TD><TD>INTERSTELLAR MEDIUM: CLOUD</TD><TD>http://adil.ncsa.uiuc.edu/download/95.MW.02.02</TD></TR>
+<TR><TD>95.MW.02.03</TD><TD>hdo.cmn</TD><TD>ORION-KL</TD><TD>83.810627</TD><TD>-5.3746055</TD><TD>80564404224</TD><TD>INTERSTELLAR MEDIUM: CLOUD</TD><TD>http://adil.ncsa.uiuc.edu/download/95.MW.02.03</TD></TR>
+<TR><TD>95.MW.02.04</TD><TD>c2h5cn.cm</TD><TD>ORION-KL</TD><TD>83.810627</TD><TD>-5.3746055</TD><TD>80605233152</TD><TD>INTERSTELLAR MEDIUM: CLOUD</TD><TD>http://adil.ncsa.uiuc.edu/download/95.MW.02.04</TD></TR>
+<TR><TD>95.MW.02.05</TD><TD>c2h5cn.cmn</TD><TD>ORION-KL</TD><TD>83.810627</TD><TD>-5.3746055</TD><TD>80605233152</TD><TD>INTERSTELLAR MEDIUM: CLOUD</TD><TD>http://adil.ncsa.uiuc.edu/download/95.MW.02.05</TD></TR>
+<TR><TD>95.MW.02.06</TD><TD>hc3n.cmn</TD><TD>ORION-KL</TD><TD>83.810627</TD><TD>-5.3746055</TD><TD>81880645632</TD><TD>INTERSTELLAR MEDIUM: CLOUD</TD><TD>http://adil.ncsa.uiuc.edu/download/95.MW.02.06</TD></TR>
+<TR><TD>95.MW.02.07</TD><TD>so2.cm</TD><TD>ORION-KL</TD><TD>83.810627</TD><TD>-5.3746055</TD><TD>83673665536</TD><TD>INTERSTELLAR MEDIUM: CLOUD</TD><TD>http://adil.ncsa.uiuc.edu/download/95.MW.02.07</TD></TR>
+<TR><TD>95.MW.02.08</TD><TD>so2.cmn</TD><TD>ORION-KL</TD><TD>83.810627</TD><TD>-5.3746055</TD><TD>83673665536</TD><TD>INTERSTELLAR MEDIUM: CLOUD</TD><TD>http://adil.ncsa.uiuc.edu/download/95.MW.02.08</TD></TR>
+<TR><TD>95.MW.02.09</TD><TD>ocs.cm</TD><TD>ORION-KL</TD><TD>83.810627</TD><TD>-5.3746055</TD><TD>85138259968</TD><TD>INTERSTELLAR MEDIUM: CLOUD</TD><TD>http://adil.ncsa.uiuc.edu/download/95.MW.02.09</TD></TR>
+<TR><TD>95.MW.02.10</TD><TD>ocs.cmn</TD><TD>ORION-KL</TD><TD>83.810627</TD><TD>-5.3746055</TD><TD>85138259968</TD><TD>INTERSTELLAR MEDIUM: CLOUD</TD><TD>http://adil.ncsa.uiuc.edu/download/95.MW.02.10</TD></TR>
+<TR><TD>95.MW.02.11</TD><TD>29sio.cm</TD><TD>ORION-KL</TD><TD>83.810627</TD><TD>-5.374606</TD><TD>85767553024</TD><TD>INTERSTELLAR MEDIUM: CLOUD</TD><TD>http://adil.ncsa.uiuc.edu/download/95.MW.02.11</TD></TR>
+<TR><TD>95.MW.02.12</TD><TD>so.cm</TD><TD>ORION-KL</TD><TD>83.81073</TD><TD>-5.375406</TD><TD>86090399744</TD><TD>INTERSTELLAR MEDIUM: CLOUD</TD><TD>http://adil.ncsa.uiuc.edu/download/95.MW.02.12</TD></TR>
+<TR><TD>95.MW.02.13</TD><TD>so.cmn</TD><TD>ORION-KL</TD><TD>83.81073</TD><TD>-5.375406</TD><TD>86090399744</TD><TD>INTERSTELLAR MEDIUM: CLOUD</TD><TD>http://adil.ncsa.uiuc.edu/download/95.MW.02.13</TD></TR>
+<TR><TD>95.MW.02.14</TD><TD>sio.cm</TD><TD>ORION-KL</TD><TD>83.810711</TD><TD>-5.3754025</TD><TD>86843367424</TD><TD>INTERSTELLAR MEDIUM: CLOUD</TD><TD>http://adil.ncsa.uiuc.edu/download/95.MW.02.14</TD></TR>
+<TR><TD>95.MW.02.15</TD><TD>h13cn.cm</TD><TD>ORION-KL</TD><TD>83.81073</TD><TD>-5.375406</TD><TD>86337388544</TD><TD>INTERSTELLAR MEDIUM: CLOUD</TD><TD>http://adil.ncsa.uiuc.edu/download/95.MW.02.15</TD></TR>
+<TR><TD>95.MW.02.16</TD><TD>h13cn.cmn</TD><TD>ORION-KL</TD><TD>83.81073</TD><TD>-5.375406</TD><TD>86337388544</TD><TD>INTERSTELLAR MEDIUM: CLOUD</TD><TD>http://adil.ncsa.uiuc.edu/download/95.MW.02.16</TD></TR>
+<TR><TD>95.MW.02.17</TD><TD>hcn.cm</TD><TD>ORION-KL</TD><TD>83.8109055</TD><TD>-5.3748845</TD><TD>88629190656</TD><TD>INTERSTELLAR MEDIUM: CLOUD</TD><TD>http://adil.ncsa.uiuc.edu/download/95.MW.02.17</TD></TR>
+<TR><TD>95.MW.02.18</TD><TD>hco+.mem</TD><TD>ORION-KL</TD><TD>83.81184</TD><TD>-5.37652</TD><TD>89185726464</TD><TD>INTERSTELLAR MEDIUM: CLOUD</TD><TD>http://adil.ncsa.uiuc.edu/download/95.MW.02.18</TD></TR>
+<TR><TD>95.MW.02.19</TD><TD>ch3cn.cm</TD><TD>ORION-KL</TD><TD>83.810627</TD><TD>-5.3746055</TD><TD>91966623744</TD><TD>INTERSTELLAR MEDIUM: CLOUD</TD><TD>http://adil.ncsa.uiuc.edu/download/95.MW.02.19</TD></TR>
+<TR><TD>95.MW.02.20</TD><TD>ch3cn.cmn</TD><TD>ORION-KL</TD><TD>83.810627</TD><TD>-5.3746055</TD><TD>91957420032</TD><TD>INTERSTELLAR MEDIUM: CLOUD</TD><TD>http://adil.ncsa.uiuc.edu/download/95.MW.02.20</TD></TR>
+<TR><TD>95.MW.02.21</TD><TD>ch3oh.cm</TD><TD>ORION-KL</TD><TD>83.810627</TD><TD>-5.3746055</TD><TD>95154298880</TD><TD>INTERSTELLAR MEDIUM: CLOUD</TD><TD>http://adil.ncsa.uiuc.edu/download/95.MW.02.21</TD></TR>
+<TR><TD>95.MW.02.22</TD><TD>ch3oh.cmn</TD><TD>ORION-KL</TD><TD>83.810627</TD><TD>-5.3746055</TD><TD>95152631808</TD><TD>INTERSTELLAR MEDIUM: CLOUD</TD><TD>http://adil.ncsa.uiuc.edu/download/95.MW.02.22</TD></TR>
+<TR><TD>95.MW.02.23</TD><TD>dust.mem</TD><TD>ORION-KL</TD><TD>83.810631</TD><TD>-5.3746045</TD><TD>81882963968</TD><TD>INTERSTELLAR MEDIUM: CLOUD</TD><TD>http://adil.ncsa.uiuc.edu/download/95.MW.02.23</TD></TR>
+<TR><TD>95.RP.03.01</TD><TD>Ori-KL_continuum_1</TD><TD>ORION-KL</TD><TD>83.8106115</TD><TD>-5.3746015</TD><TD>81882963968</TD><TD>INTERSTELLAR MEDIUM: GIANT MOLECULAR CLOUD</TD><TD>http://adil.ncsa.uiuc.edu/download/95.RP.03.01</TD></TR>
+<TR><TD>95.RP.03.02</TD><TD>Ori-KL_continuum_2</TD><TD>ORION-KL</TD><TD>83.8104745</TD><TD>-5.375166</TD><TD>86121058304</TD><TD>INTERSTELLAR MEDIUM: GIANT MOLECULAR CLOUD</TD><TD>http://adil.ncsa.uiuc.edu/download/95.RP.03.02</TD></TR>
+<TR><TD>95.RP.03.03</TD><TD>Ori-KL_continuum_3</TD><TD>ORION-KL</TD><TD>83.8104745</TD><TD>-5.375166</TD><TD>86121103360</TD><TD>INTERSTELLAR MEDIUM: GIANT MOLECULAR CLOUD</TD><TD>http://adil.ncsa.uiuc.edu/download/95.RP.03.03</TD></TR>
+<TR><TD>96.LC.01.01</TD><TD>omc1.co.fits</TD><TD>OMC 1</TD><TD>83.810543</TD><TD>-5.3752355</TD><TD>115255709696</TD><TD>interstellar medium: outflow</TD><TD>http://adil.ncsa.uiuc.edu/download/96.LC.01.01</TD></TR>
+<TR><TD>98.RY.01.01</TD><TD>hcn_mom0_1950.fits</TD><TD>Orion Bar</TD><TD>83.8344195997</TD><TD>-5.423332154365</TD><TD>88617869436.5</TD><TD>interstellar medium</TD><TD>http://adil.ncsa.uiuc.edu/download/98.RY.01.01</TD></TR>
+<TR><TD>98.RY.01.02</TD><TD>hcop_mom0_1950.fits</TD><TD>Orion Bar</TD><TD>83.8344195997</TD><TD>-5.423332154365</TD><TD>89174160119.5</TD><TD>interstellar medium</TD><TD>http://adil.ncsa.uiuc.edu/download/98.RY.01.02</TD></TR>
+                </TABLEDATA>
+            </DATA>
+        </TABLE>
+    </RESOURCE>
+</VOTABLE>

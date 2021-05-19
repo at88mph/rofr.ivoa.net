@@ -1,0 +1,284 @@
+<html> 
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>RofR: IVOA Registry of Registries</title>
+  
+<script type="text/javascript" src="MochiKit.js" ></script>
+<script type="text/javascript" src="xslt.js" ></script>
+<script type="text/javascript">
+var searchableXSL = new XML.Transformer("searchables_frag.xsl");
+var publishersXSL = new XML.Transformer("publishers_frag.xsl");
+var LIST_DIV_CLASS = "listres"
+var SHOWHIDE_EXPAND = "[+]";
+var SHOWHIDE_SHRINK = "[-]";
+var BUTTON_CLASS = "plusminus";
+
+function init() {
+    if (document.getElementById && document.createTextNode) {
+        var entries = document.getElementsByTagName("span");
+
+        for(var i=0; i < entries.length; i++) {
+            if (entries[i].className==BUTTON_CLASS) {
+                assignShowHide(entries[i]);
+            }
+        }
+
+        clickplus = document.getElementById("clickplus")
+        if (clickplus) {
+            clickplus.innerHTML = "<p>Click on [+] below to see the corresponding list.</p>";
+        }
+    }
+}
+
+function retrieveSearchables(div) {
+    logDebug("retrieving searchables");
+    var url = "/cgi-bin/listSearchables.py?embedded=1";
+    var ajax = doXHR(url, {method: 'GET'});
+    ajax.addCallback(showSearchables, div);
+    ajax.addErrback(handleRetrieveError, div);
+}
+
+function showSearchables(div, resp) {
+    logDebug("showing searchables: " + div.getAttribute('state'));
+    if (div.getAttribute('state') == 'working') {
+        div.innerHTML = "";
+	div.innerHTML = resp.responseText;
+        <!-- searchableXSL.transform(resp.responseXML, div); -->
+        logDebug("transform complete: " + resp.responseText);
+    }
+}
+
+function retrievePublishers(div) {
+    var url = "/cgi-bin/listPublishers.py";
+    var ajax = doXHR(url, {method: 'GET'});
+    ajax.addCallback(showPublishers, div);
+    ajax.addErrback(handleRetrieveError, div);
+}
+
+function handleRetrieveError(div, resp) {
+    logError("Failed to receive data: " + resp.message);
+    div.setAttribute('state', 'cancel');
+}
+
+function showPublishers(div, resp) {
+    if (div.getAttribute('state') == 'working') {
+        publishersXSL.transform(resp.responseXML, div);
+    }
+}
+
+function assignShowHide(div) {
+    var button = document.createElement('a');
+    button.style.cursor='pointer';
+    button.setAttribute('expand', SHOWHIDE_EXPAND);
+    button.setAttribute('shrink', SHOWHIDE_SHRINK);
+    button.setAttribute('state', -1);
+    button.setAttribute('title', 'Click to show list');
+    button.innerHTML='dsds';
+    div.insertBefore(button, div.firstChild);
+
+    button.onclick = function() {
+       var state = -(1*this.getAttribute('state'));
+       this.setAttribute('state', state);
+       this.innerHTML = this.getAttribute(state==1?'expand':'shrink')
+       if (state == 1) 
+           forgetList(this);
+       else
+           showList(this);
+    };
+    button.onclick();
+}
+
+function forgetList(button) {
+    var div = getListSection(button);
+    if (div == null) return false;
+    div.setAttribute('state', 'cancel')
+    div.innerHTML = "";
+}
+
+function getListSection(button) {
+    var section = button
+    while (section.className != LIST_DIV_CLASS) {
+        section = section.parentNode;
+        if (section == null) {
+            logError("missing required div class=" + LIST_DIV_CLASS);
+            return null;
+        }
+    }
+
+    var div = null;
+    divs = section.getElementsByTagName("div");
+    for(var i=0; i < divs.length; i++) {
+        if (divs[i].className == LIST_DIV_CLASS) {
+            div = divs[i];
+            break;
+        }
+    }
+    if (div == null) {
+        logError("missing required div for inserting list")
+        return null;
+    }
+
+    return div;
+}
+
+function showList(button) {
+    var div = getListSection(button);
+    if (div == null) return false;
+
+    div.innerHTML = "<p><i>Retrieving list...</i></p>";
+    div.setAttribute('state', 'working')
+    logDebug("id = " + div.id)
+    if (div.id == "searchables") {
+       retrieveSearchables(div);
+    }
+    else if (div.id == "publishers") {
+       retrievePublishers(div);
+    }
+    else {
+       logError("unexpected div id")
+       return false;
+    }
+    return true;
+}
+
+window.onload=init;
+</script>
+
+  
+<link type="text/css" rel="stylesheet" href="ivoa_rofr.css">
+<!-- <link type="text/css" rel="stylesheet" href="tp.css"> -->
+
+</head>
+<body>
+
+<center>
+<table width="100%" border="0">
+  <tr>
+    <td>
+      <font class="titleText"><b>I</b>nternational
+      <span style="visibility: hidden">i</span>
+      <b>V</b>irtual 
+      <span style="visibility: hidden">i</span>
+      <b>O</b>bservatory 
+      <span style="visibility: hidden">i</span><b>A</b>lliance</font><br />
+      <font class="titleText" style="font-size: 18pt; font-weight: 600">
+      <a name="rofr" title="IVOA Registry of Registries" 
+         class="titleText">IVOA Registry of Registries</a>
+      </font><br /><br />
+    </td>
+    <td align="right">
+      <a href="/"><img src="IVOA_wb_300.jpg" width="150" 
+         height="85" border="0" alt="ivoa.net" /></a>
+    </td>
+  </tr>
+  <tr>
+    <td colspan="2">
+      <table cellspacing="0" cellpadding="0" border="0" width="100%">
+        <tr>
+          <!-- the local links -->
+          <td class="rollcall">
+            <a href="@rofr_base_url@/regvalidate">Register/Validate a Registry</a>
+</td>
+          <td class="rollcall"><a href="http://www.ivoa.net/twiki/bin/view/IVOA/GettingIntoTheRegistry">Getting into the VO Registry</a></td>
+          <td class="rollcall"><a href="http://www.ivoa.net/cgi-bin/twiki/bin/view/IVOA/IvoaResReg">IVOA Registry Working Group</a></td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+</center>
+
+<!-- =======================================================================
+  -  Page Content
+  -  ======================================================================= -->
+
+
+<h1>Welcome to the Registry of Registries</h1>
+
+
+<p>
+The Registry of Registries (RofR, pronounced <em>rover</em>) is a web portal
+provided on behalf of the <a href="http://www.ivoa.net/">International
+Virtual Observatory Alliance (IVOA)</a> and overseen by the
+<a href="http://www.ivoa.net/twiki/bin/view/IVOA/IvoaResReg">IVOA
+Registry Working Group</a>. It is targeted to VO registry providers
+and VO application developers that wish to interact with registries.
+</p>
+
+<p>
+The key service provide by the RofR is an IVOA publishing registry 
+that lists all publishing registries known to the IVOA.  When a
+resource metadata harvester harvests from these publishing registries,
+they can discover all published VO resources around the world.  The
+design and recommend uses of the RofR is documented in the 
+<a href="http://www.ivoa.net/Documents/latest/RegistryOfRegistries.html">IVOA Note,
+The Registry of Registries</a>.  
+</p>
+
+<p>
+If you maintain a publishing registry and you are ready to let it be
+known to the outside world, you can
+<a href="@rofr_base_url@/regvalidate">register
+it here.</a>  Before you are allowed to register, you must demonstrate
+that it conforms to the
+<a href="http://www.ivoa.net/Documents/latest/RegistryInterface.html">IVOA 
+Registry Interfaces standard.</a>  Note, that you can use the
+<a href="@rofr_base_url@/regvalidate">registry
+validater</a> to check your registry without actually registering it.
+</p>
+
+<h2>Looking for Registries?</h2>
+
+<div id="clickplus"></div>
+
+<div class="listres">
+<h3><span class="plusminus" title></span> Full Searchable Registries</h3>
+
+<p>
+These registries claim to harvest from publishers regularly and
+therefore should have records for all resources known in the VO.  This
+list is generated from a cached list that is updated every four hours by
+a query to a full searchable registry.
+</p>
+
+<!-- the list -->
+<div id="searchables" class="listres">
+<p>
+<a href="@rofr_base_url@/cgi-bin/listSearchables.py">Click here</a> to see the current list of searchable registries.
+</p>
+</div></div>
+
+<div class="listres">
+<h3><span class="plusminus"></span> Currently Registered Publishing Registries</h3>
+
+<p>
+These publishing registries have successfully register with the RofR
+after a full validation.  These are the registries that the full
+searchable registries are pulling records from.  This list is
+generated on-the-fly via a query to the RofR's harvesting interface.  
+</p>
+
+<!-- the list -->
+<div id="publishers" class="listres">
+<p>
+<a href="@rofr_base_url@/cgi-bin/listPublishers.py">Click here</a> to see the current list of publishing registries.
+</p>
+</div></div>
+
+<!-- =======================================================================
+  -  End Page Content
+  -  ======================================================================= -->
+ 
+  <hr>
+
+  <footer>
+    <address>
+      <p>
+	For support, please contact <a href="mailto:@rofr_email@">@rofr_email@</a>
+      </p>
+    </address>
+  </footer>
+</body>
+
+</html>
+   

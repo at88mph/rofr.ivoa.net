@@ -1,0 +1,386 @@
+English
+#
+# Language translation file for Repository Explorer
+# Language: default (english-->English)
+#
+#
+HTTP Status
+HTTP Status
+#
+Unexpected HTTP Error
+Unexpected HTTP Error
+#
+HTTP Status code should be 400
+HTTP Status code should be 400
+#
+XML parsing errors
+XML parsing errors
+#
+Testing
+Testing
+#
+Test Result
+Test Result
+#
+OK
+OK
+#
+FAIL!
+FAIL!
+#
+Metadata Harvesting Protocol
+Metadata Harvesting Protocol
+#
+Protocol Tester
+Protocol Tester
+#
+April 2001
+April 2001
+#
+Repository Name
+Repository Name
+#
+ERROR
+ERROR
+#
+Repository Name missing !
+Repository Name missing !
+#
+Protocol Version
+Protocol Version
+#
+Protocol Version missing !
+Protocol Version missing !
+#
+Base URL
+Base URL
+#
+Base URL missing !
+Base URL missing !
+#
+Admin Email
+Admin Email
+#
+Admin Email missing !
+Admin Email missing !
+#
+Sample Metadata Format
+Sample Metadata Format
+#
+Metadata format missing !
+Metadata format missing !
+#
+Sample Set Spec
+Sample Set Spec
+#
+Set Resumption Token
+Set Resumption Token
+#
+Sample Identifier
+Sample Identifier
+#
+Identifier missing !
+Identifier missing !
+#
+Identifier Resumption Token
+Identifier Resumption Token
+#
+Record Resumption Token
+Record Resumption Token
+#
+Total Errors
+Total Errors
+#
+Error
+Error
+#
+Illegal tag
+Illegal tag
+#
+Missing field
+Missing field
+#
+Text found where tag expected
+Text found where tag expected
+#
+Tag expected but not found
+Tag expected but not found
+#
+Only one instance allowed
+Only one instance allowed
+#
+Text expected for field but not found
+Text expected for field but not found
+#
+Archive Self-Description
+Archive Self-Description
+#
+Other Information
+Other Information
+#
+Resume from
+Resume from
+#
+List of Sets
+List of Sets
+#
+Click on the link to list the contents
+Click on the link to list the contents
+#
+Prefix
+Prefix
+#
+NameSpace
+NameSpace
+#
+Schema
+Schema
+#
+Not a standard OAI metadata name
+Not a standard OAI metadata name
+#
+display record
+display record
+#
+List of Metadata Formats
+List of Metadata Formats
+#
+Click on the link to view schema
+Click on the link to view schema
+#
+display record in Dublin Core
+display record in Dublin Core
+#
+display metadata formats
+display metadata formats
+#
+List of Record Identifiers
+List of Record Identifiers
+#
+Select a link to view more information
+Select a link to view more information
+#
+List of Fields
+List of Fields
+#
+List of Records
+List of Records
+#
+This site presents an interface to interactively test archives for compliance with the OAI Protocol for Metadata Harvesting
+This site presents an interface to interactively test archives for compliance with the OAI Protocol for Metadata Harvesting
+#
+Click here for details
+Click here for details
+#
+JavaScript is required and Netscape Navigator is recommended
+JavaScript is required and Netscape Navigator is recommended
+#
+Note: To avoid HTTP errors, please wait for each page to finish loading before clicking on any link.
+Note: To avoid HTTP errors, please wait for each page to finish loading before clicking on any link.
+#
+Please enter the URL to the OAI interface (everything before the ?) or choose a predefined archive from the table
+Please enter the URL to the OAI interface (everything before the ?) or choose a predefined archive from the table
+#
+Sorry, you can only view the website for a selected predefined archive
+Sorry, you can only view the website for a selected predefined archive
+#
+View Archive Website
+View Archive Website
+#
+Test and Add an archive to this list
+Test and Add an archive to this list
+#
+Repository Explorer
+Repository Explorer
+#
+explorer version
+explorer version
+#
+protocol version
+protocol version
+#
+Archive details
+Archive details
+#
+Verbs
+Verbs
+#
+Parameters
+Parameters
+#
+Display
+Display
+#
+Schema Validation
+Schema Validation
+#
+Parsed
+Parsed
+#
+Raw XML
+Raw XML
+#
+Both
+Both
+#
+None
+None
+#
+Local mirror of schemata
+Local mirror of schemata
+#
+Online schemata
+Online schemata
+#
+home
+home
+#
+Send all comments to
+Send all comments to
+#
+Digital Libraries Research Laboratory
+Digital Libraries Research Laboratory
+#
+HTTP Status Code
+HTTP Status Code
+#
+HTTP Error Message
+HTTP Error Message
+#
+Parsed Output
+Parsed Output
+#
+Raw XML Output
+Raw XML Output
+#
+XSD Schema/Instance Validation Error !
+XSD Schema/Instance Validation Error !
+#
+missing !
+missing !
+#
+Request URL
+Request URL
+#
+Response Date
+Response Date
+#
+Test and Add an archive
+Test and Add an archive
+#
+Please note that these tests are neither definitive nor exhaustive
+Please note that these tests are neither definitive nor exhaustive
+#
+They serve not as a proof of correctness of implementation, but rather indicate possible errors if they exist
+They serve not as a proof of correctness of implementation, but rather indicate possible errors if they exist
+#
+If you have any questions please contact the author at the address below
+If you have any questions please contact the author at the address below
+#
+Enter the base URL of the archive
+Enter the base URL of the archive
+#
+Test the archive
+Test the archive
+#
+Congratulations !
+Congratulations !
+#
+Your archive satisfied all the tests we performed
+Your archive satisfied all the tests we performed
+#
+You may now add it to the list of archives on the front page if you wish by filling in the following additional details
+You may now add it to the list of archives on the front page if you wish by filling in the following additional details
+#
+Base URL of Archive
+Base URL of Archive
+#
+Name of Archive
+Name of Archive
+#
+Archive website
+Archive website
+#
+Submit Archive to List
+Submit Archive to List
+#
+Thank You ! Your archive has been added
+Thank You ! Your archive has been added
+#
+Digital Library Research Laboratory
+Digital Library Research Laboratory
+#
+XML Schema validation failed
+XML Schema validation failed
+#
+Error tag found but not expected
+Error tag found but not expected
+#
+Error tag expected but not found
+Error tag expected but not found
+#
+Cannot find container corresponding to the verb
+Cannot find container corresponding to the verb
+#
+Protocol for Metadata Harvesting
+Protocol for Metadata Harvesting
+#
+RE Protocol Tester
+RE Protocol Tester
+#
+Granularity
+Granularity
+#
+Only oai_dc supported
+Only oai_dc supported
+#
+Found setSpec in header
+Found setSpec in header
+#
+Could not find setSpec in header !
+Could not find setSpec in header !
+#
+Exception
+Exception
+#
+Code
+Code
+#
+Description
+Description
+#
+Earliest Datestamp
+Earliest Datestamp
+#
+Deleted Record Handling
+Deleted Record Handling
+#
+Compression
+Compression
+#
+Complete List Size
+Complete List Size
+#
+Cursor
+Cursor
+#
+Resume After
+Resume After
+#
+Expiration Date
+Expiration Date
+#
+JavaScript is required
+JavaScript is required
+#
+Then click on a verb from the list below to test that function (entering parameters as necesary)
+Then click on a verb from the list below to test that function (entering parameters as necesary)
+#
+URL
+URL
+#
+XML Schema Validation Error !
+XML Schema Validation Error !
+#
+Request
+Request

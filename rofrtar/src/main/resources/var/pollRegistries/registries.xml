@@ -1,0 +1,844 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<VOResources xmlns="http://www.ivoa.net/xml/RegistryInterface/v1.0" more="false" numberReturned="18">
+  <Resource xmlns:q1="http://www.ivoa.net/xml/VORegistry/v1.0" created="2011-12-09T14:24:09" status="active" updated="2013-01-09T14:30:22" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="q1:Registry">
+    <validationLevel xmlns="" validatedBy="ivo://archive.stsci.edu/nvoregistry">2</validationLevel>
+    <title xmlns="">CADC Registry</title>
+    <identifier xmlns="">ivo://cadc.nrc.ca/registry</identifier>
+    <curation xmlns="">
+      <publisher>CADC</publisher>
+      <contact>
+        <name/>
+        <email>cadc@nrc.ca</email>
+      </contact>
+    </curation>
+    <content xmlns="">
+      <subject>registry</subject>
+      <description>CADC Registry</description>
+      <referenceURL>http://www.cadc-ccda.hia-iha.nrc-cnrc.gc.ca/reg</referenceURL>
+      <type>Registry</type>
+    </content>
+    <capability xmlns="" standardID="ivo://ivoa.net/std/Registry" xsi:type="q1:Harvest">
+      <validationLevel validatedBy="ivo://archive.stsci.edu/nvoregistry">2</validationLevel>
+      <interface role="std" xsi:type="q1:OAIHTTP">
+        <accessURL>http://www.cadc-ccda.hia-iha.nrc-cnrc.gc.ca/reg/OAIHandlerv1_0</accessURL>
+      </interface>
+      <interface role="std" xsi:type="q1:OAISOAP">
+        <accessURL>http://www.cadc-ccda.hia-iha.nrc-cnrc.gc.ca/reg/services/RegistryHarvestv1_0</accessURL>
+      </interface>
+      <maxRecords>200</maxRecords>
+    </capability>
+    <capability xmlns="" standardID="ivo://ivoa.net/std/Registry" xsi:type="q1:Search">
+      <validationLevel validatedBy="ivo://archive.stsci.edu/nvoregistry">2</validationLevel>
+      <interface xmlns:q2="http://www.ivoa.net/xml/VOResource/v1.0" role="std" xsi:type="q2:WebService">
+        <accessURL>http://www.cadc-ccda.hia-iha.nrc-cnrc.gc.ca/reg/services/RegistryQueryv1_0</accessURL>
+      </interface>
+      <maxRecords>200</maxRecords>
+      <extensionSearchSupport>full</extensionSearchSupport>
+      <optionalProtocol>XQuery</optionalProtocol>
+    </capability>
+    <full xmlns="">false</full>
+    <managedAuthority xmlns="">cadc.nrc.ca</managedAuthority>
+  </Resource>
+  <Resource xmlns:q3="http://www.ivoa.net/xml/VORegistry/v1.0" created="2007-10-04T00:00:00" status="active" updated="2015-02-02T14:00:00" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="q3:Registry">
+    <validationLevel xmlns="" validatedBy="ivo://archive.stsci.edu/nvoregistry">2</validationLevel>
+    <title xmlns="">VizieR publishing registry</title>
+    <shortName xmlns="">VizieR_registry</shortName>
+    <identifier xmlns="">ivo://CDS.VizieR/registry</identifier>
+    <curation xmlns="">
+      <publisher ivo-id="ivo://CDS.VizieR">CDS VizieR service</publisher>
+      <creator>
+        <name>Sebastien Derriere</name>
+      </creator>
+      <contributor>Francois Ochsenbein</contributor>
+      <date role="creation">2007-10-04</date>
+      <date role="update">2015-02-02</date>
+      <version>1.0</version>
+      <contact>
+        <name>CDS support team</name>
+        <address>CDS, Observatoire de Strasbourg, 11 rue de l'Universite, F-67000 Strasbourg, France</address>
+        <email>cds-question@astro.unistra.fr</email>
+      </contact>
+    </curation>
+    <content xmlns="">
+      <subject>Registry</subject>
+      <description>This registry provides access to resources from the VizieR catalogues.</description>
+      <referenceURL>http://vizier.u-strasbg.fr</referenceURL>
+      <type>Organisation</type>
+      <contentLevel>Research</contentLevel>
+    </content>
+    <capability xmlns="" standardID="ivo://ivoa.net/std/Registry" xsi:type="q3:Harvest">
+      <validationLevel validatedBy="ivo://archive.stsci.edu/nvoregistry">2</validationLevel>
+      <interface role="std" xsi:type="q3:OAIHTTP">
+        <accessURL>http://cdsweb.u-strasbg.fr/reg-bin/vizier/oai.pl</accessURL>
+      </interface>
+      <maxRecords>100</maxRecords>
+    </capability>
+    <full xmlns="">false</full>
+    <managedAuthority xmlns="">CDS.VizieR</managedAuthority>
+  </Resource>
+  <Resource xmlns:q4="http://www.ivoa.net/xml/VORegistry/v1.0" created="2014-04-05T14:55:33" status="active" updated="2015-07-15T22:02:07" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="q4:Registry">
+    <validationLevel xmlns="" validatedBy="ivo://archive.stsci.edu/nvoregistry">2</validationLevel>
+    <title xmlns="">ATNF Publishing Registry</title>
+    <identifier xmlns="">ivo://au.csiro/org.astrogrid.registry.RegistryService</identifier>
+    <curation xmlns="">
+      <publisher>CSIRO</publisher>
+      <contact>
+        <name>James Dempsey</name>
+        <email>james.dempsey@csiro.au</email>
+      </contact>
+    </curation>
+    <content xmlns="">
+      <subject>registry</subject>
+      <description>Astrogrid Registry</description>
+      <referenceURL>https://data.csiro.au:443/astrogrid-registry</referenceURL>
+      <type>Registry</type>
+    </content>
+    <capability xmlns="" standardID="ivo://ivoa.net/std/Registry" xsi:type="q4:Harvest">
+      <validationLevel validatedBy="ivo://archive.stsci.edu/nvoregistry">2</validationLevel>
+      <interface role="std" xsi:type="q4:OAIHTTP">
+        <accessURL>https://data.csiro.au:443/astrogrid-registry/OAIHandlerv1_0</accessURL>
+      </interface>
+      <interface role="std" xsi:type="q4:OAISOAP">
+        <accessURL>https://data.csiro.au:443/astrogrid-registry/services/RegistryHarvestv1_0</accessURL>
+      </interface>
+      <maxRecords>200</maxRecords>
+    </capability>
+    <capability xmlns="" standardID="ivo://ivoa.net/std/Registry" xsi:type="q4:Search">
+      <validationLevel validatedBy="ivo://archive.stsci.edu/nvoregistry">2</validationLevel>
+      <interface xmlns:q5="http://www.ivoa.net/xml/VOResource/v1.0" role="std" xsi:type="q5:WebService">
+        <accessURL>https://data.csiro.au:443/astrogrid-registry/services/RegistryQueryv1_0</accessURL>
+      </interface>
+      <maxRecords>200</maxRecords>
+      <extensionSearchSupport>full</extensionSearchSupport>
+      <optionalProtocol>XQuery</optionalProtocol>
+    </capability>
+    <full xmlns="">false</full>
+    <managedAuthority xmlns="">au.csiro</managedAuthority>
+  </Resource>
+  <Resource xmlns:q6="http://www.ivoa.net/xml/VORegistry/v1.0" created="2000-01-01T09:00:00" status="active" updated="2014-02-11T15:09:57" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="q6:Registry">
+    <validationLevel xmlns="" validatedBy="ivo://archive.stsci.edu/nvoregistry">2</validationLevel>
+    <title xmlns="">Helio Registry Mirror VOParis</title>
+    <shortName xmlns="">HRS</shortName>
+    <identifier xmlns="">ivo://helio-vo.eu.mirror/org.astrogrid.registry.RegistryService</identifier>
+    <curation xmlns="">
+      <publisher>MSSL</publisher>
+      <contact>
+        <name>Kevin Benson</name>
+        <email>k.benson@mssl.ucl.ac.uk</email>
+      </contact>
+    </curation>
+    <content xmlns="">
+      <subject>registry</subject>
+      <description>Astrogrid Registry</description>
+      <referenceURL>http://voparis-helio-astrogrid.obspm.fr:8080/helio-registry</referenceURL>
+      <type>Registry</type>
+    </content>
+    <capability xmlns="" standardID="ivo://ivoa.net/std/Registry" xsi:type="q6:Harvest">
+      <validationLevel validatedBy="ivo://archive.stsci.edu/nvoregistry">2</validationLevel>
+      <interface role="std" xsi:type="q6:OAIHTTP">
+        <accessURL>http://voparis-helio-astrogrid.obspm.fr:8080/helio-registry/OAIHandlerv1_0</accessURL>
+      </interface>
+      <interface role="std" xsi:type="q6:OAISOAP">
+        <accessURL>http://voparis-helio-astrogrid.obspm.fr:8080/helio-registry/services/RegistryHarvestv1_0</accessURL>
+      </interface>
+      <maxRecords>200</maxRecords>
+    </capability>
+    <capability xmlns="" standardID="ivo://ivoa.net/std/Registry" xsi:type="q6:Search">
+      <validationLevel validatedBy="ivo://archive.stsci.edu/nvoregistry">2</validationLevel>
+      <interface xmlns:q7="http://www.ivoa.net/xml/VOResource/v1.0" role="std" xsi:type="q7:WebService">
+        <accessURL>http://voparis-helio-astrogrid.obspm.fr:8080/helio-registry/services/RegistryQueryv1_0</accessURL>
+      </interface>
+      <maxRecords>200</maxRecords>
+      <extensionSearchSupport>full</extensionSearchSupport>
+      <optionalProtocol>XQuery</optionalProtocol>
+    </capability>
+    <full xmlns="">false</full>
+    <managedAuthority xmlns="">helio-vo.eu.mirror</managedAuthority>
+  </Resource>
+  <Resource xmlns:q8="http://www.ivoa.net/xml/VORegistry/v1.0" created="2008-05-07T11:33:00" status="active" updated="2014-11-26T15:38:14" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="q8:Registry">
+    <validationLevel xmlns="" validatedBy="ivo://archive.stsci.edu/nvoregistry">2</validationLevel>
+    <title xmlns="">GAVO Data Center Registry</title>
+    <shortName xmlns="">GAVO DC Reg</shortName>
+    <identifier xmlns="">ivo://org.gavo.dc/__system__/services/registry</identifier>
+    <curation xmlns="">
+      <publisher>GAVO Heidelberg Data Center</publisher>
+      <creator>
+        <name>GAVO Data Center</name>
+        <logo>http://vo.ari.uni-heidelberg.de/docs/GavoTiny.png</logo>
+      </creator>
+      <date role="updated">2014-11-26T15:38:14</date>
+      <contact>
+        <name>GAVO Data Center Team</name>
+        <address>Mönchhofstrasse 12-14, D-69120 Heidelberg</address>
+        <email>gavo@ari.uni-heidelberg.de</email>
+        <telephone>++49 6221 54 1837</telephone>
+      </contact>
+    </curation>
+    <content xmlns="">
+      <subject>Registry</subject>
+      <description>The publishing registry for the GAVO Heidelberg Data Center. On
+request, we also host other registry records. Use the contact address
+for more information.</description>
+        <referenceURL>http://dc.zah.uni-heidelberg.de/__system__/services/registry/info</referenceURL>
+      </content>
+      <capability xmlns="" standardID="ivo://ivoa.net/std/Registry" xsi:type="q8:Harvest">
+        <validationLevel validatedBy="ivo://archive.stsci.edu/nvoregistry">2</validationLevel>
+        <description>The harvesting interface for the publishing registry of the GAVO
+Heidelberg data center</description>
+          <interface role="std" xsi:type="q8:OAIHTTP">
+            <accessURL>http://dc.zah.uni-heidelberg.de/oai.xml</accessURL>
+          </interface>
+          <maxRecords>10000</maxRecords>
+        </capability>
+        <full xmlns="">false</full>
+        <managedAuthority xmlns="">org.gavo.dc</managedAuthority>
+        <managedAuthority xmlns="">edu.euro-vo.org</managedAuthority>
+        <managedAuthority xmlns="">edu.gavo.org</managedAuthority>
+      </Resource>
+      <Resource xmlns:q9="http://www.ivoa.net/xml/VORegistry/v1.0" created="2007-05-18T00:00:00" status="active" updated="2009-06-15T00:00:00" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="q9:Registry">
+        <validationLevel xmlns="" validatedBy="ivo://archive.stsci.edu/nvoregistry">2</validationLevel>
+        <title xmlns="">Heasarc Publishing Registry</title>
+        <shortName xmlns="">HEASARC</shortName>
+        <identifier xmlns="">ivo://nasa.heasarc/registry</identifier>
+        <curation xmlns="">
+          <publisher ivo-id="ivo://nasa.heasarc/ASD">NASA/GSFC HEASARC</publisher>
+          <creator>
+            <name>Thomas McGlynn</name>
+          </creator>
+          <contributor/>
+          <date>2005-03-04</date>
+          <contact>
+            <name>Thomas A. McGlynn</name>
+            <email>request@athena.gsfc.nasa.gov</email>
+          </contact>
+        </curation>
+        <content xmlns="">
+          <subject/>
+          <description>This registry is the definitive source for HEASARC Virtual Observatory
+       metadata.  It is not intended for direct use by user applications but
+       for harvest by other registries.</description>
+            <referenceURL>http://heasarc.gsfc.nasa.gov</referenceURL>
+            <contentLevel>General</contentLevel>
+          </content>
+          <capability xmlns="" standardID="ivo://ivoa.net/std/Registry" xsi:type="q9:Harvest">
+            <validationLevel validatedBy="ivo://archive.stsci.edu/nvoregistry">2</validationLevel>
+            <interface role="std" xsi:type="q9:OAIHTTP">
+              <accessURL use="base">http://heasarc.gsfc.nasa.gov/cgi-bin/OAI2/XMLFile/nvo/oai.pl</accessURL>
+            </interface>
+            <interface role="std" version="0.8" xsi:type="q9:OAIHTTP">
+              <accessURL use="base">http://heasarc.gsfc.nasa.gov/cgi-bin/OAI2/XMLFile/nvo/oai.pl</accessURL>
+            </interface>
+            <maxRecords>0</maxRecords>
+          </capability>
+          <full xmlns="">true</full>
+          <managedAuthority xmlns="">authority</managedAuthority>
+          <managedAuthority xmlns="">nasa.heasarc</managedAuthority>
+        </Resource>
+        <Resource xmlns:q10="http://www.ivoa.net/xml/VORegistry/v1.0" created="2009-02-15T12:00:00" status="active" updated="2014-11-08T18:00:00" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="q10:Registry">
+          <validationLevel xmlns="" validatedBy="ivo://archive.stsci.edu/nvoregistry">2</validationLevel>
+          <title xmlns="">EURO-VO Full Harvestable Registry</title>
+          <shortName xmlns="">EURO-VO Registry</shortName>
+          <identifier xmlns="">ivo://esavo/registry</identifier>
+          <curation xmlns="">
+            <publisher>European Space Agency</publisher>
+            <creator>
+              <name>European Space Agency</name>
+              <logo>http://esavo.esac.esa.int/img/logo.gif</logo>
+            </creator>
+            <contributor>ESAC ESAVO</contributor>
+            <contact>
+              <name>European Space Agency</name>
+              <email>esavo.registry@sciops.esa.int</email>
+            </contact>
+          </curation>
+          <content xmlns="">
+            <subject>Registry</subject>
+            <description>EURO-VO Full Harvestable Registry</description>
+            <referenceURL>http://registry.euro-vo.org/</referenceURL>
+            <type>Registry</type>
+            <contentLevel>General</contentLevel>
+          </content>
+          <rights xmlns="">public</rights>
+          <capability xmlns="" standardID="ivo://ivoa.net/std/Registry" xsi:type="q10:Harvest">
+            <validationLevel validatedBy="ivo://archive.stsci.edu/nvoregistry">2</validationLevel>
+            <interface role="std" xsi:type="q10:OAIHTTP">
+              <accessURL use="base">http://registry.euro-vo.org/oai.jsp</accessURL>
+            </interface>
+            <interface role="std" xsi:type="q10:OAISOAP">
+              <accessURL use="full">http://registry.euro-vo.org/services/RegistryHarvest</accessURL>
+            </interface>
+            <maxRecords>100</maxRecords>
+          </capability>
+          <capability xmlns="" standardID="ivo://ivoa.net/std/Registry" xsi:type="q10:Search">
+            <validationLevel validatedBy="ivo://archive.stsci.edu/nvoregistry">2</validationLevel>
+            <interface xmlns:q11="http://www.ivoa.net/xml/VOResource/v1.0" role="gui" xsi:type="q11:WebBrowser">
+              <accessURL use="full">http://registry.euro-vo.org/search.jsp</accessURL>
+            </interface>
+            <interface xmlns:q12="http://www.ivoa.net/xml/VOResource/v1.0" role="std" xsi:type="q12:WebService">
+              <accessURL use="full">http://registry.euro-vo.org/services/RegistrySearch</accessURL>
+            </interface>
+            <maxRecords>100</maxRecords>
+            <extensionSearchSupport>core</extensionSearchSupport>
+          </capability>
+          <full xmlns="">true</full>
+          <managedAuthority xmlns="">esavo</managedAuthority>
+          <managedAuthority xmlns="">vo.sim</managedAuthority>
+          <managedAuthority xmlns="">xcatdb</managedAuthority>
+          <managedAuthority xmlns="">stecf</managedAuthority>
+          <managedAuthority xmlns="">eso.org</managedAuthority>
+          <managedAuthority xmlns="">svo.ifca</managedAuthority>
+          <managedAuthority xmlns="">fondue</managedAuthority>
+          <managedAuthority xmlns="">graal</managedAuthority>
+          <managedAuthority xmlns="">Leden</managedAuthority>
+          <managedAuthority xmlns="">svo.cab</managedAuthority>
+          <managedAuthority xmlns="">ia2.inaf.it</managedAuthority>
+          <managedAuthority xmlns="">nf.nci.org.au</managedAuthority>
+          <managedAuthority xmlns="">nci.org.au</managedAuthority>
+          <managedAuthority xmlns="">3CRSnapshots</managedAuthority>
+          <managedAuthority xmlns="">asdc</managedAuthority>
+          <managedAuthority xmlns="">au.gov.aao</managedAuthority>
+          <managedAuthority xmlns="">cdpp</managedAuthority>
+          <managedAuthority xmlns="">dame.astro.it</managedAuthority>
+          <managedAuthority xmlns="">fr.obsbesancon</managedAuthority>
+          <managedAuthority xmlns="">idoc</managedAuthority>
+          <managedAuthority xmlns="">idoc.ginco</managedAuthority>
+          <managedAuthority xmlns="">ison</managedAuthority>
+          <managedAuthority xmlns="">ison.clt</managedAuthority>
+          <managedAuthority xmlns="">jao.alma</managedAuthority>
+          <managedAuthority xmlns="">lam.cesam</managedAuthority>
+          <managedAuthority xmlns="">magic</managedAuthority>
+          <managedAuthority xmlns="">ov-gso</managedAuthority>
+          <managedAuthority xmlns="">stardb</managedAuthority>
+          <managedAuthority xmlns="">Swinburne</managedAuthority>
+        </Resource>
+        <Resource xmlns:q13="http://www.ivoa.net/xml/VORegistry/v1.0" created="2012-11-02T09:49:46" status="active" updated="2014-06-26T13:16:11" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="q13:Registry">
+          <validationLevel xmlns="" validatedBy="ivo://archive.stsci.edu/nvoregistry">2</validationLevel>
+          <title xmlns="">Helio Registry</title>
+          <shortName xmlns="">HRS</shortName>
+          <identifier xmlns="">ivo://helio-vo.eu/org.astrogrid.registry.RegistryService</identifier>
+          <curation xmlns="">
+            <publisher>MSSL</publisher>
+            <contact>
+              <name>Kevin Benson</name>
+              <email>kmb@mssl.ucl.ac.uk</email>
+            </contact>
+          </curation>
+          <content xmlns="">
+            <subject>registry</subject>
+            <description>Astrogrid Registry</description>
+            <referenceURL>http://helio.mssl.ucl.ac.uk/helio_registry/registry_helio_ivo</referenceURL>
+            <type>Registry</type>
+          </content>
+          <capability xmlns="" standardID="ivo://ivoa.net/std/Registry" xsi:type="q13:Harvest">
+            <validationLevel validatedBy="ivo://archive.stsci.edu/nvoregistry">2</validationLevel>
+            <interface role="std" xsi:type="q13:OAIHTTP">
+              <accessURL>http://helio.mssl.ucl.ac.uk/helio_registry/OAIHandlerv1_0</accessURL>
+            </interface>
+            <interface role="std" xsi:type="q13:OAISOAP">
+              <accessURL>http://helio.mssl.ucl.ac.uk/helio_registry/services/RegistryHarvestv1_0</accessURL>
+            </interface>
+            <maxRecords>200</maxRecords>
+          </capability>
+          <capability xmlns="" standardID="ivo://ivoa.net/std/Registry" xsi:type="q13:Search">
+            <validationLevel validatedBy="ivo://archive.stsci.edu/nvoregistry">2</validationLevel>
+            <interface xmlns:q14="http://www.ivoa.net/xml/VOResource/v1.0" role="std" xsi:type="q14:WebService">
+              <accessURL>http://helio.mssl.ucl.ac.uk/helio_registry/services/RegistryQueryv1_0</accessURL>
+            </interface>
+            <maxRecords>200</maxRecords>
+            <extensionSearchSupport>full</extensionSearchSupport>
+            <optionalProtocol>XQuery</optionalProtocol>
+          </capability>
+          <full xmlns="">false</full>
+          <managedAuthority xmlns="">helio_ivo.mssl.ucl.ac.uk</managedAuthority>
+          <managedAuthority xmlns="">helio-vo.eu</managedAuthority>
+        </Resource>
+        <Resource xmlns:q15="http://www.ivoa.net/xml/VORegistry/v1.0" created="2006-01-19T00:00:00Z" status="active" updated="2015-01-30T17:00:31Z" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="q15:Registry">
+          <validationLevel xmlns="" validatedBy="ivo://archive.stsci.edu/nvoregistry">2</validationLevel>
+          <title xmlns="">STScI Searchable Registry</title>
+          <shortName xmlns="">STScIReg</shortName>
+          <identifier xmlns="">ivo://archive.stsci.edu/nvoregistry</identifier>
+          <curation xmlns="">
+            <publisher>Space Telescope Science Institute</publisher>
+            <contact>
+              <name>MAST VO team</name>
+              <email>vo-registry@stsci.edu</email>
+            </contact>
+          </curation>
+          <content xmlns="">
+            <subject>virtual observatory</subject>
+            <description>Fully Searchable NVO Registry. Implements OAI interface and follows the standards and protocols of the IVOA Registry working group.</description>
+            <referenceURL>http://vao.stsci.edu/directory/</referenceURL>
+            <contentLevel>Research</contentLevel>
+          </content>
+          <capability xmlns="" standardID="ivo://ivoa.net/std/Registry" xsi:type="q15:Harvest">
+            <validationLevel validatedBy="ivo://archive.stsci.edu/nvoregistry">2</validationLevel>
+            <interface role="std" xsi:type="q15:OAIHTTP">
+              <accessURL use="base">http://vao.stsci.edu/directory/oai.aspx?</accessURL>
+            </interface>
+            <maxRecords>1000</maxRecords>
+          </capability>
+          <capability xmlns="" standardID="ivo://ivoa.net/std/Registry" xsi:type="q15:Search">
+            <validationLevel validatedBy="ivo://archive.stsci.edu/nvoregistry">2</validationLevel>
+            <interface xmlns:q16="http://www.ivoa.net/xml/VOResource/v1.0" role="std" xsi:type="q16:WebService">
+              <accessURL use="full">http://vao.stsci.edu/directory/ristandardservice.asmx?</accessURL>
+            </interface>
+            <maxRecords>1000</maxRecords>
+            <extensionSearchSupport>partial</extensionSearchSupport>
+          </capability>
+          <full xmlns="">true</full>
+          <managedAuthority xmlns="">sdss.fnal</managedAuthority>
+          <managedAuthority xmlns="">lca</managedAuthority>
+          <managedAuthority xmlns="">voevent.noao.edu</managedAuthority>
+          <managedAuthority xmlns="">astro-wise</managedAuthority>
+          <managedAuthority xmlns="">archive.stsci.edu</managedAuthority>
+          <managedAuthority xmlns="">mast.stsci</managedAuthority>
+          <managedAuthority xmlns="">sdss.jhu</managedAuthority>
+          <managedAuthority xmlns="">rvo.ru</managedAuthority>
+          <managedAuthority xmlns="">gcp</managedAuthority>
+          <managedAuthority xmlns="">nvo.noao.edu</managedAuthority>
+          <managedAuthority xmlns="">archive.noao.edu</managedAuthority>
+          <managedAuthority xmlns="">nvo.jhu</managedAuthority>
+          <managedAuthority xmlns="">giraffe</managedAuthority>
+          <managedAuthority xmlns="">iap.fr</managedAuthority>
+          <managedAuthority xmlns="">nao.ua</managedAuthority>
+          <managedAuthority xmlns="">nasa.gsfc.nssdc</managedAuthority>
+          <managedAuthority xmlns="">msc.koa</managedAuthority>
+          <managedAuthority xmlns="">obs-lyon.fr</managedAuthority>
+          <managedAuthority xmlns="">obs-hp.fr</managedAuthority>
+          <managedAuthority xmlns="">ia2.inaf</managedAuthority>
+          <managedAuthority xmlns="">arecibo.cornell</managedAuthority>
+          <managedAuthority xmlns="">cvo.naoc</managedAuthority>
+          <managedAuthority xmlns="">basebe.obspm.fr</managedAuthority>
+          <managedAuthority xmlns="">anusf.anu.au</managedAuthority>
+          <managedAuthority xmlns="">badc.naoc.cn</managedAuthority>
+          <managedAuthority xmlns="">fr.oamp.lam</managedAuthority>
+          <managedAuthority xmlns="">gov.nasa.gsfc.nssdc</managedAuthority>
+          <managedAuthority xmlns="">KeckObs</managedAuthority>
+          <managedAuthority xmlns="">mast.stsci.edu</managedAuthority>
+          <managedAuthority xmlns="">nrao</managedAuthority>
+          <managedAuthority xmlns="">nrao.archive</managedAuthority>
+          <managedAuthority xmlns="">obelix.lambrate.inaf.it</managedAuthority>
+          <managedAuthority xmlns="">opo.stsci</managedAuthority>
+          <managedAuthority xmlns="">svo</managedAuthority>
+          <managedAuthority xmlns="">svo.iaa</managedAuthority>
+          <managedAuthority xmlns="">svo.laeff</managedAuthority>
+          <managedAuthority xmlns="">archive.aavso</managedAuthority>
+          <managedAuthority xmlns="">svo.amiga.iaa.es</managedAuthority>
+          <managedAuthority xmlns="">aps.umn</managedAuthority>
+          <managedAuthority xmlns="">astrometry.net</managedAuthority>
+          <managedAuthority xmlns="">ausvo</managedAuthority>
+          <managedAuthority xmlns="">castor</managedAuthority>
+          <managedAuthority xmlns="">des</managedAuthority>
+          <managedAuthority xmlns="">archive.eso.org</managedAuthority>
+          <managedAuthority xmlns="">fs.usno</managedAuthority>
+          <managedAuthority xmlns="">www.g-vo.org</managedAuthority>
+          <managedAuthority xmlns="">imo</managedAuthority>
+          <managedAuthority xmlns="">irsa.ipac</managedAuthority>
+          <managedAuthority xmlns="">ned.ipac</managedAuthority>
+          <managedAuthority xmlns="">nexsci.ipac</managedAuthority>
+          <managedAuthority xmlns="">omegacen</managedAuthority>
+          <managedAuthority xmlns="">asu.cas.cz</managedAuthority>
+          <managedAuthority xmlns="">byurakan.phys.uniroma1.it</managedAuthority>
+          <managedAuthority xmlns="">rai.ncsa</managedAuthority>
+          <managedAuthority xmlns="">nvo.ncsa</managedAuthority>
+          <managedAuthority xmlns="">adil.ncsa</managedAuthority>
+          <managedAuthority xmlns="">nasa.gsfc.tan</managedAuthority>
+          <managedAuthority xmlns="">tmap.iaat</managedAuthority>
+          <managedAuthority xmlns="">archive.astro.umd</managedAuthority>
+          <managedAuthority xmlns="">vatican</managedAuthority>
+          <managedAuthority xmlns="">starlight.ufsc</managedAuthority>
+          <managedAuthority xmlns="">cxc.mit</managedAuthority>
+          <managedAuthority xmlns="">splatalogue.net</managedAuthority>
+          <managedAuthority xmlns="">iacvo</managedAuthority>
+        </Resource>
+        <Resource xmlns:q17="http://www.ivoa.net/xml/VORegistry/v1.0" created="2013-10-02T00:00:00" status="active" updated="2013-10-02T00:00:00" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="q17:Registry">
+          <validationLevel xmlns="" validatedBy="ivo://archive.stsci.edu/nvoregistry">2</validationLevel>
+          <title xmlns="">Chandra X-ray Center Publishing Registry</title>
+          <shortName xmlns="">CXC-Reg</shortName>
+          <identifier xmlns="">ivo://cxc.harvard.edu/registry</identifier>
+          <curation xmlns="">
+            <publisher ivo-id="ivo://cxc.harvard.edu/cxo">Chandra X-ray Observatory</publisher>
+            <creator>
+              <name>Chandra X-ray Center</name>
+            </creator>
+            <contributor>Chandra X-ray Center</contributor>
+            <contact>
+              <name>Chandra Data Archive, Chandra X-ray Center</name>
+              <address>60 Garden Street MS 67, Cambridge, MA 02138, USA</address>
+              <email>archelp@head.cfa.harvard.edu</email>
+            </contact>
+          </curation>
+          <content xmlns="">
+            <subject/>
+            <description>This registry provides a simple interface for data providers who wish to register a handful of resources.  It is compliant with VOResource v0.10</description>
+            <referenceURL>http://cxc.harvard.edu</referenceURL>
+            <type>Organisation</type>
+            <contentLevel>General</contentLevel>
+            <contentLevel>Elementary Education</contentLevel>
+            <contentLevel>Middle School Education</contentLevel>
+            <contentLevel>Secondary Education</contentLevel>
+            <contentLevel>Community College</contentLevel>
+            <contentLevel>University</contentLevel>
+            <contentLevel>Research</contentLevel>
+            <contentLevel>Amateur</contentLevel>
+            <contentLevel>Informal Education</contentLevel>
+          </content>
+          <capability xmlns="" standardID="ivo://ivoa.net/std/Registry" xsi:type="q17:Harvest">
+            <validationLevel validatedBy="ivo://archive.stsci.edu/nvoregistry">2</validationLevel>
+            <interface role="std" xsi:type="q17:OAIHTTP">
+              <accessURL>http://cdaftp.harvard.edu/cgi-bin/riabox/oai.pl</accessURL>
+            </interface>
+            <maxRecords>0</maxRecords>
+          </capability>
+          <full xmlns="">false</full>
+          <managedAuthority xmlns="">cxc.harvard.edu</managedAuthority>
+        </Resource>
+        <Resource xmlns:q18="http://www.ivoa.net/xml/VORegistry/v1.0" created="2008-05-07T11:33:00" status="active" updated="2015-02-25T18:18:23" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="q18:Registry">
+          <validationLevel xmlns="" validatedBy="ivo://archive.stsci.edu/nvoregistry">2</validationLevel>
+          <title xmlns="">Argentine Virtual Observatory Registry</title>
+          <shortName xmlns="">NOVA Reg</shortName>
+          <identifier xmlns="">ivo://ar.nova/__system__/services/registry</identifier>
+          <curation xmlns="">
+            <publisher>The staff at the Argentine Virtual Observatory</publisher>
+            <creator>
+              <name>NOVA</name>
+              <logo>http://nova.iafe.uba.ar/static/img/logo_tiny.png</logo>
+            </creator>
+            <date role="updated">2015-02-25T18:18:23</date>
+            <contact>
+              <name>Nova Team</name>
+              <address>IAFE</address>
+              <email>nova@conicet.gov.ar</email>
+              <telephone>+5411 4783-2642</telephone>
+            </contact>
+          </curation>
+          <content xmlns="">
+            <subject>Registry</subject>
+            <description>The publishing registry for the Argentine Virtual Observatory.</description>
+            <referenceURL>http://nova.iafe.uba.ar/__system__/services/registry/info</referenceURL>
+          </content>
+          <capability xmlns="" standardID="ivo://ivoa.net/std/Registry" xsi:type="q18:Harvest">
+            <validationLevel validatedBy="ivo://archive.stsci.edu/nvoregistry">2</validationLevel>
+            <description>The harvesting interface for the publishing registry of the Argentine
+Virtual Observatory</description>
+              <interface role="std" xsi:type="q18:OAIHTTP">
+                <accessURL>http://nova.iafe.uba.ar/oai.xml</accessURL>
+              </interface>
+              <maxRecords>10000</maxRecords>
+            </capability>
+            <full xmlns="">false</full>
+            <managedAuthority xmlns="">ar.nova</managedAuthority>
+          </Resource>
+          <Resource xmlns:q19="http://www.ivoa.net/xml/VORegistry/v1.0" created="2008-04-10T00:00:00" status="active" updated="2014-05-29T03:00:00" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="q19:Registry">
+            <validationLevel xmlns="" validatedBy="ivo://archive.stsci.edu/nvoregistry">2</validationLevel>
+            <title xmlns="">JVO Publishing Registry</title>
+            <shortName xmlns="">JVO_PREG</shortName>
+            <identifier xmlns="">ivo://jvo/publishingregistry</identifier>
+            <curation xmlns="">
+              <publisher>Japanese Virtual Observatory</publisher>
+              <creator>
+                <name/>
+              </creator>
+              <contributor/>
+              <contact>
+                <name>Yuji SHIRASAKI</name>
+                <email>preg-admin@jvo.nao.ac.jp</email>
+              </contact>
+            </curation>
+            <content xmlns="">
+              <subject/>
+              <description>JVO publishing regstry for VOResource v1.0</description>
+              <referenceURL>http://jvo.nao.ac.jp/publishingRegistry1.0</referenceURL>
+              <type>Registry</type>
+            </content>
+            <capability xmlns="" standardID="ivo://ivoa.net/std/Registry" xsi:type="q19:Harvest">
+              <validationLevel validatedBy="ivo://archive.stsci.edu/nvoregistry">2</validationLevel>
+              <interface role="std" xsi:type="q19:OAIHTTP">
+                <accessURL>http://jvo.nao.ac.jp/publishingRegistry1.0/oai.pl</accessURL>
+              </interface>
+              <maxRecords>0</maxRecords>
+            </capability>
+            <full xmlns="">true</full>
+          </Resource>
+          <Resource xmlns:q20="http://www.ivoa.net/xml/VORegistry/v1.0" created="2008-02-14T12:12:06" status="active" updated="2009-06-15T14:40:53" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="q20:Registry">
+            <validationLevel xmlns="" validatedBy="ivo://archive.stsci.edu/nvoregistry">2</validationLevel>
+            <title xmlns="">WFAU Publishing Registry</title>
+            <identifier xmlns="">ivo://wfau.roe.ac.uk/org.astrogrid.registry.RegistryService</identifier>
+            <curation xmlns="">
+              <publisher ivo-id="ivo://wfau.roe.ac.uk">Wide Field Astronomy Unit (WFAU)</publisher>
+              <creator>
+                <name>AstroGrid</name>
+              </creator>
+              <contact>
+                <name>Mark Holliman</name>
+                <email>msh@roe.ac.uk</email>
+              </contact>
+            </curation>
+            <content xmlns="">
+              <subject>registry</subject>
+              <description>WFAU Publishing registry</description>
+              <referenceURL>http://publishing-registry.roe.ac.uk:80/astrogrid-registry_v1_0</referenceURL>
+              <type>Registry</type>
+              <contentLevel>Research</contentLevel>
+            </content>
+            <capability xmlns="" standardID="ivo://ivoa.net/std/Registry" xsi:type="q20:Harvest">
+              <validationLevel validatedBy="ivo://archive.stsci.edu/nvoregistry">2</validationLevel>
+              <interface role="std" xsi:type="q20:OAIHTTP">
+                <accessURL>http://publishing-registry.roe.ac.uk:80/astrogrid-registry_v1_0/OAIHandlerv1_0</accessURL>
+              </interface>
+              <interface role="std" xsi:type="q20:OAISOAP">
+                <accessURL>http://publishing-registry.roe.ac.uk:80/astrogrid-registry_v1_0/services/RegistryHarvestv1_0</accessURL>
+              </interface>
+              <maxRecords>200</maxRecords>
+            </capability>
+            <capability xmlns="" standardID="ivo://ivoa.net/std/Registry" xsi:type="q20:Search">
+              <validationLevel validatedBy="ivo://archive.stsci.edu/nvoregistry">2</validationLevel>
+              <interface xmlns:q21="http://www.ivoa.net/xml/VOResource/v1.0" role="std" xsi:type="q21:WebService">
+                <accessURL>http://publishing-registry.roe.ac.uk:80/astrogrid-registry_v1_0/services/RegistryQueryv1_0</accessURL>
+              </interface>
+              <maxRecords>200</maxRecords>
+              <extensionSearchSupport>full</extensionSearchSupport>
+              <optionalProtocol>XQuery</optionalProtocol>
+            </capability>
+            <full xmlns="">false</full>
+            <managedAuthority xmlns="">wfau.roe.ac.uk</managedAuthority>
+          </Resource>
+          <Resource xmlns:q22="http://www.ivoa.net/xml/VORegistry/v1.0" created="2006-07-01T09:00:00" status="active" updated="2015-02-05T20:28:40" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="q22:Registry">
+            <validationLevel xmlns="" validatedBy="ivo://archive.stsci.edu/nvoregistry">2</validationLevel>
+            <title xmlns="">IVOA Registry of Registries</title>
+            <shortName xmlns="">RofR</shortName>
+            <identifier xmlns="">ivo://ivoa.net/rofr</identifier>
+            <curation xmlns="">
+              <publisher ivo-id="ivo://ivoa.net/IVOA">International Virtual Observatory Alliance</publisher>
+              <creator>
+                <name>Raymond Plante</name>
+                <logo>http://www.ivoa.net/icons/ivoa_logo_small.jpg</logo>
+              </creator>
+              <date role="created">2007-07-01</date>
+              <date role="updated">2007-12-20</date>
+              <version>1.1</version>
+              <contact>
+                <name>IVOA Resource Registry Working Group</name>
+                <email>registry@ivoa.net</email>
+              </contact>
+            </curation>
+            <content xmlns="">
+              <subject>virtual observatory</subject>
+              <description>This is a special publishing registry that describes
+         resources that represent important infrastructure
+         components to the VO registry framework.  A primary purpose
+         is to provide a registry to discover other publishing
+         registries.  A registry that wants to harvest all records
+         known to the VO can first harvest from this registry a list
+         of all known publishing registries (via the IVOA Registry
+         Interface for harvesting with set=ivoa_publishers).  An
+         interactive interface allows publishing registry providers
+         to check their interfaces and make their registries known to
+         the framework.  This registry also describes standard
+         protocols recognized by the IVOA.</description>
+                <referenceURL>http://rofr.ivoa.net/rofr/</referenceURL>
+                <type>Registry</type>
+              </content>
+              <capability xmlns="" standardID="ivo://ivoa.net/std/Registry" xsi:type="q22:Harvest">
+                <validationLevel validatedBy="ivo://archive.stsci.edu/nvoregistry">2</validationLevel>
+                <interface role="std" xsi:type="q22:OAIHTTP">
+                  <accessURL>http://rofr.ivoa.net/cgi-bin/oai.pl</accessURL>
+                </interface>
+                <maxRecords>0</maxRecords>
+              </capability>
+              <full xmlns="">false</full>
+              <managedAuthority xmlns="">ivoa.net</managedAuthority>
+            </Resource>
+            <Resource xmlns:q23="http://www.ivoa.net/xml/VORegistry/v1.0" created="2013-01-15T00:00:00Z" status="active" updated="2013-07-11T00:00:00Z" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="q23:Registry">
+              <validationLevel xmlns="" validatedBy="ivo://vopdc">3</validationLevel>
+              <validationLevel xmlns="" validatedBy="ivo://archive.stsci.edu/nvoregistry">2</validationLevel>
+              <title xmlns="">VO-Paris Data Center Publishing Registry</title>
+              <shortName xmlns="">VOPDC Registry</shortName>
+              <identifier xmlns="">ivo://vopdc/registry</identifier>
+              <curation xmlns="">
+                <publisher ivo-id="ivo://vopdc">VO-Paris Data Centre</publisher>
+                <creator>
+                  <name>J. Normand</name>
+                </creator>
+                <contributor>VOPDC</contributor>
+                <contact>
+                  <name>VOPDC support team</name>
+                  <address>Observatoire de Paris VOPDC, bat. Perrault, 77 av. Denfert Rochereau, 75014 Paris, FRANCE</address>
+                  <email>vo.paris@obspm.fr</email>
+                  <telephone>+33140512089</telephone>
+                </contact>
+              </curation>
+              <content xmlns="">
+                <subject>Registry</subject>
+                <subject>Virtual Observatory</subject>
+                <description>This registry provides access to resources from VO-Paris Data Center and
+            partners.</description>
+                  <referenceURL>http://vo.obspm.fr</referenceURL>
+                  <type>Registry</type>
+                  <contentLevel>General</contentLevel>
+                </content>
+                <rights xmlns="">public</rights>
+                <capability xmlns="" standardID="ivo://ivoa.net/std/Registry" xsi:type="q23:Harvest">
+                  <validationLevel validatedBy="ivo://archive.stsci.edu/nvoregistry">2</validationLevel>
+                  <interface role="std" xsi:type="q23:OAIHTTP">
+                    <accessURL>http://voparis-registry.obspm.fr/vo/oai</accessURL>
+                  </interface>
+                  <maxRecords>0</maxRecords>
+                </capability>
+                <full xmlns="">false</full>
+                <managedAuthority xmlns="">vopdc</managedAuthority>
+                <managedAuthority xmlns="">vopdc.obspm</managedAuthority>
+                <managedAuthority xmlns="">vopdc.iap</managedAuthority>
+              </Resource>
+              <Resource xmlns:q24="http://www.ivoa.net/xml/VORegistry/v1.0" created="2003-01-01T00:00:00" status="active" updated="2009-06-18T03:33:26.59" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="q24:Registry">
+                <validationLevel xmlns="" validatedBy="ivo://archive.stsci.edu/nvoregistry">2</validationLevel>
+                <title xmlns="">NCSA Publishing Registry</title>
+                <shortName xmlns="">NCSA-Reg</shortName>
+                <identifier xmlns="">ivo://nvo.ncsa/registry</identifier>
+                <curation xmlns="">
+                  <publisher ivo-id="ivo://rai.ncsa/RAI">NCSA Radio Astronomy Imaging</publisher>
+                  <creator>
+                    <name>Ramon Williamson</name>
+                  </creator>
+                  <contributor>Ramon Williamson</contributor>
+                  <date>2003-01-01</date>
+                  <contact>
+                    <name>Ramon Williamson</name>
+                    <email>rai@ncsa.uiuc.edu</email>
+                  </contact>
+                </curation>
+                <content xmlns="">
+                  <subject/>
+                  <description>This registry provides a simple interface for data providers who wish to register a handful of resources.  It is compliant with VOResource v0.10</description>
+                  <referenceURL>http://nvo.ncsa.uiuc.edu/nvoregistration.html</referenceURL>
+                  <type>Organisation</type>
+                  <contentLevel>General</contentLevel>
+                  <contentLevel>Elementary Education</contentLevel>
+                  <contentLevel>Middle School Education</contentLevel>
+                  <contentLevel>Secondary Education</contentLevel>
+                  <contentLevel>Community College</contentLevel>
+                  <contentLevel>University</contentLevel>
+                  <contentLevel>Research</contentLevel>
+                  <contentLevel>Amateur</contentLevel>
+                  <contentLevel>Informal Education</contentLevel>
+                </content>
+                <capability xmlns="" standardID="ivo://ivoa.net/std/Registry" xsi:type="q24:Harvest">
+                  <validationLevel validatedBy="ivo://archive.stsci.edu/nvoregistry">2</validationLevel>
+                  <interface role="std" xsi:type="q24:OAIHTTP">
+                    <accessURL>http://nvo.ncsa.uiuc.edu/cgi-bin/reg10/oai.pl</accessURL>
+                  </interface>
+                  <interface role="std" version="0.8" xsi:type="q24:OAIHTTP">
+                    <accessURL>http://nvo.ncsa.uiuc.edu/cgi-bin/nvo/oai.pl</accessURL>
+                  </interface>
+                  <maxRecords>0</maxRecords>
+                </capability>
+                <full xmlns="">false</full>
+                <managedAuthority xmlns="">archive.aavso</managedAuthority>
+                <managedAuthority xmlns="">svo.amiga.iaa.es</managedAuthority>
+                <managedAuthority xmlns="">aps.umn</managedAuthority>
+                <managedAuthority xmlns="">astrometry.net</managedAuthority>
+                <managedAuthority xmlns="">ausvo</managedAuthority>
+                <managedAuthority xmlns="">castor</managedAuthority>
+                <managedAuthority xmlns="">cadc.nrc.ca</managedAuthority>
+                <managedAuthority xmlns="">Leden</managedAuthority>
+                <managedAuthority xmlns="">des</managedAuthority>
+                <managedAuthority xmlns="">archive.eso.org</managedAuthority>
+                <managedAuthority xmlns="">fs.usno</managedAuthority>
+                <managedAuthority xmlns="">www.g-vo.org</managedAuthority>
+                <managedAuthority xmlns="">imo</managedAuthority>
+                <managedAuthority xmlns="">inaf</managedAuthority>
+                <managedAuthority xmlns="">irsa.ipac</managedAuthority>
+                <managedAuthority xmlns="">anusf.anu.au</managedAuthority>
+                <managedAuthority xmlns="">ned.ipac</managedAuthority>
+                <managedAuthority xmlns="">omegacen</managedAuthority>
+                <managedAuthority xmlns="">asu.cas.cz</managedAuthority>
+                <managedAuthority xmlns="">svo</managedAuthority>
+                <managedAuthority xmlns="">byurakan.phys.uniroma1.it</managedAuthority>
+                <managedAuthority xmlns="">rai.ncsa</managedAuthority>
+                <managedAuthority xmlns="">nvo.ncsa</managedAuthority>
+                <managedAuthority xmlns="">adil.ncsa</managedAuthority>
+                <managedAuthority xmlns="">nasa.gsfc.tan</managedAuthority>
+                <managedAuthority xmlns="">stecf.euro-vo</managedAuthority>
+                <managedAuthority xmlns="">tmap.iaat</managedAuthority>
+                <managedAuthority xmlns="">archive.astro.umd</managedAuthority>
+                <managedAuthority xmlns="">vatican</managedAuthority>
+                <managedAuthority xmlns="">voparis.obspm.gepi</managedAuthority>
+                <managedAuthority xmlns="">voparis-gepi.obspm.fr</managedAuthority>
+                <managedAuthority xmlns="">voparis.obspm</managedAuthority>
+                <managedAuthority xmlns="">starlight.ufsc</managedAuthority>
+                <managedAuthority xmlns="">cxc.mit</managedAuthority>
+                <managedAuthority xmlns="">voparis.obspm.imcce</managedAuthority>
+                <managedAuthority xmlns="">voparis.ign.lareg</managedAuthority>
+                <managedAuthority xmlns="">voparis.obspm.luth</managedAuthority>
+                <managedAuthority xmlns="">splatalogue.net</managedAuthority>
+                <managedAuthority xmlns="">iram.es</managedAuthority>
+                <managedAuthority xmlns="">iacvo</managedAuthority>
+              </Resource>
+              <Resource xmlns:q25="http://www.ivoa.net/xml/VORegistry/v1.0" created="2006-01-01T00:00:00" status="active" updated="2006-06-16T20:36:13" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="q25:Registry">
+                <validationLevel xmlns="" validatedBy="ivo://archive.stsci.edu/nvoregistry">2</validationLevel>
+                <title xmlns="">Sternberg Astronomical Institute Catalog Access Services Publishing Registry</title>
+                <shortName xmlns="">SAI CAS</shortName>
+                <identifier xmlns="">ivo://astronet.ru/cas/registry</identifier>
+                <curation xmlns="">
+                  <publisher ivo-id="ivo://astronet.ru/organisation">Sternberg Astronomical Institute Virtual Observatory Project</publisher>
+                  <creator>
+                    <name>Sergey Karpov</name>
+                    <logo/>
+                  </creator>
+                  <date>2007-11-30</date>
+                  <contact>
+                    <name>Sergey Karpov</name>
+                    <email>karpov@sao.ru</email>
+                  </contact>
+                </curation>
+                <content xmlns="">
+                  <subject>Virtual Observatory</subject>
+                  <description>SAI CAS publishing registry</description>
+                  <referenceURL>http://vo.astronet.ru/about.html</referenceURL>
+                  <type>Registry</type>
+                </content>
+                <capability xmlns="" standardID="ivo://ivoa.net/std/Registry" xsi:type="q25:Harvest">
+                  <validationLevel validatedBy="ivo://archive.stsci.edu/nvoregistry">2</validationLevel>
+                  <interface role="std" xsi:type="q25:OAIHTTP">
+                    <accessURL>http://vo.astronet.ru/cas/registry.php</accessURL>
+                  </interface>
+                  <maxRecords>0</maxRecords>
+                </capability>
+                <full xmlns="">false</full>
+                <managedAuthority xmlns="">astronet.ru</managedAuthority>
+              </Resource>
+              <Resource xmlns:q26="http://www.ivoa.net/xml/VORegistry/v1.0" created="2008-05-07T11:33:00" status="active" updated="2015-04-13T09:55:06" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="q26:Registry">
+                <validationLevel xmlns="" validatedBy="ivo://archive.stsci.edu/nvoregistry">2</validationLevel>
+                <title xmlns="">BSDC-VO Registry</title>
+                <shortName xmlns="">BSDC Reg</shortName>
+                <identifier xmlns="">ivo://bsdc.icranet.org/__system__/services/registry</identifier>
+                <curation xmlns="">
+                  <publisher>The staff at the BSDC-VO</publisher>
+                  <creator>
+                    <name>Carlos Brandt</name>
+                    <logo>https://github.com/BSDC-A/images/blob/master/logo_bsdc_small.png</logo>
+                  </creator>
+                  <date role="updated">2015-04-13T09:55:06</date>
+                  <contact>
+                    <name>Carlos Brandt</name>
+                    <address>Piazzale Aldo Moro 5, ICRA</address>
+                    <email>carlos.brandt@icranet.org</email>
+                  </contact>
+                </curation>
+                <content xmlns="">
+                  <subject>Registry</subject>
+                  <description>The publishing registry for the BSDC-VO.</description>
+                  <referenceURL>http://vo.bsdc.icranet.org/__system__/services/registry/info</referenceURL>
+                </content>
+                <capability xmlns="" standardID="ivo://ivoa.net/std/Registry" xsi:type="q26:Harvest">
+                  <validationLevel validatedBy="ivo://archive.stsci.edu/nvoregistry">2</validationLevel>
+                  <description>The harvesting interface for the publishing registry of the BSDC-VO</description>
+                  <interface role="std" xsi:type="q26:OAIHTTP">
+                    <accessURL>http://vo.bsdc.icranet.org/oai.xml</accessURL>
+                  </interface>
+                  <maxRecords>10000</maxRecords>
+                </capability>
+                <full xmlns="">false</full>
+                <managedAuthority xmlns="">bsdc.icranet.org</managedAuthority>
+              </Resource>
+            </VOResources>

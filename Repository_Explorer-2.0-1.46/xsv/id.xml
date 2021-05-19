@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<Identify xmlns="http://www.openarchives.org/OAI/1.1/OAI_Identify" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.openarchives.org/OAI/1.1/OAI_Identify http://www.openarchives.org/OAI/1.1/OAI_Identify.xsd">
+
+<responseDate>2001-07-01T22:30:37-05:00</responseDate>
+<requestURL>http://oai.dlib.vt.edu:80/~hussein/cgi-bin/NDLTD/VTETD.pl?verb=Identify</requestURL>
+
+   <repositoryName>Virginia Tech Electronic Thesis and Dissertation Collection</repositoryName>
+   <baseURL>http://oai.dlib.vt.edu:80/~hussein/cgi-bin/NDLTD/VTETD.pl</baseURL>
+   <protocolVersion>1.0</protocolVersion>
+   <adminEmail>mailto:hussein@vt.edu</adminEmail>
+   <description>
+      <oai-identifier xmlns="http://www.openarchives.org/OAI/1.1/oai-identifier" xsi:schemaLocation="http://www.openarchives.org/OAI/1.1/oai-identifier http://www.openarchives.org/OAI/1.1/oai-identifier.xsd">
+         <scheme>oai</scheme>
+         <repositoryIdentifier>VTETD</repositoryIdentifier>
+         <delimiter>:</delimiter>
+         <sampleIdentifier>oai:VTETD:etd-171110282975860</sampleIdentifier>
+      </oai-identifier>
+   </description>
+   <description>
+      <eprints xmlns="http://www.openarchives.org/OAI/1.1/eprints" xsi:schemaLocation="http://www.openarchives.org/OAI/1.1/eprints http://www.openarchives.org/OAI/1.1/eprints.xsd">
+         <content>
+            <text>Theses and Dissertations produced by students at Virginia Tech</text>
+         </content>
+         <metadataPolicy>
+            <text>Metadata may be used by commercial and non-commercial users</text>
+         </metadataPolicy>
+         <dataPolicy>
+            <text>Full texts are individually tagged and the rights statements must be adhered to</text>
+         </dataPolicy>
+         <submissionPolicy>
+            <text>Submissions are only made internally by students at Virginia Tech</text>
+         </submissionPolicy>
+      </eprints>
+   </description>
+
+</Identify>

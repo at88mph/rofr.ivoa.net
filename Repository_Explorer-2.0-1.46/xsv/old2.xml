@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+  <Identify 
+     xmlns="http://www.openarchives.org/OAI/1.1/OAI_Identify"
+     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+     xsi:schemaLocation="http://www.openarchives.org/OAI/1.1/OAI_Identify         
+                   http://www.openarchives.org/OAI/1.1/OAI_Identify.xsd">
+    <responseDate>2001-07-19T00:24:38+01:00</responseDate>
+    <requestURL>http%3A%2F%2Fphysnet.uni-oldenburg.de%2Foai%2Foai.php%3Fverb%3DIdentify</requestURL>
+    <repositoryName>PhysNet, Oldenburg, Germany, Document Server</repositoryName>
+    <baseURL>http://physnet.uni-oldenburg.de/oai/oai.php</baseURL>
+    <protocolVersion>1.0</protocolVersion>
+    <adminEmail>mailto:stamer&#x0040;uni-oldenburg.de</adminEmail>
+    <description>
+      <oai-identifier xmlns="http://www.openarchives.org/OAI/oai-identifier"
+            xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+            xsi:schemaLocation="http://www.openarchives.org/OAI/1.1/oai-identifier       
+                           http://www.openarchives.org/OAI/1.1/oai-identifier.xsd">
+        <scheme>oai</scheme>
+        <repositoryIdentifier>physdoc</repositoryIdentifier>
+        <delimiter>:</delimiter>
+        <sampleIdentifier>oai:physdoc:http://www.smallsystems.de/publications/metadocs/bosezeros.html</sampleIdentifier>
+      </oai-identifier>
+    </description>
+  </Identify>

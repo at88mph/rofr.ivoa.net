@@ -1,0 +1,77 @@
+/* style sheet for tabs */
+
+body {
+    background:#FFFFFF;
+}
+
+.tabs {
+    float:left;
+    width:100%;
+    font-size:100%;
+    line-height:normal;
+    } 
+
+
+ul.tabs {
+    margin:0;
+    padding:3px 3px 0; 
+    background:#FFFFFF url("bg.gif") repeat-x bottom;
+    list-style:none;
+    }
+
+ul.tabs li {
+    float:left;
+    background:url("norm_right.gif") no-repeat right top;
+    margin:0;
+    padding:0;
+    }
+
+
+ul.tabs a {
+    display:block;
+    background:url("norm_left.gif") no-repeat left top;
+    padding:5px 15px 4px;
+    }
+
+ul.table li a:link {
+    font-style:italic;
+}
+
+ul.tabs li.active {
+    background-image:url("norm_right_on.gif");
+    font-weight: bold;
+    }
+
+ul.tabs a.active, ul.tabs a:link.active, ul.tabs a:visited.active {
+	font-weight: bold;
+}
+
+ul.tabs li  a.active, ul.tabs a:link.active, ul.tabs a:visited.active {
+    background-image:url("norm_left_on.gif");
+    padding-bottom:5px;
+    }
+
+
+
+
+ul.table {
+margin-left:1%;
+}
+
+ul.mission {
+margin-left:.5%;
+}
+
+div.tabs {
+    padding: .5em;
+    position: relative;
+    width: 100%;
+    margin: 0;
+}
+div.tabs div.tabs {
+    padding: 0;
+}
+div.tabs div.tabs  {
+    clear: left;
+    padding: .03em;
+}

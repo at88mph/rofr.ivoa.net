@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+  <ListSets 
+      xmlns="http://www.openarchives.org/OAI/1.1/OAI_ListSets"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="http://www.openarchives.org/OAI/1.1/OAI_ListSets         
+                    http://www.openarchives.org/OAI/1.1/OAI_ListSets.xsd">
+    <responseDate>2001-07-19T00:19:46+01:00</responseDate>
+    <requestURL>.http%3A%2F%2Fphysnet.uni-oldenburg.de%2Foai%2Foai.php%3Fverb%3DListSets.</requestURL>
+  </ListSets>

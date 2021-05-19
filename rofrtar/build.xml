@@ -1,0 +1,178 @@
+<?xml version="1.0"?>
+<project name="ivoa-rofr" 
+	 default="package"
+	 basedir="."
+	 xmlns:ivy="antlib:org.apache.ivy.ant">
+
+  <import file="${basedir}/../common.xml"/>
+
+  <filter filtersfile="../deploy_env.properties"/>
+
+  <target name="compile"
+	  description="Compile source code"
+	  depends="initialize, resolve">
+    <!-- Override as no-op -->
+  </target>
+
+  <target name="test-compile"
+	  description="Compile unit test source code"
+	  depends="compile">
+    <!-- Override as no-op -->
+  </target>
+  
+  <target name="test"
+	  description="Run unit tests"
+	  depends="test-compile">
+    <!-- Override as no-op for now -->
+  </target>
+
+  <target name="package"
+	  description="Package code for distribution"
+	  depends="initialize,resolve">
+    <untar src="${lib.dir}/runtime/oai-repository-explorer.tar.gz"
+	   dest="${target.dir}/${ant.project.name}"
+	   compression="gzip">
+      <patternset>
+	<include name="oai-repository-explorer/bin/*"/>
+      </patternset>
+      <globmapper from="oai-repository-explorer/bin/*" to="bin/*"/>
+    </untar>
+
+    <copy todir="${target.dir}/${ant.project.name}/lib/"> 
+      <fileset dir="${lib.dir}/runtime" includes="*.jar"/>
+    </copy>
+
+    <copy todir="${target.dir}/${ant.project.name}/lib/">
+      <fileset dir="${scripts.dir}" includes="makelookup.xsl,searchable.lis"/>
+    </copy>
+
+    <copy todir="${target.dir}/${ant.project.name}/lib/">
+      <fileset dir="${scripts.dir}" includes="OAI/*,Pure/*,VORegInABox/*"/>
+    </copy>
+    
+    <copy todir="${target.dir}/${ant.project.name}/apache_conf/"
+	  filtering="true"
+	  overwrite="true">
+      <fileset dir="${resources.dir}/apache_conf" includes="*.in"/>
+      <globmapper from="*.in" to="*"/>
+    </copy>
+    <copy todir="${target.dir}/${ant.project.name}/apache_conf/">
+      <fileset dir="${resources.dir}/apache_conf" excludes="*.in"/>
+    </copy>
+    
+    <copy todir="${target.dir}/${ant.project.name}/conf/"
+	  filtering="true"
+	  overwrite="true">
+      <fileset dir="${resources.dir}/conf" includes="*.in"/>
+      <globmapper from="*.in" to="*"/>
+    </copy>
+    <copy todir="${target.dir}/${ant.project.name}/conf/">
+      <fileset dir="${resources.dir}/conf" excludes="*.in"/>
+    </copy>
+      
+    <copy todir="${target.dir}/${ant.project.name}/data/"
+	  filtering="true"
+	  overwrite="true">
+      <fileset dir="${resources.dir}/data" includes="*.in"/>
+      <globmapper from="*.in" to="*"/>
+    </copy>
+    <copy todir="${target.dir}/${ant.project.name}/data/">
+      <fileset dir="${resources.dir}/data" excludes="*.in"/>
+    </copy>
+      
+    <exec executable="ln"
+	  dir="${target.dir}/${ant.project.name}/conf"
+	  failonerror="true">
+      <arg value="-s"/>
+      <arg value="-f"/> <!-- remove existing destination file in case where ant package is called twice in a row -->
+      <arg value="../data/Registry/RofR/rofr.xml"/>
+      <arg value="identity.xml"/>
+    </exec>
+
+    <copy todir="${target.dir}/${ant.project.name}/html/"
+	  filtering="true"
+	  overwrite="true">
+      <fileset dir="${resources.dir}/html" includes="*.in"/>
+      <globmapper from="*.in" to="*"/>
+    </copy>
+    <copy todir="${target.dir}/${ant.project.name}/html/">
+      <fileset dir="${resources.dir}/html" excludes="*.in"/>
+    </copy>
+    
+    <copy todir="${target.dir}/${ant.project.name}/var/">
+      <fileset dir="${resources.dir}/var" excludes="*.in"/>
+    </copy>
+    
+    <exec executable="ln"
+	  dir="${target.dir}/${ant.project.name}/html"
+	  failonerror="true">
+      <arg value="-s"/>
+      <arg value="-f"/> <!-- remove existing destination file in case where ant package is called twice in a row -->
+      <arg value="../var/pollRegistries/registries.xml"/>
+    </exec>
+
+    <copy todir="${target.dir}/${ant.project.name}/bin/"
+	  filtering="true"
+	  overwrite="true">
+      <fileset dir="${scripts.dir}" includes="unregister.sh.in"/>   
+      <globmapper from="*.in" to="*"/>
+    </copy>
+    <copy todir="${target.dir}/${ant.project.name}/bin/">
+      <fileset dir="${scripts.dir}" includes="pollRegistries.py,listregistries"/>
+    </copy>
+
+    <copy todir="${target.dir}/${ant.project.name}/cgi-bin/"
+	  filtering="true"
+	  overwrite="true">
+      <fileset dir="${scripts.dir}" excludes="pollRegistries.py,unregister.sh.in" includes="*.py.in,*.pl.in,*sh.in"/>   
+      <globmapper from="*.in" to="*"/>
+    </copy>
+    <copy todir="${target.dir}/${ant.project.name}/cgi-bin/">
+      <fileset dir="${scripts.dir}" excludes="pollRegistries.py" includes="*.py,*.pl,*sh"/>   
+    </copy>
+      
+    <chmod perm="ugo+x">
+      <fileset dir="${target.dir}/${ant.project.name}/bin"/>
+      <fileset dir="${target.dir}/${ant.project.name}/cgi-bin"/>
+    </chmod>
+
+    <mkdir dir="${target.dir}/${ant.project.name}/var/logs"/>
+    <mkdir dir="${target.dir}/${ant.project.name}/var/pollRegistries"/>
+    <mkdir dir="${target.dir}/${ant.project.name}/var/validater"/>
+
+    <copy todir="${target.dir}/${ant.project.name}/var/pollRegistries">
+      <fileset dir="${scripts.dir}" includes="searchable.lis"/>
+    </copy>
+
+    <tar destfile="${target.dir}/${ant.project.name}.tar">
+      <tarfileset dir="${target.dir}/${ant.project.name}" 
+		  prefix="${ant.project.name}"
+		  excludes="bin,cgi-in,html/registries.xml,conf/identity.xml"/>
+      <tarfileset dir="${target.dir}/${ant.project.name}/bin" 
+		  prefix="${ant.project.name}/bin"
+		  filemode="755"/>
+      <tarfileset dir="${target.dir}/${ant.project.name}/cgi-bin" 
+		  prefix="${ant.project.name}/cgi-bin"
+		  filemode="755"/>
+    </tar>
+
+    <exec executable="tar"
+	  failonerror="true">
+      <arg value="-uf"/>
+      <arg value="${target.dir}/${ant.project.name}.tar"/>
+      <arg value="-C"/>
+      <arg value="${target.dir}/"/>
+      <arg value="${ant.project.name}/html/registries.xml"/>
+    </exec>
+
+    <exec executable="tar"
+	  failonerror="true">
+      <arg value="-uf"/>
+      <arg value="${target.dir}/${ant.project.name}.tar"/>
+      <arg value="-C"/>
+      <arg value="${target.dir}/"/>
+      <arg value="${ant.project.name}/conf/identity.xml"/>
+    </exec>
+
+  </target>
+</project>

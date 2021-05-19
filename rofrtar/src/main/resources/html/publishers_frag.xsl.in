@@ -1,0 +1,40 @@
+<!--
+  -  a stylesheet for formatting a list of registries
+  -->
+<xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
+                xmlns:vr="http://www.ivoa.net/xml/VOResource/v1.0" 
+                xmlns:ri="http://www.ivoa.net/xml/RegistryInterface/v1.0"
+                xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                version="1.0">
+
+   <xsl:output method="html" encoding="UTF-8" />
+
+   <xsl:variable name="rofroai"
+                 select="'@rofr_base_url@/cgi-bin/oai.pl'"/>
+
+   <xsl:template match="/">
+      <xsl:apply-templates select="." mode="div"/>
+   </xsl:template>
+   
+   <xsl:template match="/" mode="div">
+<div>
+<dl>
+<xsl:apply-templates select="//ri:Resource[*[name()='capability'][@standardID='ivo://ivoa.net/std/Registry' and
+                                 contains(@xsi:type,':Harvest')]]" />
+</dl>
+</div>
+   </xsl:template>
+
+   <xsl:template match="ri:Resource">
+
+  <dt> <a href="{normalize-space(*[name()='content']/*[name()='referenceURL'])}"><xsl:value-of select="*[name()='title']"/></a> </dt>
+  <dd> <strong>IVOA Identifier: </strong> 
+       <a href="{$rofroai}?verb=GetRecord&amp;metadataPrefix=ivo_vor&amp;identifier={identifier}"><xsl:value-of select="*[name()='identifier']"/></a> <br />
+       <strong>OAI service endpoint: </strong> 
+       <xsl:value-of
+       select="*[name()='capability'][@standardID='ivo://ivoa.net/std/Registry' and 
+                          contains(@xsi:type,':Harvest')]/*[name()='interface'][contains(@xsi:type,':OAIHTTP')]/*[name()='accessURL'][1]"/> </dd> <p></p>
+
+   </xsl:template>
+
+</xsl:stylesheet>

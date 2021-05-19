@@ -1,0 +1,196 @@
+<html> <head>
+  <title>Registry Harvesting Validater</title>
+  <script type="text/javascript" src="MochiKit.js" ></script>
+  <script type="text/javascript">
+var ninputs = 2;
+var maxinputs = 10;
+
+function addInput(type) {
+    var tmplid = type + "tmpl";
+    var insertptid = type + "insert";
+    var addid = type + "add";
+
+    if (document.getElementById && ninputs < maxinputs) {
+        var tmpl = document.getElementById(tmplid);
+        if (tmpl) {
+            var inp = tmpl.cloneNode(true);
+            inp.attributes.id="";
+            inp.style.display="inline";
+
+            var insertpt = document.getElementById(insertptid);
+            if (insertpt) {
+                insertpt.appendChild(inp);
+                ninputs += 1;
+            }
+            else {
+                logError("Missing input insert point");
+            }
+
+            if (ninputs >= maxinputs) {
+                var addnode = document.getElementById("fileadd");
+                if (addnode) {
+                    addnode.style.display = "none";
+                }
+                else {
+                    logError("Missing input add link");
+                }
+                addnode = document.getElementById("urladd");
+                if (addnode) {
+                    addnode.style.display = "none";
+                }
+                else {
+                    logError("Missing input add link");
+                }
+            }
+        }
+        else {
+            logError("Missing input template");
+        }
+    }
+    else {
+        logError("Missing document interface");
+    }
+}
+
+function addFileInput() {
+    addInput("file");
+}
+
+function addURLInput() {
+    addInput("url");
+}
+  </script>
+
+
+  <style type="text/css">
+<!--
+.tiny {FONT-SIZE: 7pt;}
+-->
+  </style>
+  <link href="ivoa_rofr.css" rel="stylesheet" type="text/css"/>
+  <link href="tp.css" rel="stylesheet" type="text/css"/>
+</head>
+<body>
+
+<center>
+<table width="100%">
+  <tr>
+    <td>
+      <font class="titleText"><b>I</b>nternational &nbsp;<b>V</b>irtual &nbsp;<b>O</b>bservatory &nbsp;<b>A</b>lliance</font><br />
+      <font class="titleText" style="font-size: 18pt; font-weight: 600">
+      <a name="rofr" title="IVOA Registry of Registries" 
+         class="titleText">IVOA Registry of Registries</a>
+      </font><br /><br />
+
+      <table cellspacing="0" cellpadding="0" border="0" width="100%">
+        <tr>
+          <!-- the local links -->
+          <td class="rollcall"><a href="http://www.ivoa.net/Documents/latest/RegistryInterface.html">Registry Interfaces Spec.</a></td>
+          <td class="rollcall"><a href="http://www.openarchives.org/OAI/openarchivesprotocol.html">OAI-PMH Spec.</a></td>
+          <td class="rollcall"><a href="http://www.ivoa.net/Documents/latest/VOResource.html">VOResource Spec.</a></td>
+        </tr>
+      </table>
+    </td>
+    <td>
+      <a href="/"><img src="IVOA_wb_300.jpg" width="150" 
+         height="85" border="0" alt="ivoa.net" /></a>
+    </td>
+  </tr>
+</table>
+</center>
+
+
+<!-- =======================================================================
+  -  Page Content
+  -  ======================================================================= -->
+
+<h1>Validate a VOResource Record </h1>
+
+<div id="instructions">
+<p>
+This page allows you to check individual VOResource records for their
+compliance to the
+<a href="http://www.ivoa.net/Documents/latest/VOResource.html">IVOA
+VOResource specification</a>.  In addition to validating records
+against the <a href="http://www.ivoa.net/xml/">XML Schemas</a> they
+invoke, it does additional checks further recommended by the
+<a href="http://www.ivoa.net/Documents/latest/VOResource.html">VOResource
+specification</a> and its standard extensions.  This form will allow up to 
+ten files to be checked at once.  
+</p>
+</div>
+
+<form action="/regvalidate/VOResourceValidater" enctype="multipart/form-data"
+      method="POST" name="validateForm" id="validate">
+      
+
+<p>
+Use the "Browse" button to enter the name of a local VOResource
+document to check.   <br />
+<span id="file"></span>
+<input type="file" name="record" size="60" />
+<span id="filetmpl" style="display: none;">
+<br /><input type="file" name="record" size="60" />
+</span>
+<span id="fileinsert"></span>
+<span id="fileadd">
+<br /><a href="" onclick="addFileInput();return false">Add addition file...</a>
+</span>
+</p>
+
+<p>
+<i>OR</i>
+</p>
+
+<p>
+Enter the URL of a VOResource document available on the network to check <br />
+<span id="url"></span>
+URL: <input type="text" name="recordURL" size="90" />
+<span id="urltmpl" style="display: none;">
+<br />URL: <input type="text" name="recordURL" size="90" />
+</span>
+<span id="urlinsert"></span>
+<span id="urladd">
+<br /><a href="" onclick="addURLInput();return false">Add addition URL...</a>
+</span>
+</p>
+
+<p>
+Results Format:  <select name="format">
+    <option selected value="html">HTML</option>
+    <option value="xml">XML</option>
+</select> <br />
+Include in the output:  <span id="checkShow"></span><br />
+<input type="checkbox" name="show" value="fail" checked="true" />
+   Failures (Compliance Errors) &nbsp;&nbsp;
+<input type="checkbox" name="show" value="warn" checked="true" />
+   Warnings &nbsp;&nbsp;
+<input type="checkbox" name="show" value="rec" checked="true" />
+   Recommendations &nbsp;&nbsp;
+<input type="checkbox" name="show" value="pass" />
+   Passed Tests &nbsp;&nbsp; <br />
+</p>
+
+
+<input type="submit" value="validate" />
+<span style="visibility: hidden">XXXXX</span>
+<input type="reset" value="reset" id="cancel"/>
+
+</form>
+
+
+
+
+<!-- =======================================================================
+  -  End Page Content
+  -  ======================================================================= -->
+
+<hr noshade>
+  <footer>
+    <address>
+      <p>
+	For support, please contact <a href="mailto:@rofr_email@">@rofr_email@</a>
+      </p>
+    </address>
+  </footer>
+</body> </html>

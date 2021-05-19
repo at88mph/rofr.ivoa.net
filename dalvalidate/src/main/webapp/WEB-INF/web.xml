@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE web-app
+          PUBLIC "-//Sun Microsystems, Inc.//DTD Web Application 2.3//EN"
+          "http://java.sun.com/dtd/web-app_2_3.dtd">
+<web-app>
+
+   <servlet>
+      <servlet-name>ConeSearchValidater</servlet-name>
+      <servlet-class>org.nvo.conesearch.validate.ConeSearchValidaterWebApp</servlet-class>
+   </servlet>
+
+   <servlet>
+      <servlet-name>SIAValidater</servlet-name>
+      <servlet-class>org.nvo.sia.validate.SIAValidaterWebApp</servlet-class>
+   </servlet>
+
+   <servlet>
+      <servlet-name>SSAValidater</servlet-name>
+      <servlet-class>org.nvo.ssa.validate.SSAValidaterWebApp</servlet-class>
+   </servlet>
+
+   <servlet>
+      <servlet-name>SLAValidater</servlet-name>
+      <servlet-class>org.nvo.sla.validate.SLAValidaterWebApp</servlet-class>
+   </servlet>
+
+   <servlet>
+      <servlet-name>HarvestValidater</servlet-name>
+      <servlet-class>net.ivoa.registry.validate.HarvestValidaterWebApp</servlet-class>
+   </servlet>
+
+   <servlet-mapping>
+      <servlet-name>ConeSearchValidater</servlet-name>
+      <url-pattern>/ConeSearchValidater</url-pattern>
+   </servlet-mapping>
+
+   <servlet-mapping>
+      <servlet-name>SIAValidater</servlet-name>
+      <url-pattern>/SIAValidater</url-pattern>
+   </servlet-mapping>
+
+   <servlet-mapping>
+      <servlet-name>SSAValidater</servlet-name>
+      <url-pattern>/SSAValidater</url-pattern>
+   </servlet-mapping>
+
+   <servlet-mapping>
+      <servlet-name>SLAValidater</servlet-name>
+      <url-pattern>/SLAValidater</url-pattern>
+   </servlet-mapping>
+
+   <servlet-mapping>
+      <servlet-name>HarvestValidater</servlet-name>
+      <url-pattern>/HarvestValidater</url-pattern>
+   </servlet-mapping>
+</web-app>

@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<ri:Resource xmlns:ri="http://www.ivoa.net/xml/RegistryInterface/v1.0" xmlns:vg="http://www.ivoa.net/xml/VORegistry/v1.0" xmlns:vr="http://www.ivoa.net/xml/VOResource/v1.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" created="2018-01-09T00:00:00" status="active" updated="2018-01-09T00:00:00" xsi:schemaLocation="http://www.ivoa.net/xml/VOResource/v1.0 http://www.ivoa.net/xml/VOResource/v1.0                                  http://www.ivoa.net/xml/VORegistry/v1.0 http://www.ivoa.net/xml/VORegistry/v1.0" xsi:type="vg:Registry">
+   
+ 
+  <title>Heasarc Publishing Registry</title>
+  <shortName>HEASARC</shortName>
+  <identifier>ivo://nasa.heasarc/registry</identifier>
+  <curation>
+      <publisher ivo-id="ivo://nasa.heasarc/ASD">NASA/GSFC HEASARC</publisher>
+      <creator>
+         <name>Thomas McGlynn</name>
+      </creator>
+      <contributor/>
+      <date>2018-01-04</date>
+      <contact>
+         <name>Thomas A. McGlynn</name>
+         <email>request@athena.gsfc.nasa.gov</email>
+      </contact>
+  </curation>
+  
+  <content>
+      <subject/>
+      <description> This registry is the definitive source for HEASARC Virtual Observatory
+       metadata.  It is not intended for direct use by user applications but
+       for harvest by other registries.                   
+      </description>
+      <referenceURL>https://heasarc.gsfc.nasa.gov</referenceURL>
+      <contentLevel>General</contentLevel>   
+  </content>
+
+  <capability standardID="ivo://ivoa.net/std/Registry" xsi:type="vg:Harvest">
+
+   
+     <interface role="std" version="1.0" xsi:type="vg:OAIHTTP">
+        <accessURL use="base">https://heasarc.gsfc.nasa.gov/cgi-bin/OAI2/XMLFile/nvo/oai.pl</accessURL>   
+      </interface>
+
+     <maxRecords>0</maxRecords>
+  </capability>
+   
+ 
+     <full>true</full>
+     <managedAuthority>authority</managedAuthority>
+     <managedAuthority>nasa.heasarc</managedAuthority>
+</ri:Resource>

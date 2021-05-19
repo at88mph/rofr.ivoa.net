@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<config service="Registry" timeout="240000" name="validationService">
+
+    <!--
+      -  provide stylesheets for displaying test results
+      -->
+    <resultStylesheet format="html">Results-VOResource-html.xsl</resultStylesheet>
+
+<!--    <cacheHome>/tmp/rofr</cacheHome>  -->
+    <cacheHome>@rofr_home@/var/validater</cacheHome>
+
+    <names>
+      <recordElem>testQuery</recordElem>
+      <rootElem>VOResourceValidation</rootElem>
+    </names>
+
+    <limits>
+      <fileSizeThreshold>10000</fileSizeThreshold>
+      <maxFileSize>15000000</maxFileSize>
+      <maxRequestSize>20000000</maxRequestSize>
+      <maxNumFiles>10</maxNumFiles>
+    </limits>
+
+    <!-- 
+      -  provide stylesheet information for checkers that use XSL to 
+      -  test the XML results from a service.  
+      - 
+      -  The type="xsl" marks this as specifically configuring an 
+      -  XSLEvaluator object.
+      -->
+    <evaluator name="voresource" type="xsl">
+
+       <!--
+         - a directory to find the stylesheets below in.  If not provided,
+         - stylesheets will be expected to be found as resourses.
+       <stylesheetDir>conf/tests</stylesheetDir>
+         -->
+
+       <!--
+         -  list the stylesheets needed.  
+         -
+         -  The resultType is a key representing a particular xml format for 
+         -  the service response.  The XSL evaluator will look at the 
+         -  leading characters from the response to determine which format 
+         -  it is.  The keys, therefore, are specific to the service or at 
+         -  least to the response standard.  
+         -->
+       <stylesheet responseType="v1.0">checkVOResource.xsl</stylesheet>
+
+       <!--
+         -  the responseType to assume if the response is not recognized as
+         -  one of the types configured above <stylesheet>.  We're setting 
+         -  this explicitly because we'll be using the XSLEvaluator class 
+         -  directly.
+         -->
+       <defaultResponseType>v1.0</defaultResponseType>
+
+    </evaluator>
+
+</config>

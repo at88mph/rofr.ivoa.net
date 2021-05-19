@@ -1,0 +1,93 @@
+OAI Repository Explorer
+=======================
+
+version 1.0-1.1
+
+Hussein Suleman <hussein@vt.edu>
+Virginia Tech - Digital Library Research Laboratory
+
+20 April 2001
+
+---------------------------------------------------
+
+Contents
+========
+
+1. About
+2. Installation
+3. Usage
+4. Parameters
+
+---------------------------------------------------
+
+1. About
+
+The Repository Explorer is a software tool to help programmers
+achieve compliance with the Open Archives Initiative's
+(www.openarchives.org) Metadata Harvesting Protocol.
+
+It is usually accessible through http://purl.org/net/oai_explorer
+but if you wish to you may install it locally.
+
+It has been developed and therefore tested on RH-Linux 6.2
+
+---------------------------------------------------
+
+2. Installation
+
+Before installing the software you need the following installed:
+- 'expat' (www.jclark.com) 
+   (not libexpat from sourceforge but the older version)
+- 'xsv' (dev.w3.org/cvsweb/xmlschema/)
+   (no guarantees it will work with the current version)
+- 'perl' (www.cpan.org)
+- the perl module 'lib-www-perl' aka LWP (www.cpan.org)
+- 'python' (www.python.org)
+- 'ltxml' and 'pyltxml' (www.ltg.ed.ac.uk/software/xml/index.html)
+
+Note: to avoid version problems, expat and xsv are being
+packaged with the distribution files
+
+For the base package you need to do the following:
+- unpack the installation file
+- edit config.c
+- edit lynx.pl to make sure the perl path is correct
+- run 'make'
+
+---------------------------------------------------
+
+3. Usage
+
+(if everything is configured properly, all files should be in 
+their correct places already)
+
+Install all executables (testoai, addarchive, comply)
+into the directories specified in the configuration file
+
+Install all support files:
+- predef : list of predefined archives
+- sfcmeta : OAI standard metadata formats
+- userlog : log of OAI urls requested
+- *.lan : language files
+- lynx.pl : lynx replacement to simulate HTTP   
+
+---------------------------------------------------
+
+4. Parameters
+
+The online script can take URL parameters in addition to
+them being issued through the interactive interface
+
+These parameters are:
+   archive = base OAI URL of archive
+   language = language file (eg. es.lan)
+   bgcolor = background color (eg. aaffaa)
+   headercolor = background color of headings
+   blockcolor = background color of options
+   verb = OAI service request
+   display = (parsed|raw|both)
+   validation = (none|local|online)
+   ... plus all standard OAI parameters
+
+---------------------------------------------------
+
