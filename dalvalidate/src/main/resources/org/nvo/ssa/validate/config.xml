@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<config service="SSA" timeout="240000" name="validationService">
+
+    <!--
+      -  provide stylesheets for displaying test results
+      -->
+    <resultStylesheet format="html">Results-SSA-html.xsl</resultStylesheet>
+    <resultStylesheet format="text">Results-SSA-text.xsl</resultStylesheet>
+    <!-- 
+      -  provide a name for the test query result elements.  If not set, a 
+      -  default set by the stylesheet will be used.
+      -->
+    <queryRoot>testQuery</queryRoot>
+
+    <!-- 
+      -  provide a name for the root result element.  If not set, a 
+      -  default set by the code.
+      -->
+    <resultRoot>SSAValidation</resultRoot>
+
+    <!-- 
+      -  provide stylesheet information for checkers that use XSL to 
+      -  test the XML results from a service.  
+      - 
+      -  The type="xsl" marks this as specifically configuring an 
+      -  XSLEvaluator object.
+      -->
+    <evaluator name="xsl" type="xsl">
+
+       <!--
+         - a directory to find the stylesheets below in.  If not provided,
+         - stylesheets will be expected to be found as resourses.
+       <stylesheetDir>config</stylesheetDir>
+         -->
+
+       <!--
+         -  list the stylesheets needed.  
+         -
+         -  The resultType is a key representing a particular xml format for 
+         -  the service response.  The XSL evaluator will look at the 
+         -  leading characters from the response to determine which format 
+         -  it is.  The keys, therefore, are specific to the service or at 
+         -  least to the response standard.  
+         -
+         -  "Simple" VO services (Conesearch, SIA, etc.) return VOTables in 
+         -  one of three flavors.  
+         -->
+       <stylesheet responseType="dtd">checkSSA.xsl</stylesheet>
+       <stylesheet responseType="v1.0">checkSSA-v1_0.xsl</stylesheet>
+       <stylesheet responseType="v1.1">checkSSA-v1_1.xsl</stylesheet>
+       <stylesheet responseType="v1.2">checkSSA-v1_2.xsl</stylesheet>
+       <stylesheet responseType="v1.3">checkSSA-v1_3.xsl</stylesheet>
+
+       <!--
+         -  the responseType to assume if the response is not recognized as
+         -  one of the types configured above <stylesheet>.  Normally one does
+         -  not set this unless trying to use the XSLEvaluator class directly,
+         -  which is not able to recognize any response type.  
+         -
+         -->
+       <defaultResponseType>dtd</defaultResponseType>
+
+    </evaluator>
+
+    <!-- 
+      -  list the querys to run against the service.  The type="httpget" 
+      -  attribute indicates this are handled by HTTPGetTestQuery 
+      -  implementations.
+      -->
+    <testQuery name="httpget" type="httpget">
+
+        <!--
+          -  The content of the query element in the httpget context 
+          -  is the argument string to be appended to the service's base URL
+          -  (assuming the base URL ends with either a '?' or ampersand).  
+          -
+          -  The type attribute is a identifier that is used by the tester
+          -  indicate what kind of content to expect in the response.  For 
+          -  XSL based queries, these are passed in as parameters to the 
+          -  stylesheet to indicate what tests to apply.
+          -
+          -  The name can be used as an application specific lookup.  The
+          -  description is a short sentence indicating anything about the 
+          -  query.  
+          -->
+        <query name="optional" type="region">
+           POS=270,13&amp;SIZE=0.25&amp;FORMAT=ALL
+        </query>
+        <query name="user input error" type="error">
+           POS=as3f,13.0&amp;SIZE=0.25
+        </query>
+        <query name="metadata" type="metadata">
+           FORMAT=METADATA
+        </query>
+    </testQuery>
+</config>

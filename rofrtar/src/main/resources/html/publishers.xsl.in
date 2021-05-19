@@ -1,0 +1,90 @@
+<!--
+  -  a stylesheet for formatting a list of registries
+  -->
+<xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
+                xmlns:vr="http://www.ivoa.net/xml/VOResource/v1.0" 
+                xmlns:ri="http://www.ivoa.net/xml/RegistryInterface/v1.0"
+                xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                version="1.0">
+
+   <xsl:import href="publishers_frag.xsl" />
+
+   <xsl:output method="html" encoding="UTF-8" />
+
+   <xsl:template match="/">
+<html> 
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>RofR: IVOA Registry of Registries</title>
+  
+  
+<link type="text/css" rel="stylesheet" href="/ivoa_rofr.css" />
+<!-- <link type="text/css" rel="stylesheet" href="tp.css" /> -->
+
+</head>
+<body>
+
+<center>
+<table width="100%" border="0">
+  <tr>
+    <td>
+      <font class="titleText"><b>I</b>nternational
+      <span style="visibility: hidden">i</span>
+      <b>V</b>irtual 
+      <span style="visibility: hidden">i</span>
+      <b>O</b>bservatory 
+      <span style="visibility: hidden">i</span><b>A</b>lliance</font><br />
+      <font class="titleText" style="font-size: 18pt; font-weight: 600">
+      <a name="rofr" title="IVOA Registry of Registries" 
+         class="titleText">IVOA Registry of Registries</a>
+      </font><br /><br />
+    </td>
+    <td align="right">
+      <a href="/"><img src="/IVOA_wb_300.jpg" width="150" 
+         height="85" border="0" alt="ivoa.net" /></a>
+    </td>
+  </tr>
+  <tr>
+    <td colspan="2">
+      <table cellspacing="0" cellpadding="0" border="0" width="100%">
+        <tr>
+          <!-- the local links -->
+          <td class="rollcall">
+            <a href="@rofr_base_url@/regvalidate/regvalidate.html">Register/Validate a Registry</a>
+</td>
+          <td class="rollcall"><a href="http://www.ivoa.net/cgi-bin/twiki/bin/view/IVOA/IvoaResReg/RegistryGuide">Guide for Registry Providers</a></td>
+          <td class="rollcall"><a href="http://www.ivoa.net/cgi-bin/twiki/bin/view/IVOA/IvoaResReg/RegistrySpecs">Registry Specifications</a></td>
+          <td class="rollcall"><a href="http://www.ivoa.net/cgi-bin/twiki/bin/view/IVOA/IvoaResReg">IVOA Registry Working Group</a></td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+</center>
+
+<!-- =======================================================================
+  -  Page Content
+  -  ======================================================================= -->
+
+<h1>Publishing Registries</h1>
+
+These publishing registries have successfully register with the RofR
+after a full validation. These are the registries that the full
+searchable registries are pulling records from.  
+
+      <xsl:apply-templates select="." mode="div"/>
+
+<!-- =======================================================================
+  -  End Page Content
+  -  ======================================================================= -->
+
+
+</body>
+
+</html>
+
+
+   </xsl:template>
+   
+
+</xsl:stylesheet>

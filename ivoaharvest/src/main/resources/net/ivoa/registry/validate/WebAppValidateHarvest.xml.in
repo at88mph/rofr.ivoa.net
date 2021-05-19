@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<config service="Registry" timeout="240000" name="validationService">
+
+    <!--
+      -  provide stylesheets for displaying test results
+      -->
+    <resultStylesheet format="html">Results-Harvest-html.xsl</resultStylesheet>
+
+<!--    <cacheHome>/tmp/rofr</cacheHome>  -->
+    <cacheHome>@rofr_home@/var/validater</cacheHome>
+    <cleanCache>true</cleanCache>
+
+    <!-- localhost? with port-->
+    <registerURL>http://rofr.ivoa.net:@server_port@/cgi-bin/register.pl?ashtml=1&amp;runid=</registerURL>
+
+    <names>
+      <testQueryElem>testQuery</testQueryElem>
+      <RIValRootElem>RegistryValidation</RIValRootElem>
+    </names>
+
+    <!-- 
+      -  provide stylesheet information for checkers that use XSL to 
+      -  test the XML results from a service.  
+      - 
+      -  The type="xsl" marks this as specifically configuring an 
+      -  XSLEvaluator object.
+      -->
+    <evaluator name="ivoa" type="xsl">
+
+       <!--
+         - a directory to find the stylesheets below in.  If not provided,
+         - stylesheets will be expected to be found as resourses.
+       <stylesheetDir>conf/tests</stylesheetDir>
+         -->
+
+       <!--
+         -  list the stylesheets needed.  
+         -
+         -  The resultType is a key representing a particular xml format for 
+         -  the service response.  The XSL evaluator will look at the 
+         -  leading characters from the response to determine which format 
+         -  it is.  The keys, therefore, are specific to the service or at 
+         -  least to the response standard.  
+         -->
+       <stylesheet responseType="v1.0">checkIVOAOAI.xsl</stylesheet>
+
+       <!--
+         -  the responseType to assume if the response is not recognized as
+         -  one of the types configured above <stylesheet>.  We're setting 
+         -  this explicitly because we'll be using the XSLEvaluator class 
+         -  directly.
+         -->
+       <defaultResponseType>v1.0</defaultResponseType>
+
+    </evaluator>
+
+    <!-- 
+      -  provide stylesheet information for checkers that use XSL to 
+      -  test the XML results from a service.  
+      - 
+      -  The type="xsl" marks this as specifically configuring an 
+      -  XSLEvaluator object.
+      -->
+    <evaluator name="voresource" type="xsl">
+
+       <!--
+         - a directory to find the stylesheets below in.  If not provided,
+         - stylesheets will be expected to be found as resourses.
+       <stylesheetDir>conf/tests</stylesheetDir>
+         -->
+
+       <!--
+         -  list the stylesheets needed.  
+         -
+         -  The resultType is a key representing a particular xml format for 
+         -  the service response.  The XSL evaluator will look at the 
+         -  leading characters from the response to determine which format 
+         -  it is.  The keys, therefore, are specific to the service or at 
+         -  least to the response standard.  
+         -->
+       <stylesheet responseType="v1.0">checkVOResource.xsl</stylesheet>
+
+       <!--
+         -  the responseType to assume if the response is not recognized as
+         -  one of the types configured above <stylesheet>.  We're setting 
+         -  this explicitly because we'll be using the XSLEvaluator class 
+         -  directly.
+         -->
+       <defaultResponseType>v1.0</defaultResponseType>
+
+    </evaluator>
+
+    <testQuery name="oaiexplorer" type="oaiexplorer">
+
+       <!-- if this command exists, it will be preferred -->
+       <oaiExplorerCmd>
+          @rofr_home@/bin/comply
+       </oaiExplorerCmd>
+
+       <oaiExplorerURL>
+          http://re.cs.uct.ac.za/cgi-bin/Explorer/2.0-1.46/addarchive?language=enus.lan&amp;archiveurl=
+       </oaiExplorerURL>
+
+    </testQuery>
+
+    <!-- 
+      -  list the OAI querys to run against the registry.  The type="httpget" 
+      -  attribute indicates this are handled by HTTPGetTestQuery 
+      -  implementations.
+      -->
+    <testQuery name="httpget" type="httpget">
+
+        <baseURL>http://rofr.ivoa.net:@server_port@/cgi-bin/rofr/oai.pl</baseURL>
+
+        <!--
+          -  The content of the query element in the httpget context 
+          -  is the argument string to be appended to the service's base URL
+          -  (assuming the base URL ends with either a '?' or ampersand).  
+          -
+          -  The type attribute is a identifier that is used by the tester
+          -  indicate what kind of content to expect in the response.  For 
+          -  XSL based queries, these are passed in as parameters to the 
+          -  stylesheet to indicate what tests to apply.
+          -
+          -  The name can be used as an application specific lookup.  The
+          -  description is a short sentence indicating anything about the 
+          -  query.  
+          -->
+        <query name="Identify" type="Identify">
+           verb=Identify
+        </query>
+        <query name="ListMetadataFormats" type="ListMetadataFormats">
+           verb=ListMetadataFormats
+        </query>
+        <query name="ListSets" type="ListSets">
+           verb=ListSets
+        </query>
+        <query name="ListRecords" type="ListRecords">
+           verb=ListRecords&amp;metadataPrefix=ivo_vor&amp;set=ivo_managed
+        </query>
+    </testQuery>
+</config>

@@ -1,0 +1,310 @@
+German
+#
+# Language translation file for Repository Explorer
+# Language: German
+# courtesy of : Jochen Rode, VT-WARD
+#
+#
+HTTP Status
+HTTP Status
+#
+Unexpected HTTP Error
+Unerwarteter HTTP Fehler
+#
+HTTP Status code should be 400
+HTTP Status-Code sollte 400 sein
+#
+XML parsing errors
+XML parsing Fehler
+#
+Testing
+Test
+#
+Test Result
+Test Resultat
+#
+OK
+OK
+#
+FAIL!
+FEHLGESCHLAGEN!
+#
+Metadata Harvesting Protocol
+Metadata Harvesting Protocol
+#
+Protocol Tester
+Protokoll-Tester
+#
+April 2001
+April 2001
+#
+Repository Name
+Datenbankname
+#
+ERROR
+FEHLER
+#
+Repository Name missing !
+Datenbankname fehlt !
+#
+Protocol Version
+Protokollversion
+#
+Protocol Version missing !
+Protokollversion fehlt !
+#
+Base URL
+Basis-URL
+#
+Base URL missing !
+Basis-URL fehlt !
+#
+Admin Email
+Administrator E-mail
+#
+Admin Email missing !
+Administrator E-mail fehlt !
+#
+Sample Metadata Format
+Beispiel Metadaten-Format
+#
+Metadata format missing !
+Metadaten-Format fehlt !
+#
+Sample Set Spec
+Beispiel "Set"-Spezifikation
+#
+Set Resumption Token
+"Set" Wiederaufnahme-Zeichen
+#
+Sample Identifier
+Beispiel-Identifizierer
+#
+Identifier missing !
+Identifizierer fehlt !
+#
+Identifier Resumption Token
+Identifizierer-Wiederaufnahme-Zeichen
+#
+Record Resumption Token
+Datensatz-Wiederaufnahme-Zeichen
+#
+Total Errors
+Fehler insgesamt
+#
+Error
+Fehler
+#
+Illegal tag
+Unerlaubtes "tag"
+#
+Missing field
+Fehlendes Feld
+#
+Text found where tag expected
+Text gefunden, obwohl ein XML-"tag" erwartet wurde
+#
+Tag expected but not found
+XML-"tag" erwartet, aber nicht gefunden
+#
+Only one instance allowed
+nur eine Instanz erlaubt
+#
+Text expected for field but not found
+Text erwartet fuer Feld, aber nicht gefunden
+#
+Archive Self-Description
+Archiv Selbstbeschreibung
+#
+Other Information
+Andere Information
+#
+Resume from
+Fortfahren, beginnend mit
+#
+List of Sets
+"set" Liste
+#
+Click on the link to list the contents
+Bitte auf den Link klicken, um den Inhalt anzuzeigen
+#
+Prefix
+Praefix
+#
+NameSpace
+"NameSpace"
+#
+Schema
+Schema
+#
+Not a standard OAI metadata name
+Kein Standard OAI Metadaten-Name
+#
+display record
+zeige Datensatz
+#
+List of Metadata Formats
+Liste der Metadaten-Formate
+#
+Click on the link to view schema
+Bitte auf den Link klicken, um das Schema anzuzeigen
+#
+display record in Dublin Core
+zeige Datensatz im "Dublin Core" Format
+#
+display metadata formats
+zeige Metadaten-Formate
+#
+List of Record Identifiers
+Liste der Datensatz-Identifizierer
+#
+Select a link to view more information
+Bitte klicken Sie auf einen der Links, um mehr Informationen zu sehen
+#
+List of Fields
+Liste der Felder
+#
+List of Records
+Datensatzliste
+#
+This site presents an interface to interactively test archives for compliance with the OAI Protocol for Metadata Harvesting
+Hier koennen Sie interaktiv die OAI-Kompatibilitaet ihrer Archive verifizieren.
+#
+Click here for details
+Bitte hier klicken um Details zu sehen
+#
+JavaScript is required and Netscape Navigator is recommended
+JavaScript wird benoetigt und Netscape Navigator wird empfohlen
+#
+Note: To avoid HTTP errors, please wait for each page to finish loading before clicking on any link.
+Bemerkung: Um HTTP-Fehler zu vermeiden, warten Sie bitte bis eine Seite fertig geladen ist, bevor Sie auf einen Link klicken
+#
+Please enter the URL to the OAI interface (everything before the ?) or choose a predefined archive from the table
+Bitte geben Sie die URL zu dem OAI Interface ein (alles vor dem "?") oder waehlen sie ein vordefiniertes Archiv aus der Tabelle
+#
+Sorry, you can only view the website for a selected predefined archive
+Sie koennen nur die Web-Site fuer ein ausgewaehltes vordefiniertes Archive anschauen
+#
+View Archive Website
+Archive Web-Site anzeigen
+#
+Test and Add an archive to this list
+Testen und hinzufuegen eines Archives zu dieser Liste
+#
+Repository Explorer
+"Repository" Verwaltung
+#
+explorer version
+"Explorer" Version
+#
+protocol version
+Protokollversion
+#
+Archive details
+Archivdetails
+#
+Verbs
+Verben
+#
+Parameters
+Parameter
+#
+Display
+Anzeigen
+#
+Schema Validation
+Schema-Validierung
+#
+Parsed
+"Parsed"
+#
+Raw XML
+Roh-XML
+#
+Both
+Beide
+#
+None
+Keine
+#
+Local mirror of schemata
+Lokaler Spiegel der Schemata
+#
+Online schemata
+Online Schemata
+#
+home
+Home
+#
+Send all comments to
+Bitte senden Sie alle Kommentare an
+#
+Digital Libraries Research Laboratory
+Forschungslabor fuer digitale Bibliotheken
+#
+HTTP Status Code
+HTTP Status-Code
+#
+HTTP Error Message
+HTTP Fehlernachricht
+#
+Parsed Output
+"Parsed" Ausgabe
+#
+Raw XML Output
+Roh-XML Ausgabe
+#
+XSD Schema/Instance Validation Error !
+XSD Schema/Instanz Validierungsfehler !
+#
+missing !
+fehlt !
+#
+Request URL
+Anfrage-URL
+#
+Response Date
+Antwortsdatum
+#
+Test and Add an archive
+Testen und hinzufuegen eines Archives
+#
+Please note that these tests are neither definitive nor exhaustive
+Bitte nehmen Sie zur Kenntnis, dass diese Tests weder definitiv noch erschoepfend sind
+#
+They serve not as a proof of correctness of implementation, but rather indicate possible errors if they exist
+Sie dienen nicht als Beweise fuer eine perfekte Implementation, sondern zeigen eher moegliche Fehler auf, falls welche existieren
+#
+If you have any questions please contact the author at the address below
+Wenn Sie irgendwelche Fragen haben, kontaktieren Sie bitte den Autor unter der folgenden Adresse
+#
+Enter the base URL of the archive
+Geben Sie die Basis URL des Archivs ein
+#
+Test the archive
+Archiv testen
+#
+Congratulations !
+Gratulation !
+#
+Your archive satisfied all the tests we performed
+Ihr Archiv hat alle unserer Tests bestanden
+#
+You may now add it to the list of archives on the front page if you wish by filling in the following additional details
+Sie koennen es jetzt zu der Liste der Archive auf der Home page hinzufuegen, wenn Sie das folgende Formular ausfuellen
+#
+Base URL of Archive
+Basis URL des Archivs
+#
+Name of Archive
+Name des Archivs
+#
+Archive website
+Archiv Web-Site
+#
+Submit Archive to List
+Archiv zur Liste hinzufuegen
+#
+Thank You ! Your archive has been added
+Vielen Dank! Ihr Archiv wurde hinzugefuegt.
+

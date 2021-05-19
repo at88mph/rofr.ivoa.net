@@ -1,0 +1,17 @@
+#! /bin/sh
+
+# This Bourne shell script will start the httpd daemon 
+#
+# The first argument is the full path of the httpd.conf of the Apache server
+# to be restarted.  The second argument is the full path of the 
+# httpd binary, e.g.
+#
+# start_arcpub /export/httpd-2.4.2/bin/httpd /export/pnh/www_rofr/conf/httpd.conf
+ 
+HTTPD_BINARY=$1
+HTTPD_CONF=$2
+
+# export LD_LIBRARY_PATH=/export/BerkeleyDB.5.3/lib:/export/apr-1.4.6/lib:/export/apr-util-1.4.1/lib:/export/pcre-8.30/lib:/export/neon-0.29.6/lib
+export LD_LIBRARY_PATH=/export/BerkeleyDB.5.3/lib:"$LD_LIBRARY_PATH"
+
+$HTTPD_BINARY -f $HTTPD_CONF

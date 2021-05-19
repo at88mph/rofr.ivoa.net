@@ -1,0 +1,38 @@
+<?xml version="1.0"?>
+<project name="rofr-identities-harvesting"
+	 default="build-console-application"
+	 basedir="."
+	 xmlns:ivy="antlib:org.apache.ivy.ant">
+
+
+    
+  <target name="build-console-application"
+	  description="build the registry harvesting console application as an uber-jar ">
+      <ant antfile="${basedir}/util/build.xml"
+           inheritall="false"
+           target="install"/>    
+
+      <ant antfile="${basedir}/main/build.xml"
+           inheritall="false"
+           target="package-uberjar"/>
+      <echo message="${line.separator}${line.separator}${line.separator}"/>
+      <echo message="The uberjar is available at ${basedir}/main/target/rofr-identities-harvesting-uber.jar"/>
+      <echo message="${line.separator}${line.separator}${line.separator}"/>
+  </target>
+
+  <target name="clean">
+      <ant antfile="${basedir}/util/build.xml"
+           inheritall="false"
+           target="clean"/>    
+
+      <ant antfile="${basedir}/main/build.xml"
+           inheritall="false"
+           target="clean"/>
+  </target>
+
+  <target name="install">
+      <echo message="dummy [install] target in the [${ant.project.name}] project (does nothing for the time being)"/>
+  </target>
+
+
+</project>

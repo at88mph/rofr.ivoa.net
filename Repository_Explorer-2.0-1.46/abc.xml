@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<OAI-PMH xmlns="http://www.openarchives.org/OAI/2.0/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.openarchives.org/OAI/2.0/ http://www.openarchives.org/OAI/2.0/OAI-PMH.xsd">
+  <responseDate>2005-07-19T15:59:59Z</responseDate>
+  <request verb="Identify">http://webster.cs.wlu.edu/metadata/service_requests.aspx</request>
+  <Identify>
+    <repositoryName>Alsos Digital Library for Nuclear Issues</repositoryName>
+    <baseURL>http://alsos.wlu.edu/service_requests.aspx</baseURL>
+    <protocolVersion>2.0</protocolVersion>
+    <adminEmail>whaleyt@wlu.edu</adminEmail>
+    <adminEmail>settlef@wlu.edu</adminEmail>
+    <earliestDatestamp>2002-07-31</earliestDatestamp>
+    <deletedRecord>transient</deletedRecord>
+    <granularity>YYYY-MM-DD</granularity>
+    <description>
+      <oai-identifier xmlns="http://www.openarchives.org/OAI/2.0/oai-identifier" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.openarchives.org/OAI/2.0/oai-identifier http://www.openarchives.org/OAI/2.0/oai-identifier.xsd">
+        <scheme>oai</scheme>
+        <repositoryIdentifier>alsos.wlu.edu</repositoryIdentifier>
+        <delimiter>:</delimiter>
+        <sampleIdentifier>oai:alsos.wlu.edu:1</sampleIdentifier>
+      </oai-identifier>
+    </description>
+  </Identify>
+</OAI-PMH>

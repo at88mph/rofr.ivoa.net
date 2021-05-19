@@ -1,0 +1,23 @@
+#! /usr/bin/env python
+#
+import urllib2
+import sys
+import re
+
+xmldeclre = re.compile("<\\?xml [^\\?]+\\?>")
+
+oaiurl = "@rofr_base_url@/cgi-bin/oai.pl"
+listRecords = \
+    oaiurl + "?verb=ListRecords&metadataPrefix=ivo_vor&set=ivoa_publishers"
+
+line = None
+lr = urllib2.urlopen(listRecords)
+
+sys.stdout.write("Content-type: application/xml\n\n")
+
+for line in lr:
+    sys.stdout.write(line);
+    if xmldeclre.search(line):
+        sys.stdout.write('<?xml-stylesheet type="text/xsl" ')
+        sys.stdout.write('href="/rofr.xsl"?>\n')
+

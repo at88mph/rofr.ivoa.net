@@ -1,0 +1,210 @@
+<?xml version="1.0"?>
+<project xmlns:ivy="antlib:org.apache.ivy.ant"
+         name="common">
+
+  <dirname  property="common.basedir" file="${ant.file.common}"/>
+  <property name="lib.dir" value="${basedir}/lib"/>
+  <property name="src.dir" value="${basedir}/src"/>
+  <property name="main.dir" value="${src.dir}/main"/>
+  <property name="test.dir" value="${src.dir}/test"/>
+  <property name="java.dir" value="${main.dir}/java"/>
+  <property name="resources.dir" value="${main.dir}/resources"/>
+  <property name="webapp.dir" value="${main.dir}/webapp"/>
+  <property name="scripts.dir" value="${main.dir}/scripts"/>
+  <property name="test.java.dir" value="${test.dir}/java"/>
+  <property name="target.dir" value="${basedir}/target"/>
+  <property name="classes.dir" value="${target.dir}/classes"/>
+  <property name="test.classes.dir" value="${target.dir}/test-classes"/>
+  <property name="test.reports.dir" value="${target.dir}/test-reports"/>
+
+  <property name="overwrite.deploy" value="false"/>
+
+  <!-- Use team developer's area for ivy cache and local repository -->
+  <condition property="ivy.default.ivy.user.dir" 
+	     value="/data/rofr/devel/${user.name}/ivy">
+    <isfileselected file="/data/rofr/devel/${user.name}/ivy">
+      <type type="dir"/>
+    </isfileselected>
+  </condition>
+
+  <target name="initialize"
+	  description="Initialize build state">
+    <mkdir dir="${lib.dir}"/>
+    <mkdir dir="${lib.dir}/compile"/>
+    <mkdir dir="${lib.dir}/provided"/>
+    <mkdir dir="${lib.dir}/runtime"/>
+    <mkdir dir="${test.java.dir}"/>
+    <mkdir dir="${target.dir}"/>
+    <mkdir dir="${target.dir}/classes"/>
+    <mkdir dir="${target.dir}/test-classes"/>
+    <mkdir dir="${target.dir}/test-reports"/>
+  </target>
+
+  <target name="resolve"
+	  description="Initialize build state"
+	  depends="ivy-init">
+    <ivy:retrieve pattern="${lib.dir}/[conf]/[artifact](-[classifier]).[ext]"/>
+  </target>
+
+  <target name="compile"
+	  description="Compile source code"
+	  depends="initialize, resolve">
+    <javac srcdir="${java.dir}"
+	   destdir="${classes.dir}"
+	   debug="true"
+	   includeantruntime="false">
+      <classpath>
+	<fileset dir="${lib.dir}/compile"/>
+	<fileset dir="${lib.dir}/provided"/>
+      </classpath>
+    </javac>
+  </target>
+
+  <target name="test-compile"
+	  description="Compile unit test source code"
+	  depends="compile">
+    <javac srcdir="${test.java.dir}"
+	   destdir="${test.classes.dir}"
+	   debug="true"
+	   includeantruntime="false">
+      <classpath>
+	<pathelement location="${classes.dir}"/>
+	<fileset dir="${lib.dir}/compile"/>
+	<fileset dir="${lib.dir}/provided"/>
+	<fileset dir="${lib.dir}/test"/>
+      </classpath>
+    </javac>
+  </target>
+
+  <target name="test"
+	  description="Run unit tests"
+	  depends="test-compile">
+      <junit printsummary="yes"
+             dir="${basedir}"
+	   haltonfailure="yes">
+      <classpath>
+	<pathelement path="${classes.dir}"/>
+	<pathelement path="${test.classes.dir}"/>
+	<fileset dir="${lib.dir}/runtime"/>
+	<fileset dir="${lib.dir}/test"/>
+      </classpath>
+      
+      <formatter type="plain"/>
+      
+      <batchtest fork="yes" todir="${test.reports.dir}">
+	<fileset dir="${test.java.dir}"/>
+      </batchtest>
+    </junit>
+  </target>
+
+  <target name="package"
+	  description="Package code for distribution"
+	  depends="package-jar,package-zip">
+  </target>
+
+  <target name="package-jar"
+	  description="Package code for distribution"
+	  depends="test">
+    <jar destfile="${target.dir}/${ant.project.name}.jar">
+      <fileset dir="${classes.dir}"/>
+      <fileset dir="${resources.dir}" erroronmissingdir="false"/>
+    </jar>
+  </target>
+
+  <target name="package-uberjar"
+          description="Package an uberjar (this target is only relevant for console Java SE applications)"
+          depends="test">
+      <jar destfile="${target.dir}/${ant.project.name}-uber.jar"
+           manifest="${src.dir}/META-INF/MANIFEST.MF"
+      >
+          <fileset dir="${classes.dir}"/>
+          <fileset dir="${resources.dir}" erroronmissingdir="false"/>
+          <zipgroupfileset dir="${lib.dir}/runtime" includes="**/*.jar"/>
+    </jar>
+  </target>
+
+  <target name="package-zip"
+	  depends="package-jar">
+    <zip destfile="${target.dir}/${ant.project.name}.zip">
+      <zipfileset dir="${scripts.dir}" 
+		  prefix="${ant.project.name}/bin"
+		  filemode="755"
+                  erroronmissingdir="false"
+                  />
+      <zipfileset dir="${target.dir}" 
+		  prefix="${ant.project.name}/lib" 
+		  includes="${ant.project.name}.jar"/>
+      <zipfileset dir="${lib.dir}/runtime" 
+		  prefix="${ant.project.name}/lib" 
+		  includes="*.jar"/>
+      <zipfileset dir="${basedir}" 
+		  prefix="${ant.project.name}" 
+		  includes="LICENSE*"/>
+    </zip>
+  </target>
+
+  <target name="install"
+	  description="Install into local dependency repository"
+	  depends="package">
+    <ivy:deliver deliverpattern="${target.dir}/[module]-[revision](-[classifier]).[ext]"/>
+    <ivy:publish resolver="local" 
+		 artifactspattern="${target.dir}/[module].[ext]"
+		 srcivypattern="${target.dir}/[module]-[revision](-[classifier]).[ext]"/>
+  </target>
+
+  <target name="deploy"
+	  description="Install into shared dependency repository"
+	  depends="package">
+    <ivy:deliver deliverpattern="${target.dir}/[module]-[revision](-[classifier]).[ext]"
+		 status="${ivy.status}"
+		 pubrevision="${ivy.deliver.revision}"/>
+    <ivy:publish resolver="shared" 
+		 artifactspattern="${target.dir}/[module].[ext]"
+		 srcivypattern="${target.dir}/[module]-[revision](-[classifier]).[ext]"
+		 overwrite="${overwrite.deploy}"/>
+  </target>
+
+  <target name="clean"
+	  description="Remove all files generated by the previous build">
+    <delete dir="${lib.dir}"/>
+    <delete dir="${target.dir}"/>
+    <delete dir="${basedir}/antlib"/>
+    <delete>
+     <fileset dir="${basedir}">
+        <include name="build.xml.*.log"/>
+     </fileset>
+    </delete>
+    <delete file="${basedir}/.ant-targets-build.xml"/>
+  </target>
+
+  <property name="maven.central.url" value="https://repo1.maven.org/maven2" />
+ 
+  <available file="antlib/ivy.jar" type="file" property="have.ivy.jar"/>
+  
+  <target name="ivy-check-taskdefs">
+    <condition property="have.ivy.taskdefs">
+      <typefound uri="antlib:org.apache.ivy.ant" name="publish"/>
+    </condition>
+  </target>
+
+  <target name="ivy-init" 
+	  depends="ivy-download, ivy-check-taskdefs" 
+	  unless="have.ivy.taskdefs">
+    <path id="ivy.class.path">
+      <fileset dir="antlib">
+	<include name="*.jar"/>
+      </fileset>
+    </path>
+    <taskdef resource="org/apache/ivy/ant/antlib.xml"
+	     uri="antlib:org.apache.ivy.ant"
+	     classpathref="ivy.class.path" />
+    <ivy:settings file="${common.basedir}/ivysettings.xml"/>
+  </target>
+ 
+  <target name="ivy-download" 
+	  unless="have.ivy.jar">
+    <mkdir dir="antlib" />
+    <get src="${maven.central.url}/org/apache/ivy/ivy/2.5.0/ivy-2.5.0.jar"
+	 dest="antlib/ivy.jar" usetimestamp="true" verbose="true" />
+  </target>
+</project>

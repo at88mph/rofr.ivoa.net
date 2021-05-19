@@ -1,0 +1,84 @@
+#! /usr/bin/env python
+
+# intended as replacement for listSearchables.py
+
+import sys
+import urllib2
+
+import cgi, cgitb
+
+form = cgi.FieldStorage()
+embedded = form.getvalue('embedded')
+
+sys.stdout.write("Content-type: text/html\n\n")
+
+# query="select distinct r.ivoid, r.res_type, r.res_title, r.reference_url, c.ivoid, c.cap_type, c.standard_id, i.intf_type, i.url_use, i.access_url from rr.capability c, rr.resource r, rr.interface i where c.ivoid = r.ivoid and c.ivoid = i.ivoid and (c.cap_type like '%search%' or (c.cap_type like '%capability%' and c.standard_id like '%ivoa.net/std/tap%' and r.ivoid != 'ivo://archive.stsci.edu/nvoregistry')) and (i.intf_type like '%paramhttp%' or (i.intf_type like '%webservice%' and i.url_use = 'full')) and r.res_type = 'vg:registry'"
+
+query="select%20distinct%20r.ivoid,%20r.res_type,%20r.res_title,%20r.reference_url,%20c.ivoid,%20c.cap_type,%20c.standard_id,%20i.intf_type,%20i.url_use,%20i.access_url%20from%20rr.capability%20c,%20rr.resource%20r,%20rr.interface%20i%20where%20c.ivoid%20=%20r.ivoid%20and%20c.ivoid%20=%20i.ivoid%20and%20(c.cap_type%20like%20%27%25search%25%27%20or%20(c.cap_type%20like%20%27%25capability%25%27%20and%20c.standard_id%20like%20%27%25ivoa.net/std/tap%25%27%20and%20r.ivoid%20!=%20%27ivo://archive.stsci.edu/nvoregistry%27))%20and%20(i.intf_type%20like%20%27%25paramhttp%25%27%20or%20(i.intf_type%20like%20%27%25webservice%25%27%20and%20i.url_use%20=%20%27full%27))%20and%20r.res_type%20=%20%27vg:registry%27" 
+# note vao.stsci.edu/RegTAP is presented with capabilities, availability, tables, but not other
+
+# req = urllib2.Request("http://vao.stsci.edu/regtap/tapservice.aspx/sync?format=csv&lang=adql&query=" + query)
+resp = urllib2.urlopen("http://vao.stsci.edu/regtap/tapservice.aspx/sync?format=csv&lang=adql&query=" + query)
+
+# ESO RegTAP  has in VAO RegTap ivo://esavo/registry/tap resource type catalogservice
+# but SOAP registry has this as resource of type registry with ivo://esavo/registry/tap
+
+# print page
+if embedded is None:
+  print "<html xmlns:vr=\"http://www.ivoa.net/xml/VOResource/v1.0\" xmlns:ri=\"http://www.ivoa.net/xml/RegistryInterface/v1.0\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\">"
+  print "<head>"
+  print "<META http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\">"
+  print "<title>RofR: IVOA Registry of Registries</title>"
+  print "<link type=\"text/css\" rel=\"stylesheet\" href=\"/ivoa_rofr.css\">"
+  print "</head>"
+  print "<body>"
+  print "<center><table width=\"100%\" border=\"0\">"
+  print "<tr>"
+  print "<td>"
+  print "<font class=\"titleText\"><b>I</b>nternational"
+  print "      <span style=\"visibility: hidden\">i</span><b>V</b>irtual"
+  print "      <span style=\"visibility: hidden\">i</span><b>O</b>bservatory"
+  print "      <span style=\"visibility: hidden\">i</span><b>A</b>lliance</font><br><font class=\"titleText\" style=\"font-size: 18pt; font-weight: 600\"><a name=\"rofr\" title=\"IVOA Registry of Registries\" class=\"titleText\">IVOA Registry of Registries</a></font><br><br>"
+  print "</td>"
+  print "<td align=\"right\"><a href=\"/\"><img src=\"/IVOA_wb_300.jpg\" width=\"150\" height=\"85\" border=\"0\" alt=\"ivoa.net\"></a></td>"
+  print "</tr>"
+  print "<tr><td colspan=\"2\"><table cellspacing=\"0\" cellpadding=\"0\" border=\"0\" width=\"100%\"><tr>"
+  print "<td class=\"rollcall\"><a href=\"devel8:8004/regvalidate/regvalidate.html\">Register/Validate a Registry</a></td>"
+  print "<td class=\"rollcall\"><a href=\"http://www.ivoa.net/cgi-bin/twiki/bin/view/IVOA/IvoaResReg/RegistryGuide\">Guide for Registry Providers</a></td>"
+  print "<td class=\"rollcall\"><a href=\"http://www.ivoa.net/cgi-bin/twiki/bin/view/IVOA/IvoaResReg/RegistrySpecs\">Registry Specifications</a></td>"
+  print "<td class=\"rollcall\"><a href=\"http://www.ivoa.net/cgi-bin/twiki/bin/view/IVOA/IvoaResReg\">IVOA Registry Working Group</a></td>"
+  print "</tr></table></td></tr>"
+  print "</table></center>"
+  print "<h1>Searchable Registries</h1>"
+  print
+  print "These registries claim to harvest from publishers regularly and"
+  print "therefore should have records for all resources known in the VO."
+  
+print "<div><dl>"
+
+i=0
+for line in resp:
+  if i == 0:
+    i = i + 1
+    continue
+
+  fields = line.split(',')
+  if len(fields) != 10:
+    continue
+  print "<dt><a href=\"" + fields[3] + "\">" + fields[2] + "</a></dt>"
+  print "<dd>"
+  print "<strong>IVOA Identifier:</strong> " + fields[0] + "<br>"
+
+  if fields[7].startswith("vs:paramhttp"):
+    print "<strong>RegTAP service endpoint:</strong> " + fields[9] + "<br>"
+  else:
+    print "<strong>Search service endpoint:</strong> " + fields[9] + "<br>"
+
+  print "</dd>"
+  print "<p></p>"
+
+print "</dl></div>"
+print "</body>"
+print "</html>"
+
+

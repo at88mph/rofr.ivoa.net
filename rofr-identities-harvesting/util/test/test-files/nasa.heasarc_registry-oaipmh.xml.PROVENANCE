@@ -1,0 +1,6 @@
+$
+$ date
+Mon Sep 23 10:50:11 EDT 2019
+$
+$ curl https://heasarc.gsfc.nasa.gov/cgi-bin/OAI2/XMLFile/nvo/oai.pl?verb=Identify -o nasa.heasarc_registry-oaipmh.xml
+$

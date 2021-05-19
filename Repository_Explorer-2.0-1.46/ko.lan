@@ -1,0 +1,308 @@
+Korean
+#
+# Language translation file for Repository Explorer
+# Language: default (english-->Korean)
+#
+#
+HTTP Status
+HTTP 상태
+#
+Unexpected HTTP Error
+예기치 않은 HTTP 오류
+#
+HTTP Status code should be 400
+HTTP 상태 코드는 400이어야 함
+#
+XML parsing errors
+XML 파싱 오류
+#
+Testing
+테스트
+#
+Test Result
+테스트 결과
+#
+OK
+확인
+#
+FAIL!
+실패!
+#
+Metadata Harvesting Protocol
+메타데이타 수확 프로토콜
+#
+Protocol Tester
+프로토콜 검사기 
+#
+April 2001
+2001년 4월
+#
+Repository Name
+저장소 이름
+#
+ERROR
+오류
+#
+Repository Name missing !
+저장소 이름 누락 !
+#
+Protocol Version
+프로토콜 버전
+#
+Protocol Version missing !
+프로토콜 버전 누락 !
+#
+Base URL
+베이스 URL
+#
+Base URL missing !
+베이스 URL 누락 !
+#
+Admin Email
+관리자 Email
+#
+Admin Email missing !
+관리자 Email 누락 !
+#
+Sample Metadata Format
+샘플 메타데이타 형식
+#
+Metadata format missing !
+메타데이타 형식 누락 !
+#
+Sample Set Spec
+샘플 집합 명세
+#
+Set Resumption Token
+집합 재개 토큰
+#
+Sample Identifier
+샘플 식별자
+#
+Identifier missing !
+식별자 누락 !
+#
+Identifier Resumption Token
+식별자 재개 토큰
+#
+Record Resumption Token
+레코드 재개 토큰
+#
+Total Errors
+전체 오류
+#
+Error
+오류
+#
+Illegal tag
+불허용 태그
+#
+Missing field
+누락 필드
+#
+Text found where tag expected
+태그가 있을 곳에 텍스트가 있음
+#
+Tag expected but not found
+태그가 있을 곳에 없음
+#
+Only one instance allowed
+단 하나의 인스턴스만 허용됨
+#
+Text expected for field but not found
+필드의 텍스트가 있을 곳에 없음
+#
+Archive Self-Description
+아카이브에 대한 기술
+#
+Other Information
+다른 정보
+#
+Resume from
+재시작 점
+#
+List of Sets
+집합 리스트
+#
+Click on the link to list the contents
+컨텐트 나열을 위해 링크를 클릭
+#
+Prefix
+접두어
+#
+NameSpace
+네임스페이스
+#
+Schema
+스키마
+#
+Not a standard OAI metadata name
+표준 OAI 메타데이타 이름이 아님
+#
+display record
+레코드 디스플레이
+#
+List of Metadata Formats
+메타데이타 형식 리스트
+#
+Click on the link to view schema
+스키마 보기 위해 링크를 클릭
+#
+display record in Dublin Core
+더블린코어 형식으로 레코드 디스플레이
+#
+display metadata formats
+메타데이타 형식 디스플레이
+#
+List of Record Identifiers
+레코드 식별자 리스트
+#
+Select a link to view more information
+더 많은 정보 보기 위해 링크를 선택
+#
+List of Fields
+필드 리스트
+#
+List of Records
+레코드 리스트
+#
+This site presents an interface to interactively test archives for compliance with the OAI Protocol for Metadata Harvesting
+이 사이트는 OAI 메타데이타 수확 프로토콜을 따르는 아카이브를 대화형식으로 테스트하는 인터페이스를 소개한다
+#
+Click here for details
+자세한 내용 보기
+#
+JavaScript is required and Netscape Navigator is recommended
+자바스크립트는 반드시 필요하고 네스케이프 네비게이터의 사용을 추천한다
+#
+Note: To avoid HTTP errors, please wait for each page to finish loading before clicking on any link.
+주의: HTTP 오류를 피하려면, 페이지 로딩 완료 후 링크를 클릭하시오.
+#
+Please enter the URL to the OAI interface (everything before the ?) or choose a predefined archive from the table
+OAI 인터페이스에 URL을 입력하거나 (? 전에), 테이블에서 미리 정의된 아카이브를 선택하시오
+#
+Sorry, you can only view the website for a selected predefined archive
+잠깐, 당신은 미리 정의되어 선택된 아카이브의 웹사이트만 볼수 있습니다
+#
+View Archive Website
+아카이브 웹사이트 보기
+#
+Test and Add an archive to this list
+아카이브를 테스트해서 이 리스트에 추가하기
+#
+Repository Explorer
+저장소 익스플로러
+#
+explorer version
+익스플로러 버전
+#
+protocol version
+프로토콜 버전
+#
+Archive details
+아카이브 상세 기술
+#
+Verbs
+작업
+#
+Parameters
+매개변수
+#
+Display
+디스플레이
+#
+Schema Validation
+스키마 유효성 확인
+#
+Parsed
+파싱 결과
+#
+Raw XML
+미처리 XML
+#
+Both
+둘 모두
+#
+None
+유효성 확인 안됨
+#
+Local mirror of schemata
+스키마타의 지역 미러
+#
+Online schemata
+온라인 스키마타
+#
+home
+홈
+#
+Send all comments to
+모든 주석 보내기
+#
+Digital Libraries Research Laboratory
+디지탈도서관연구실
+#
+HTTP Status Code
+HTTP 상태 코드
+#
+HTTP Error Message
+HTTP 오류 메시지
+#
+Parsed Output
+파스된 출력물
+#
+Raw XML Output
+미처리 XML 출력물
+#
+XSD Schema/Instance Validation Error !
+XSD 스키마/임스턴스 유효성 확인 오류 !
+#
+missing !
+누락 !
+#
+Request URL
+URL 요청
+#
+Response Date
+응답 날짜
+#
+Test and Add an archive
+아카이브 테스트 및 추가
+#
+Please note that these tests are neither definitive nor exhaustive
+이 테스트는 완벽하지도 않고 철저하지도 않음에 주의하시오
+#
+They serve not as a proof of correctness of implementation, but rather indicate possible errors if they exist
+그들의 역할은 구현의 정확성을 증명하는 것이 아니라, 있을 수 있는 오류를 지적해 주는 것이다
+#
+If you have any questions please contact the author at the address below
+질문이 있으면 아래의 주소로 저자에게 연락하시오
+#
+Enter the base URL of the archive
+아카이브의 베이스 URL을 입력
+#
+Test the archive
+아카이브 테스트
+#
+Congratulations !
+축하합니다 !
+#
+Your archive satisfied all the tests we performed
+당신의 아카이브는 모든 테스트를 만족합니다
+#
+You may now add it to the list of archives on the front page if you wish by filling in the following additional details
+당신이 원한다면, 다음에 나오는 추가적인 세부항목들을 채움으로써 프론트 페이지의 아카이브 리스트에 그것을 추가할 수 있습니다
+#
+Base URL of Archive
+아카이브의 베이스 URL
+#
+Name of Archive
+아카이브 이름
+#
+Archive website
+아카이브 웹사이트
+#
+Submit Archive to List
+리스트로 아카이브 보내기
+#
+Thank You ! Your archive has been added
+감사합니다! 당신의 아카이브가 추가되었습니다

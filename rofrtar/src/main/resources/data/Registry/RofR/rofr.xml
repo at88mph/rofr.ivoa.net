@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ri:Resource xsi:type="vg:Registry" status="active"
+          created="2006-07-01T09:00:00" updated="2015-02-05T20:28:40"
+          xmlns:ri="http://www.ivoa.net/xml/RegistryInterface/v1.0"
+          xmlns:vr="http://www.ivoa.net/xml/VOResource/v1.0"
+          xmlns:vg="http://www.ivoa.net/xml/VORegistry/v1.0"
+          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="" 
+          xsi:schemaLocation="http://www.ivoa.net/xml/RegistryInterface/v1.0
+                              http://www.ivoa.net/xml/RegistryInterface/v1.0
+                              http://www.ivoa.net/xml/VOResource/v1.0
+                              http://www.ivoa.net/xml/VOResource/v1.0
+                              http://www.ivoa.net/xml/VORegistry/v1.0
+                              http://www.ivoa.net/xml/VORegistry/v1.0">
+
+    <title>IVOA Registry of Registries</title>
+    <shortName>RofR</shortName>
+    <identifier>ivo://ivoa.net/rofr</identifier>
+
+    <curation>
+      <publisher ivo-id="ivo://ivoa.net/IVOA">
+         International Virtual Observatory Alliance
+      </publisher>
+      <creator>
+          <name>Raymond Plante</name>
+          <logo>http://www.ivoa.net/icons/ivoa_logo_small.jpg</logo>
+      </creator>
+      <date role="created">2007-07-01</date>
+      <date role="updated">2007-12-20</date>
+      <version>1.1</version>
+      <contact>
+        <name>IVOA Resource Registry Working Group</name>
+	<email>registry@ivoa.net</email>
+      </contact>
+    </curation>
+
+    <content>
+      <subject>virtual observatory</subject>
+        <description>
+         This is a special publishing registry that describes
+         resources that represent important infrastructure
+         components to the VO registry framework.  A primary purpose
+         is to provide a registry to discover other publishing
+         registries.  A registry that wants to harvest all records
+         known to the VO can first harvest from this registry a list
+         of all known publishing registries (via the IVOA Registry
+         Interface for harvesting with set=ivoa_publishers).  An
+         interactive interface allows publishing registry providers
+         to check their interfaces and make their registries known to
+         the framework.  This registry also describes standard
+         protocols recognized by the IVOA.  
+      </description>
+      <referenceURL>http://rofr.ivoa.net/rofr/</referenceURL>
+      <type>Registry</type>
+    </content>
+
+    <capability xsi:type="vg:Harvest"
+                standardID="ivo://ivoa.net/std/Registry">
+
+       <!-- the v1.0 version -->
+       <interface xsi:type="vg:OAIHTTP" role="std" version="1.0">
+          <accessURL>http://rofr.ivoa.net/cgi-bin/oai.pl</accessURL>
+       </interface>
+
+       <maxRecords>0</maxRecords>
+
+    </capability>
+
+    <full>false</full>
+
+    <managedAuthority>ivoa.net</managedAuthority>
+</ri:Resource>

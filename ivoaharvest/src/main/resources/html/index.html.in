@@ -1,0 +1,786 @@
+<html> <head>
+  <title>Registry Harvesting Validater</title>
+  <script type="text/javascript" src="MochiKit.js" ></script>
+  <script type="text/javascript" src="tp.js" ></script>
+
+  <style type="text/css">
+<!--
+.tiny {FONT-SIZE: 7pt;}
+-->
+  </style>
+  <link href="ivoa_rofr.css" rel="stylesheet" type="text/css"/>
+  <link href="tp.css" rel="stylesheet" type="text/css"/>
+</head>
+<body>
+
+<center>
+<table width="100%">
+  <tr>
+    <td>
+      <font class="titleText"><b>I</b>nternational &nbsp;<b>V</b>irtual &nbsp;<b>O</b>bservatory &nbsp;<b>A</b>lliance</font><br />
+      <font class="titleText" style="font-size: 18pt; font-weight: 600">
+      <a name="rofr" title="IVOA Registry of Registries" 
+         class="titleText">IVOA Registry of Registries</a>
+      </font><br /><br />
+
+      <table cellspacing="0" cellpadding="0" border="0" width="100%">
+        <tr>
+          <!-- the local links -->
+          <td class="rollcall"><a href="http://www.ivoa.net/Documents/latest/RegistryInterface.html">Registry Interfaces Spec.</a></td>
+          <td class="rollcall"><a href="http://www.openarchives.org/OAI/openarchivesprotocol.html">OAI-PMH Spec.</a></td>
+          <td class="rollcall"><a href="http://www.ivoa.net/Documents/latest/VOResource.html">VOResource Spec.</a></td>
+        </tr>
+      </table>
+    </td>
+    <td>
+      <a href="/"><img src="IVOA_wb_300.jpg" width="150" 
+         height="85" border="0" alt="ivoa.net" /></a>
+    </td>
+  </tr>
+</table>
+</center>
+
+
+<!-- =======================================================================
+  -  Page Content
+  -  ======================================================================= -->
+
+<h1>Registering Your Registry <br />
+    <span id="step" style="font-size: 16pt; font-weight: 700;">
+    Step 1: Validating the Harvesting Interface</span></h1>
+
+<div id="instructions">
+<p>
+This page allows you to check the OAI interface of your publishing
+registry. If the interface is found minimally compliant, you may
+choose at that time to register your interface with the IVOA Registry
+of Registries. This lets other registries know where to find your
+registry so that they can begin harvesting from it.
+</p>
+
+<!--
+<p>
+<h4>Notes About Version 1.3.1b:</h4>
+<ul>
+  <li> Fixed: account for deleted records are not included. </li>
+</ul>
+</p>
+-->
+
+</div>
+
+<p><em>Note that for a large registry, validation can take several 
+minutes.</em></p>
+
+<form action="/regvalidate/HarvestValidater" 
+      method="GET" name="validateForm" onsubmit="return validate()" 
+      id="validate" onreset="return cancelSession()">
+
+<p>
+
+Enter the base URL for the OAI interface to your IVOA publishing
+registry:<br />
+<span id="checkBASEURL"></span>
+<font color="green"><em>This should be the HTTP GET version of your
+OAI interface.</em></font>
+<input type="text" name="endpoint" size="90" value="" />
+</p>
+
+<input type="submit" value="validate" />
+<span style="visibility: hidden">XXXXX</span>
+<input type="reset" value="cancel" disabled="1" id="cancel"/>
+<span style="visibility: hidden">XXXXX</span>
+<label><input type="checkbox" name="builtinSchemas" value="y">Use built-in schemas (leave unchecked to register)</label>
+
+</form>
+
+<blockquote id="progress" style="font-size: 12pt;" ></blockquote>
+<blockquote id="problems" style="font-size: 12pt; color: red;" ></blockquote>
+
+<div id="step2" style="display: none">
+<h2>Step 2:  Register your Registry</h2>
+<p>Your registry is ready to be added to the Registry of Registries.  Press
+the register button to complete the registration.</p>
+<form action="@rofr_base_url@/cgi-bin/register.pl" method="GET"
+      name="registerRegistry" id="register" onreset="return cancelSession()"
+      onsubmit="return register()">
+<input type="hidden" name="runid" value="" />
+<input type="submit" value="register" />
+<input type="reset" value="cancel" id="cancel"/>
+</form>
+</div>
+<div id="done" ></div>
+
+<div id="results" style="display: none;">
+<ul>
+  <li> <a href="#oai">OAI Validation</a></li>
+  <li> <a href="#ivoa">IVOA Profile Validation</a></li>
+  <li> <a href="#vor">VOResource Validation</a></li>
+</ul>
+<div id="oai" title="OAI Validation">
+<div id="oairesults">
+<h3>Standard OAI-PMH compliance</h3>
+<p>Waiting for validation results...</p>
+</div> <!-- end oairesults -->
+</div> <!-- end oai -->
+<div id="ivoa" title="IVOA Profile Validation">
+<div id="ivoaresults">
+<h3>IVOA Profile on OAI-PMH compliance</h3>
+<p>Waiting for OAI validation to complete...</p>
+</div> <!-- end ivoaresults -->
+</div> <!-- end ivoa -->       
+<div id="vor" title="VOResource Validation">
+<h3>VOResource Compliance</h3>
+<p id="vorwaiting">Waiting for IVOA Harvesting validation to complete...</p>
+<div id="vorresults" style="display: none">
+<p>
+Each record returned by ListRecords is checked for compliance with the
+VOResource standard and its recognized extensions. These have been
+extracted from the OAI responses and checked as stand-alone XML
+documents.  
+</p>
+
+<p>
+Follow the links to see detailed descriptions of results: <br />
+V = Validation Results <br />
+R = the extracted VOResource records
+</p>
+
+<table border="2" cellpadding="2" id="vortable">
+  <tr>
+    <th align="left">IVOA Identifier</th><th>results</th><th>status</th>
+    <th>Failed Tests</th>
+    <th>Warnings</th>
+    <th>Recommendations</th>
+  </tr>
+</table>
+</div> <!-- end vorresults -->
+</div> <!-- end vor -->
+
+</div>
+
+<script type="text/javascript">
+<!--
+var summarystyleName = "SummaryFrag-Harvest-html.xsl";
+var resultstyleName = "ResultsFrag-Harvest-html.xsl";
+var resultstyle = null;
+var form = document.validateForm;
+var regform = document.registerRegistry
+var validaterServiceURL = form.action + "?";
+var sessionURL = null;
+var doneDiv = document.getElementById("done");
+var alldone = null;
+var progressDiv = document.getElementById("progress");
+var problemsDiv = document.getElementById("problems");
+var resultsDiv = document.getElementById("results");
+var oaiDiv = document.getElementById("oai");
+var ivoaDiv = document.getElementById("ivoa");
+var vorDiv = document.getElementById("vor");
+var oaiClear = document.getElementById("oairesults");
+var ivoaClear = document.getElementById("ivoaresults");
+var vorres = document.getElementById("vorresults");
+var vortbl = document.getElementById("vortable");
+var vorwait = document.getElementById("vorwaiting");
+var step2Div = document.getElementById("step2");
+var cancelButton = document.getElementById("cancel");
+var reswindow = null;
+var statusCountLim = 600;
+var statusCount = statusCountLim;
+var statusInterval = 1000;
+
+var builtinSchemas = false;
+
+tpSet("results", "tabs", "oai", "ivoa", "vor");
+
+function reportProblem(probtext) {
+    problemsDiv.style.display = "inline";
+    problemsDiv.innerHTML = probtext;
+}
+
+function addProblem(probtext) {
+    if (problemsDiv.innerHTML == "") {
+        reportProblem(probtext);
+    }
+    else {
+        problemsDiv.appendChild(createDOM("br"));
+        problemsDiv.appendChild(document.createTextNode(probtext));
+    }
+}
+
+function reportProgress(progtext) {
+    if (progtext != null) progressDiv.innerHTML = progtext;
+}
+
+function getGetURL() {
+    var inputs = form.elements;
+    var out = validaterServiceURL + "endpoint=";
+    out += escape(trim(inputs[0].value));
+
+    if (inputs.length > 3 && inputs[3].checked) {
+      out += "&builtinSchemas=y";
+      builtinSchemas = true;
+    } else
+      builtinSchemas = false;
+    out += "&";
+    return out;
+}
+
+function checkInputs() {
+    var ok = true;
+    if (trim(form.endpoint.value).length < 8) {
+        ok = false;
+        addInputTip("checkBASEURL", 
+                    "Please fill in missing service URL.");
+    }
+
+    return ok;
+}
+
+function addInputTip(id, msg) {
+    div = document.getElementById(id);
+
+    if (div != null) {
+        div.innerHTML = "";
+        if (msg.length > 0) {
+            div.appendChild(createDOM("FONT", {color: "red", size: "-1"}, msg));
+            div.appendChild(createDOM("br"));
+        }
+    }
+}
+
+function cancelSession() {
+    if (sessionURL != null) {
+        clearOldResults();
+    }
+
+    return false;
+}
+
+function validate() {
+//     logger.debuggingBookmarklet();
+
+    if (clearOldResults(validate)) {
+        cancelButton.disabled = false;
+
+        validaterServiceURL = form.action + "?";
+        if (checkInputs()) {
+            instr = document.getElementById("instructions");
+            if (instr != null) instr.style.display = "none";
+            addInputTip("checkBASEURL", "");
+            reportProgress("Starting harvest validation...");
+
+            if (resultstyle == null) {
+                var xslss = doXHR(resultstyleName, 
+                                  {method: 'GET', mimeType: "application/xml"});
+                xslss.addCallbacks(setStylesheet, handleValidateError);
+            }
+
+            var url = getGetURL() + "op=StartSession&errorFormat=json";
+            log("Starting validation with " + url);
+            resultsDiv.style.display = "block";
+//             sessionURL = "tmp";
+            var ajax = doXHR(url, {method: 'GET'});
+            ajax.addCallbacks(startingSession, handleValidateError);
+        }
+    }
+
+    return false;
+}
+
+function register() {
+    if (sessionURL != null) {
+        try {
+            var url = sessionURL + "op=Register";
+            logDebug("registering via " + url);
+            var ajax = doXHR(url, {method: 'GET'});
+            ajax.addCallbacks(showRegistration, handleValidateError);
+        }
+        catch (e) {
+            logError("getStatus: " + e);
+        }
+
+        return false;
+    }
+    else {
+        return true;
+    }
+}
+
+function showRegistration(resp) {
+    doneDiv.innerHTML = resp.responseText;
+}
+
+function setStylesheet(resp) {
+    logDebug(resp.responseText.substring(0, 120))
+    resultstyle = resp.responseXML;
+    if (resultstyle == null) logError("stylesheet did not parse");
+}
+
+function startingSession(resp) {
+    logDebug(resp.responseText);
+    var session = evalJSONRequest(resp);
+    if (session.status == "unavailable") {
+        reportProgress(session.message);
+        for(p in session.problems) {
+            logDebug(session.problems[p]);
+            reportProblem(session.problems[p]);
+        }
+        return false;
+    }
+    if (! session.sessionURL.match("^http://"))
+        throw new Error("bad sessionURL: " + session.sessionURL);
+
+    sessionURL = session.sessionURL;
+    var url = session.sessionURL + "cache=true&op=Validate";
+    log("retrieving results from: " + url);
+    try {
+        var ajax = doXHR(url, {method: 'GET'});
+        ajax.addCallbacks(assessResults, handleValidateError);
+        getStatus();
+    }
+    catch (e) {
+        logError("startingSession: " + e.name + ": " + e.message);
+    }
+}
+
+function assessResults(resp) {
+    logDebug(resp.responseText);
+    var status = evalJSONRequest(resp);
+    reportProgress(status.message);
+}
+
+function handleValidateError(error) {
+    logError("Problem getting results: " + error.message);
+    reportProblem("Problem getting results: " + error.message);
+    return true;
+}
+
+var loggedStatus = 0;
+
+function getStatus() {
+    if (sessionURL != null) {
+        try {
+            var url = sessionURL + "op=GetStatus&errorFormat=json";
+            if (loggedStatus++ == 0) log("Getting status via " + url);
+            var ajax = doXHR(url, {method: 'GET'});
+            ajax.addCallbacks(updateStatus, handleValidateError);
+        }
+        catch (e) {
+            logError("getStatus: " + e);
+        }
+
+        return true;
+    }
+    else {
+        return false;
+    }
+}
+
+function updateStatus(resp) {
+    try {
+        var status = evalJSONRequest(resp);
+        logDebug("updateStatus: status length: " + status.length);
+        if (status.length == null || status.length > 0)
+            logDebug("updateStatus: status: " + resp.responseText);
+        if (status.length > 0) {
+            statusCount = statusCountLim;
+            if (statusInterval > 1000) statusInterval = 1000;
+        }
+        else if (statusInterval < 5000) {
+            statusInterval += 250;
+        }
+
+        var done = false;
+
+        if (status.length == 0) progressDiv.innerHTML += ".";
+
+        for (var i=0; i < status.length; i++) {
+            logDebug("status["+i+"]: " + status[i].ok + ", " + status[i].query);
+            if (status[i].done == "true") done = true;
+
+            if (status[i].ok == "false") {
+                var msg = "";
+                if (status[i].query != null && status[i].query.length > 0)
+                    msg += "Problem while running " + status[i].query + ": ";
+                reportProblem(msg + status[i].message);
+            }
+            else if (status[i].query.indexOf("ivo:") == 0) {
+                progressDiv.innerHTML += ".";
+                addVOResourceResult(status[i]);
+            }
+            else {
+                logDebug(status[i].query + " " + status[i].status + 
+                         ": " + status[i].message);
+                reportProgress(status[i].message);
+                if (status[i].status == "started") {
+//                     if (status[i].query == "IVOA") 
+//                         tpShow("results", "ivoa");
+//                     else if (status[i].query == "VOR") 
+//                         tpShow("results", "vor")
+                    if (status[i].query == "VOR") {
+                        vorwait.style.display = "none";
+                        vorres.style.display = "block";
+                    }
+                }
+                else if (status[i].status == "completed") {
+                    if (status[i].query == "OAI") {
+                        getOAIResults();
+                        statusInterval = 1000;
+                    }
+                    else if (status[i].query == "IVOA") {
+                        getIVOAResults();
+                    }
+                    else if (status[i].query == "VOR") {
+//                         getVORResults();
+                    }
+                }
+            }
+        }
+    }
+    catch (e) {
+        logError("updateStatus:" + e.name + ": " + e.message);
+    }
+
+    if (done) getSummary();
+
+    if (! done && statusCount > 0) {
+        statusCount--;
+        try {
+            setTimeout(getStatus, statusInterval);
+        }
+        catch (e) {
+            logError("updateStatus: " + e.name + ": " + e.message);
+        }
+    }
+}
+
+function getSummary() {
+    if (sessionURL != null) {
+        try {
+            var url = sessionURL + "op=Validate&format=xml";
+            log("Getting summary via " + url);
+            var ajax = doXHR(url, {method: 'GET', mimeType: 'text/xml'});
+            ajax.addCallbacks(showSummary, handleValidateError);
+        }
+        catch (e) {
+            logError("getSummary: " + e.name + ": " + e.message);
+        }
+    }
+}
+
+function showSummary(resp) {
+    try {
+        var xmlhttp=new XMLHttpRequest();
+        xmlhttp.open("GET", summarystyleName, false);
+        xmlhttp.send();
+        xsl = xmlhttp.responseXML;
+
+        var xslt = new XSLTProcessor();
+        xslt.importStylesheet(xsl);
+        var summary = xslt.transformToFragment(resp.responseXML, document);
+
+        summary = findID(summary, "resultSummary");
+        if (summary == null) {
+            logError("XSLT produced no result summary!");
+            throw new Error("XSLT produced no result summary!");
+        }
+        progressDiv.innerHTML = "";
+        progressDiv.appendChild(summary);
+
+        if (resp.responseXML.documentElement.getAttribute("status") == 'pass') {
+            // extract our runid
+            var p = sessionURL.indexOf("runid=");
+            if (p > 0) {
+                var runid = sessionURL.substring(p+6);
+                p = runid.indexOf("&");
+                if (p > 0) runid = runid.substring(0,p);
+                logDebug("runid=" + runid);
+
+                regform.runid.value = runid;
+                if (builtinSchemas == false) {
+                  logError("step2Div.style.display block");
+                  step2Div.style.display = "block";
+                } else {
+                  logError("step2Div.style.display none");
+                  throw new Error("Uncheck built-in schemas box and rerun validation to register");
+                }
+            }
+        }
+
+        return true;
+    }
+    catch (e) {
+        logError("showSummary: " + e.name + ": " + e.message);
+    }
+}
+
+
+function getOAIResults(repeat) {
+    if (resultstyle == null) {
+        if (repeat == null) repeat = 5;
+        setTimeout("getOAIResults(repeat--)", 500);
+        return false;
+    }
+
+    if (sessionURL != null) {
+        try {
+            var url = sessionURL + "op=ValidateOAI&format=xml";
+            log("Getting OAI results via " + url);
+            var ajax = doXHR(url, {method: 'GET', mimeType: 'text/xml'});
+            ajax.addCallbacks(showOAIResults, handleValidateError);
+        }
+        catch (e) {
+            logError("getOAIResults: " + e);
+        }
+    }
+
+    return true;
+}
+
+function showOAIResults(resp) {
+    return showResults(resp,"oairesults",oaiDiv)
+}
+
+function getIVOAResults() {
+    if (sessionURL != null) {
+        try {
+            var url = sessionURL + "op=ValidateIVOA&format=xml";
+            log("Getting IVOA results via " + url);
+            var ajax = doXHR(url, {method: 'GET', mimeType: 'text/xml'});
+            ajax.addCallbacks(showIVOAResults, handleValidateError);
+        }
+        catch (e) {
+            logError("getStatus: " + e);
+        }
+    }
+
+    return true;
+}
+
+function showIVOAResults(resp) {
+    return showResults(resp,"ivoaresults",ivoaDiv)
+}
+
+function getVORResults() {
+    if (sessionURL != null) {
+        try {
+            var url = sessionURL + "op=ValidateVOR&format=xml";
+            log("Getting VOResource results via " + url);
+            var ajax = doXHR(url, {method: 'GET', mimeType: 'text/xml'});
+            ajax.addCallbacks(showVORResults, handleValidateError);
+        }
+        catch (e) {
+            logError("getStatus: " + e);
+        }
+    }
+
+    return true;
+}
+
+function showVORResults(resp) {
+    return showResults(resp,"vorresults",vorDiv)
+}
+
+function transform(xml, xsl) {
+    if (xsl == null) throw new Error("Null stylesheet");
+    if (window.XSLTProcessor) {
+        // Mozilla
+        var xslt = new XSLTProcessor();
+        xslt.importStylesheet(xsl);
+        return xslt.transformToFragment(xml, document);
+    }
+    else if (window.ActiveXObject) {
+        // Windows/ActiveX
+        return xml.transformNode(xsl);
+    }
+}
+
+function showResults(resp, id, inside) {
+    try {
+        if (resultstyle != null) {
+            var results = transform(resp.responseXML, resultstyle);
+            results = findID(results, id);
+            if (results == null) 
+                throw new Error("XSLT produced no " + id + "!");
+            oldresults = findID(inside, id);
+            if (oldresults == null) 
+                throw new Error("document is missing "+id+" results section!");
+
+            results = importResults(results);
+            swapDOM(oldresults, results);
+        }
+        else {
+            logError("No stylesheet loaded")
+            reportProblem("Problem displaying results: no stylesheet");
+        }
+    }
+    catch (e) {
+        logError("showResults: " + e.name+ ": " + e.message);
+    }
+    return true;
+}
+
+function findID(node, idval) {
+    if (node.attributes != null) {
+        var id = node.getAttribute("id");
+        if (id != null && id == idval) return node;
+    }
+
+    node = node.firstChild;
+    out = null;
+    while (node != null) {
+        if (node.nodeType == Node.ELEMENT_NODE) {
+            out = findID(node, idval);
+            if (out != null) return out;
+        }
+        node=node.nextSibling;
+    }
+    return out;
+}
+
+function importResults(node) { 
+    var out = null; 
+    try {
+        out = document.adoptNode(node);
+        logDebug("using adoptNode");
+    }
+    catch (e) {
+        try {
+            out = document.importNode(node, true);
+            logDebug("using importNode");
+        }
+        catch (e) {
+            out = node;
+            logDebug("skipping import");
+        }
+    }
+
+    return out;
+}
+
+function addVOResourceResult(status) {
+    var tr = TR(null, 
+                TD(null, status.query),
+                TD(null, A({href: 
+                  sessionURL+"op=ValidateResource&format=html&id="+status.query,
+                            target: "vor", 
+                           onclick: "return getResResults('"+status.query+"')"}, 
+                            "V"),
+                   " | ", A({href: 
+                       sessionURL+"op=GetResource&format=xml&id="+status.query, 
+                             target: "vor", 
+                             onclick: "return getResource('"+status.query+"')"}, 
+                            "R")),
+                TD(null, status.rstatus),
+                TD(null, status.fail),
+                TD(null, status.warn),
+                TD(null, status.rec));
+    vortbl.appendChild(tr);
+}
+
+function getResource(ivoid) {
+    if (sessionURL != null) {
+        var href = sessionURL + "op=GetResource&format=xml&id=" + ivoid;
+
+        if (reswindow == null) {
+            reswindow = window.open(href, "vor", toolbar="no", menubar="no",
+                                    height="500", width="500");
+            if (reswindow.outerHeight) {
+                reswindow.outerHeight = 500;
+                reswindow.outerWidth = 500;
+            }
+        }
+        else 
+            reswindow.location.href = href;
+        reswindow.focus();
+    }
+    return false;
+}
+
+function getResResults(ivoid) {
+    if (sessionURL != null) {
+        var href = sessionURL + "op=ValidateResource&format=html&id=" + ivoid;
+
+        if (reswindow == null) 
+            reswindow = window.open(href, "vor", toolbar="no", menubar="no",
+                                    height="400");
+        else 
+            reswindow.location.href = href;
+        reswindow.focus();
+    }
+    return false;
+}
+
+function clearOldResults(func) {
+
+    if (sessionURL != null) {
+        reportProgress("Canceling previous request");
+        log("Canceling previous request");
+        var url = sessionURL + "op=Cancel";
+        var ajax = doXHR(url, {method: 'GET'});
+        ajax.addCallbacks(cancelingSession, cancelingError);
+
+        // reset the results area
+        var respatch = findID(oaiDiv, "oairesults");
+        if (respatch != null) swapDOM(respatch, oaiClear);
+        respatch = findID(ivoaDiv, "ivoaresults");
+        if (respatch != null) swapDOM(respatch, ivoaClear);
+        resultsDiv.style.display = "none";
+        vorres.style.display     = "none";
+        vorwait.style.display    = "block";
+        step2Div.style.display   = "none";
+        doneDiv.innerHTML        = "";
+        problemsDiv.innerHTML    = "";
+        regform.runid            = "";
+        trs = vortbl.getElementsByTagName("tr");
+        for(var j=trs.length-1; j > 0; j--) {
+            vortbl.removeChild(trs[j]);
+        }
+        cancelButton.disabled = true;
+        reportProgress("");
+
+        sessionURL = null;
+
+        if (func != null) {
+            try {
+                setTimeout(func, 2000);
+            }
+            catch (e) {
+                logError("clearOldResults: " + e.name + ": " + e.message);
+                return true;
+            }
+        }
+
+        return false;
+    }
+
+    return true;
+}
+
+function cancelingSession(resp) { logDebug(resp.responseText); }
+function cancelingError(error) { logDebug(error.message); }
+
+function trim(text) {
+    if (text == null || text.length == 0) return text;
+    return text.replace(/^\s+|\s+$/g, '');
+}
+
+-->
+</script>
+
+
+
+
+<!-- =======================================================================
+  -  End Page Content
+  -  ======================================================================= -->
+
+  <footer>
+    <hr noshade>
+    <address>
+      <p>
+	For support, please contact <a href="mailto:@rofr_email@">@rofr_email@</a>
+      </p>
+    </address>
+  </footer>
+</body> </html>

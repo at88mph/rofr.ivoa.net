@@ -1,0 +1,16 @@
+<config service="RI-Harvest" timeout="240000" name="validationService">
+   <stylesheet resultType="v2.0">checkIVOAOAI.xsl</stylesheet>
+   <query name="Identify" type="Identify">
+      verb=Identify
+   </query>
+   <query name="ListMetadataFormats" type="ListMetadataFormats">
+      verb=ListMetadataFormats
+   </query>
+   <query name="ListSets" type="ListSets">
+      verb=ListSets
+   </query>
+   <query name="ListRecords" type="ListRecords">
+      verb=ListRecords&amp;metadataPrefix=ivo_vor&amp;set=ivo_managed
+   </query>
+   <property name="OAIcomply">@rofr_home@/bin/comply</property>
+</config>

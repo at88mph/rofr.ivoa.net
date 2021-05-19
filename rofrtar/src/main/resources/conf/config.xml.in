@@ -1,0 +1,30 @@
+<?xml version="1.0" ?>
+
+<xmlfile xmlns="http://oai.dlib.vt.edu/xmlfile"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://oai.dlib.vt.edu/xmlfile
+                             http://oai.dlib.vt.edu/xmlfile.xsd">
+
+   <repositoryName>IVOA Registry of Registries</repositoryName>
+   <adminEmail>@rofr_email@</adminEmail>
+   <recordlimit>500</recordlimit>
+   <datadir>@rofr_home@/data</datadir>
+   <deletedRecord>persistent</deletedRecord>
+   <filematch>[^\.]+\.[xX][mM][lL]$</filematch>
+
+   <confdir>conf</confdir>
+
+   <metadata>
+      <prefix>oai_dc</prefix>
+      <namespace>http://www.openarchives.org/OAI/2.0/oai_dc/</namespace>
+      <schema>http://www.openarchives.org/OAI/2.0/oai_dc.xsd</schema>
+      <transform>/usr/bin/xsltproc conf/vor2dc.xsl - |</transform>
+   </metadata>
+
+   <metadata>
+      <prefix>ivo_vor</prefix>
+      <namespace>http://www.ivoa.net/xml/RegistryInterface/v1.0</namespace>
+      <schema>http://www.ivoa.net/xml/RegistryInterface/v1.0</schema>
+   </metadata>
+
+</xmlfile>

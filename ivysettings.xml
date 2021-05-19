@@ -1,0 +1,25 @@
+<ivysettings>
+  <!-- Override ivy.cache.dir -->
+<!--  <property name="ivy.cache.dir" value="/data/rofr/devel/${user.name}/ivy/cache"/> -->
+
+  <settings defaultResolver="default"/>
+  
+  <include url="${ivy.default.settings.dir}/ivysettings-public.xml"/>
+
+  <!-- Override ivy.shared.default.root -->
+  <property name="ivy.shared.default.root"
+	    value="/data/rofr/repos/ivoa-rofr.ivy/shared" 
+	    override="false"/> 
+  <include url="${ivy.default.settings.dir}/ivysettings-shared.xml"/>
+
+  <!-- Override ivy.local.default.root -->
+  <!--  <property name="ivy.local.default.root" 
+	    value="/data/rofr/devel/${user.name}/ivy/local" 
+	    override="false"/> -->
+  <include url="${ivy.default.settings.dir}/ivysettings-local.xml"/>
+
+  <include url="${ivy.default.settings.dir}/ivysettings-main-chain.xml"/>
+
+  <include url="${ivy.default.settings.dir}/ivysettings-default-chain.xml"/>
+
+</ivysettings>
