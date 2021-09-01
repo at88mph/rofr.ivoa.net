@@ -24,6 +24,3 @@ http://www.ivoa.net/xml/VOSIAvailability/v1.0 schemas/VOSIAvailability-v1.0.xsd
 http://www.ivoa.net/xml/VOSICapabilities/v1.0 schemas/VOSICapabilities-v1.0.xsd
 http://www.ivoa.net/xml/VOSITables/v1.0 schemas/VOSITables-v1.1.xsd
 http://www.ivoa.net/xml/VOApplication/v1.0rc1 schemas/VOApplication-v1.0rc1.xsd
-http://www.ivoa.net/xml/CEA/base/v1.1 schemas/CEABase-v1.0.xsd
-http://www.ivoa.net/xml/CEA/v1.0rc1 schemas/CEAService-v1.0rc1.xsd
-http://www.ivoa.net/xml/CEA/v1.0 schemas/CEA-v1.0.xsd
