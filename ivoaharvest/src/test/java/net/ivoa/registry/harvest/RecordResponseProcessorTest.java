@@ -34,7 +34,7 @@ public class RecordResponseProcessorTest {
         Consumer consumer = new Consumer();
         RecordResponseProcessor p = new RecordResponseProcessor(consumer);
         ResumptionToken r = 
-            p.process(getClass().getResourceAsStream(listrec1), 1);
+            p.process(getClass().getResourceAsStream("/" + listrec1), 1);
         assertEquals(2, consumer.deleted.size());
         assertEquals(2, consumer.updated.size());
         assertNotNull(r);
@@ -53,7 +53,7 @@ public class RecordResponseProcessorTest {
         hinfo.setProperty("from.ep", "http://stsci/oai");
         RecordResponseProcessor p = new RecordResponseProcessor(consumer,hinfo);
         ResumptionToken r = 
-            p.process(getClass().getResourceAsStream(listrec1), 1);
+            p.process(getClass().getResourceAsStream("/" + listrec1), 1);
 
         assertEquals(2, consumer.deleted.size());
         assertEquals(2, consumer.updated.size());
@@ -71,7 +71,7 @@ public class RecordResponseProcessorTest {
         Consumer consumer = new Consumer();
         RecordResponseProcessor p = new RecordResponseProcessor(consumer);
         ResumptionToken r = 
-            p.process(getClass().getResourceAsStream(listrec2), 1);
+            p.process(getClass().getResourceAsStream("/" + listrec2), 1);
         assertEquals(0, consumer.deleted.size());
         assertTrue("ivo://ivoa.net/std/StandardsRegExt", 
                    consumer.updated.contains("ivo://ivoa.net/std/StandardsRegExt"));
@@ -100,7 +100,7 @@ public class RecordResponseProcessorTest {
         Listener listener = new Listener();
         p.addListener(listener);
         ResumptionToken r = 
-            p.process(getClass().getResourceAsStream(listrec2), 1);
+            p.process(getClass().getResourceAsStream("/" + listrec2), 1);
 
         assertEquals(0, consumer.deleted.size());
         assertEquals(13, consumer.updated.size());
@@ -151,7 +151,7 @@ public class RecordResponseProcessorTest {
         Consumer consumer = new Consumer();
         RecordResponseProcessor p = new RecordResponseProcessor(consumer);
         ResumptionToken r = 
-            p.process(getClass().getResourceAsStream(getrec), 1);
+            p.process(getClass().getResourceAsStream("/" + getrec), 1);
         assertEquals(0, consumer.deleted.size());
         assertEquals(1, consumer.updated.size());
         assertTrue("unexpected rec id from get",
