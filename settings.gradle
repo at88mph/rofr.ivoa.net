@@ -1,2 +1,2 @@
 rootProject.name = 'rofr.ivoa.net'
-include('dalvalidate', 'junx-master', 'ivoaharvest')
+include('adql-1.0', 'dalvalidate', 'junx-master', 'ivoaharvest')

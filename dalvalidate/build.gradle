@@ -5,31 +5,12 @@
  * Learn how to create Gradle builds at https://guides.gradle.org/creating-new-gradle-builds/
  */
 plugins {
-    id 'java-library'
-    id 'maven-publish'
+    id 'war'
 }
 
 repositories {
     mavenCentral()
     mavenLocal()
-}
-
-// Minimal publishing required to run publishToMavenLocal
-publishing {
-    publications {
-        mavenJava(MavenPublication) {
-            from components.java
-
-            versionMapping {
-                usage('java-api') {
-                    fromResolutionOf('runtimeClasspath')
-                }
-                usage('java-runtime') {
-                    fromResolutionResult()
-                }
-            }
-        }
-    }
 }
 
 sourceCompatibility = 1.8

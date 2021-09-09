@@ -1,0 +1,23 @@
+FROM debian:bullseye-slim AS build
+
+# JRE 11 install has a bug where it needs this folder present
+RUN mkdir -p /usr/share/man/man1
+
+RUN apt update \
+    && apt install -y ant autoconf g++ libcurl4-openssl-dev make \
+    && apt clean \
+    && apt autoclean \
+    && rm -rf /var/apt/cache/*
+
+COPY . /usr/local/src/ivoa-rofr
+ADD https://www.cadc-ccda.hia-iha.nrc-cnrc.gc.ca/files/vault/CADC/ivoa-rofr/ivoa-rofr-ivy.tar.gz /usr/local/src/
+
+RUN cd /usr/local/src \
+    && tar zxvf ivoa-rofr-ivy.tar.gz
+
+RUN cd /usr/local/src/ivoa-rofr \
+    && ant clean \
+    && ant
+
+RUN tar xvf /usr/local/src/ivoa-rofr/rofrtar/target/ivoa-rofr.tar -C /usr/local
+
