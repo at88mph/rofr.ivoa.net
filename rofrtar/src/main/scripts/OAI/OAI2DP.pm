@@ -468,29 +468,8 @@ sub Identify
    {
       $identity->{'description'} = [];
    }
-   my $desc = {
-      'tk:toolkit' => [[ 
-         {
-            'xmlns:tk' => 'http://oai.dlib.vt.edu/OAI/metadata/toolkit',
-            'xsi:schemaLocation' => 
-                       'http://oai.dlib.vt.edu/OAI/metadata/toolkit '.
-                       'http://oai.dlib.vt.edu/OAI/metadata/toolkit.xsd'
-         },
-         {
-            'tk:title'    => 'VTOAI Perl Data Provider',
-            'tk:author'   => {
-               'tk:name' => 'Hussein Suleman',
-               'tk:email' => 'hussein@vt.edu',
-               'tk:institution' => 'Virginia Tech',
-               'mdorder' => [ qw ( tk:name tk:email tk:institution ) ],
-             },
-            'tk:version'  => '3.05',
-            'tk:URL'      => 'http://www.dlib.vt.edu/projects/OAI/',
-            'mdorder'  => [ qw ( tk:title tk:author tk:version tk:URL ) ]
-         } 
-      ]]
-   };
-   push (@{$identity->{'description'}}, $desc);
+   
+   push (@{$identity->{'description'}}, $self->Archive_IdentifyDescription ());
 
    $self->xmlheader.
    $self->{'utility'}->FormatXML ($identity).
@@ -758,6 +737,12 @@ sub Archive_Identify
    {};
 }
 
+sub Archive_IdentifyDescription
+{
+   my ($self) = @_;
+
+   {};  
+}
 
 sub Archive_ListSets
 {

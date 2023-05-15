@@ -437,6 +437,28 @@ sub Archive_Identify
    $identity;
 }
 
+# Obtain the ri:Resource to be put into the Identify Description.
+sub Archive_IdentifyDescription
+{
+   my ($self) = @_;
+
+   # get data file and tranform accordingly
+   my $identifyMetadataPrefix = "ivo_vor";
+   my $identifyID = "ivo://ivoa.net/rofr";
+   my $recref = $self->Archive_GetRecord ($identifyID, $identifyMetadataPrefix);
+   my ($datestamp, $status, $pathname) =
+       @{$self->{'database'}->{'id2rec'}->{$recref}};
+   my $metadataTransform = $self->{'metadatatransform'}->{$identifyMetadataPrefix};
+   open (FILE, "cat $self->{'datadir'}$pathname | $metadataTransform");
+   my @data = <FILE>;
+   close (FILE);
+   my $fstr = join ('', @data);
+
+   # get rid of XML declaration
+   $fstr =~ s/^<\?[^\?]+\?>//o;
+   return $fstr;
+}
+
 
 # get full list of mdps or list for specific identifier
 sub Archive_ListMetadataFormats
