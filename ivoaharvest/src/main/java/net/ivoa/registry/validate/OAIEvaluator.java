@@ -94,7 +94,7 @@ public class OAIEvaluator extends EvaluatorBase {
                 new BufferedReader(new InputStreamReader(response));
 
             String line = results.readLine();
-            while (line.trim().length() > 0) { line = results.readLine(); }
+            while (line != null && line.trim().length() > 0) { line = results.readLine(); }
             int p = -1;
             if (line.indexOf("<!") >= 0 || line.indexOf("<?xml ") >= 0 || 
                 line.indexOf("<html") >= 0) 

@@ -1019,7 +1019,7 @@ int main ( int argc, char **argv )
 
    totalerrors += Process (29, "GetRecord (illegal_id, oai_dc)", argv[1], "GetRecord", "&identifier=really_wrong_id&metadataPrefix=oai_dc", YES_ERROR, NO_UPDATE, "idDoesNotExist,badArgument");
 
-   totalerrors += Process (30, "GetRecord (invalid_id, oai_dc)", argv[1], "GetRecord", "&identifier=invalid\"id&metadataPrefix=oai_dc", YES_ERROR, NO_UPDATE, "badArgument,idDoesNotExist");
+   totalerrors += Process (30, "GetRecord (invalid_id, oai_dc)", argv[1], "GetRecord", "&identifier=invalid%5C%22id&metadataPrefix=oai_dc", YES_ERROR, NO_UPDATE, "badArgument,idDoesNotExist");
 
 // LIST RECORDS
 
